@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.875, 10.75" name="baza_metek">
+  <DataContextMoniker Name="/baza_metekDataContext" />
+  <nestedChildShapes>
+    <classShape Id="fae85e2f-510b-47e9-aa59-5dedb26e5bc8" absoluteBounds="9.625, 4.5, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/baza_metekDataContext/Metki_PDF" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e15c9471-9f63-49d5-aef7-cf94279f02fa" absoluteBounds="9.64, 4.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="50e40bf2-6dc3-4bad-89a8-dc677b66dc44" absoluteBounds="8.875, 2.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/baza_metekDataContext/Metki_baza" />
+      <nestedChildShapes>
+        <elementListCompartment Id="10e0b370-593f-4e19-a023-3e0f52c6561d" absoluteBounds="8.89, 2.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e8b847f3-c86a-4f44-a5f9-46cf588399b7" absoluteBounds="5.625, 2.25, 2, 1.9631982421875">
+      <DataClassMoniker Name="/baza_metekDataContext/GAL_kolory_kodow" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9adb7e0d-9618-4e78-a182-c7cbf5e4f85b" absoluteBounds="5.64, 2.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f1629dee-26d4-4c08-8e4f-976797c27097" absoluteBounds="8.25, 0.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/baza_metekDataContext/GAL_POWIERZCHNIE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c34efdbf-a2ba-4919-ab81-46410dd22e13" absoluteBounds="8.265, 1.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7ae72ab9-d509-4d3f-882b-d9719d37b882" absoluteBounds="6.5, 5.25, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/baza_metekDataContext/Marszruta" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9499f578-9fd7-4d93-a7aa-19dc4050e06d" absoluteBounds="6.515, 5.71, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="274bfdf2-c993-45ce-81dd-c4d5b6a5f14b" absoluteBounds="9.625, 8.125, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/baza_metekDataContext/Marszruty_szlif" />
+      <nestedChildShapes>
+        <elementListCompartment Id="86fb6465-5bbe-4fc1-b4df-13ac720c89b9" absoluteBounds="9.64, 8.585, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a481bb4c-501d-4749-8c98-8130ee8a1a68" absoluteBounds="1.75, 1.125, 2, 3.1170068359375">
+      <DataClassMoniker Name="/baza_metekDataContext/Szlifiernia_operacje_skan" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a2bcaa80-8b0b-4fc3-a8cd-a3e3fd04b7a9" absoluteBounds="1.7650000000000001, 1.585, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f30503e7-6f74-48c0-9d86-c63a71691341" absoluteBounds="5, 1.125, 2, 4.2708154296875">
+      <DataClassMoniker Name="/baza_metekDataContext/Wykonanie_szlifiernia_normas" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c12b531d-17ac-4e63-b9c9-fbacb3272806" absoluteBounds="5.015, 1.585, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

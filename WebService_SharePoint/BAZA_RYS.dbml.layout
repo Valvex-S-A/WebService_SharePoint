@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 18.125" name="BAZA_RYS">
+  <DataContextMoniker Name="/BAZA_RYSDataContext" />
+  <nestedChildShapes>
+    <classShape Id="3e0ac68f-4669-4f18-9096-37f10281a7ec" absoluteBounds="7.5, 1.125, 2, 16.770408528645834">
+      <DataClassMoniker Name="/BAZA_RYSDataContext/Kartoteka_rysunków_konstrukcyjnych" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f5938b5e-2afb-47c1-ac6c-161d9e8c7166" absoluteBounds="7.515, 1.585, 1.9700000000000002, 16.210408528645832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Planowanie szlifiernia_wb" Class="DBSZlifDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DATABASE2;Initial Catalog=&quot;Planowanie szlifiernia_wb&quot;;Persist Security Info=True;User ID=valvex" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="Planowanie_szlifiernia_wbConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Pracownicy" Member="Pracownicy">
+    <Type Name="Pracownicy">
+      <Column Name="Id_Pracownika" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nazwisko_prac" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Stanowisko" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Id_Centrum" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="Id_Zmiany" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="Grupa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[1]" Member="_1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Operacje PS]" Member="Operacje_PS">
+    <Type Name="Operacje_PS">
+      <Column Name="KodCzęści" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="NazwaCzęści" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="kod2" Type="System.String" DbType="NVarChar(36)" CanBeNull="true" />
+      <Column Name="NrkolOperacji" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="NormaCzasowa" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IlośćSztukZm" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ObowiązujeOd1" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ObowiązujeDO1" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="KodOperacjiPS" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
+      <Column Name="NazwaOperacji" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Id_operacji" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CentrumRobocze" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="ObowiązujeOd" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="ObowiązujeDo" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="IRTRT" Type="System.String" DbType="NChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Wykończenie" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IlośćSztukZm1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NrKartyTechn" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

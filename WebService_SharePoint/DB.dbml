@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PS_PROD" Class="DBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DB2008;Initial Catalog=PS_PROD;Persist Security Info=True;User ID=valvex" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PS_PRODConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.IPO_to_update" Member="IPO_to_updates">
+    <Type Name="IPO_to_update">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ITM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LITM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MCU" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LOCN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="QTY" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GUID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ZZZ_INDEKSY_POPR" Member="ZZZ_INDEKSY_POPRs">
+    <Type Name="ZZZ_INDEKSY_POPR">
+      <Column Name="ITEMID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="PRODDTA.F4101" Member="F4101s">
+    <Type Name="F4101">
+      <Column Name="IMITM" Type="System.Double" DbType="Float NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IMLITM" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="IMAITM" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="IMDSC1" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="IMDSC2" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="IMSRTX" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="IMALN" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="IMSRP1" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="IMSRP2" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="IMSRP3" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="IMSRP4" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="IMSRP5" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="IMSRP6" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
+      <Column Name="IMSRP7" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
+      <Column Name="IMSRP8" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
+      <Column Name="IMSRP9" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
+      <Column Name="IMSRP0" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
+      <Column Name="IMPRP1" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="IMPRP2" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="IMPRP3" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="IMPRP4" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="IMPRP5" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="IMPRP6" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
+      <Column Name="IMPRP7" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
+      <Column Name="IMPRP8" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
+      <Column Name="IMPRP9" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
+      <Column Name="IMPRP0" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
+      <Column Name="IMCDCD" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="IMPDGR" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="IMDSGP" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="IMPRGR" Type="System.String" DbType="NChar(8)" CanBeNull="true" />
+      <Column Name="IMRPRC" Type="System.String" DbType="NChar(8)" CanBeNull="true" />
+      <Column Name="IMORPR" Type="System.String" DbType="NChar(8)" CanBeNull="true" />
+      <Column Name="IMBUYR" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMDRAW" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="IMRVNO" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMDSZE" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMVCUD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMCARS" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMCARP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMSHCN" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="IMSHCM" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="IMUOM1" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMUOM2" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMUOM3" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMUOM4" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMUOM6" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMUOM8" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMUOM9" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMUWUM" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMUVM1" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMSUTM" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMUMVW" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMCYCL" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="IMGLPT" Type="System.String" DbType="NChar(4)" CanBeNull="true" />
+      <Column Name="IMPLEV" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMPPLV" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMCLEV" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMPRPO" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMCKAV" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMBPFG" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMSRCE" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMOT1Y" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMOT2Y" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMSTDP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMFRMP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMTHRP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMSTDG" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="IMFRGD" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="IMTHGD" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="IMCOTY" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMSTKT" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMLNTY" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMCONT" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMBACK" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMIFLA" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMTFLA" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMINMG" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="IMABCS" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMABCM" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMABCI" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMOVR" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMWARR" Type="System.String" DbType="NChar(8)" CanBeNull="true" />
+      <Column Name="IMCMCG" Type="System.String" DbType="NChar(8)" CanBeNull="true" />
+      <Column Name="IMSRNR" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMPMTH" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMFIFO" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMLOTS" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMSLD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMANPL" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMMPST" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMPCTM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMMMPC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMPTSC" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMSNS" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMLTLV" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMLTMF" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMLTCM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMOPC" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMOPV" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMACQ" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMMLQ" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMLTPU" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMMPSP" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMMRPP" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMITC" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMORDW" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMMTF1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMMTF2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMMTF3" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMMTF4" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMMTF5" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMEXPD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMDEFD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMSFLT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMMAKE" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMCOBY" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMLLX" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMCMGL" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMCOMH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMURCD" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMURDT" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="IMURAT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMURAB" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMURRF" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="IMUSER" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="IMPID" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="IMJOBN" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="IMUPMJ" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="IMTDAY" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMUPCN" Type="System.String" DbType="NChar(13)" CanBeNull="true" />
+      <Column Name="IMSCC0" Type="System.String" DbType="NChar(14)" CanBeNull="true" />
+      <Column Name="IMUMUP" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMUMDF" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMUMS0" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMUMS1" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMUMS2" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMUMS3" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMUMS4" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMUMS5" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMUMS6" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMUMS7" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMUMS8" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMPOC" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMAVRT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMEQTY" Type="System.String" DbType="NChar(5)" CanBeNull="true" />
+      <Column Name="IMWTRQ" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMTMPL" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="IMSEG1" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="IMSEG2" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="IMSEG3" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="IMSEG4" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="IMSEG5" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="IMSEG6" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="IMSEG7" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="IMSEG8" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="IMSEG9" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="IMSEG0" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="IMMIC" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMAING" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMBBDD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMCMDM" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMLECM" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMLEDD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMPEFD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMSBDD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMU1DD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMU2DD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMU3DD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMU4DD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMU5DD" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMDLTL" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMDPPO" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMDUAL" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMXDCK" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMLAF" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMLTFM" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMRWLA" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMLNPA" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMLOTC" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="IMAPSC" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMAUOM" Type="System.String" DbType="NChar(9)" CanBeNull="true" />
+      <Column Name="IMCONB" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMGCMP" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMPRI1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMPRI2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMASHL" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMVMINV" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMCMETH" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="IMEXPI" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IPO_STANY" Member="IPO_STANies">
+    <Type Name="IPO_STANY">
+      <Column Name="ITEM_ID" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MAG" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="LOK" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="QTY" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MAG_ZAK" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DATA_DOST" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NR_DOK" Type="System.String" DbType="NVarChar(103)" CanBeNull="true" />
+      <Column Name="JM_PROD" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IPO_MAGAZYN_PODSTAWOWY_PW" Member="IPO_MAGAZYN_PODSTAWOWY_PWs">
+    <Type Name="IPO_MAGAZYN_PODSTAWOWY_PW">
+      <Column Name="LIITM" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="mag_ipo" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INW_KODY_EAN13" Member="INW_KODY_EAN13s">
+    <Type Name="INW_KODY_EAN13">
+      <Column Name="IVALN" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="indeks" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="Nazwa" Type="System.String" DbType="NChar(60)" CanBeNull="true" />
+      <Column Name="IVAITM" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INW_KODY_EAN1" Member="INW_KODY_EAN1s">
+    <Type Name="INW_KODY_EAN1">
+      <Column Name="IVCITM" Type="System.String" DbType="NChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="indeks" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="Nazwa" Type="System.String" DbType="NChar(60)" CanBeNull="true" />
+      <Column Name="IVAITM" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IPO_ZDAWKA_PW" Member="IPO_PWs">
+    <Type Name="IPO_PW">
+      <Column Name="Data_ks" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="HALA" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Nr_zlec_IPO" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IPO_Marszruty" Member="IPO_Marszruties">
+    <Type Name="IPO_Marszruty">
+      <Column Name="Typ" Type="System.String" DbType="NChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Indeks" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="Nr_oper" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Grupa_oper" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="Opis" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Operacja" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Nr_Karty" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="krotki_nr" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="PRODDTA.F00192" Member="F00192s">
+    <Type Name="F00192">
+      <Column Name="CFSY" Type="System.String" DbType="NChar(4) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CFRT" Type="System.String" DbType="NChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CFKY" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CFLINS" Type="System.Double" DbType="Float NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CFDS80" Type="System.String" DbType="NChar(80)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IPO_magazyny_IPO2JDE" Member="IPO_magazyny_IPO2JDE">
+    <Type Name="IPO_magazyny_IPO2JDE">
+      <Column Name="mag_ipo" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="LIMCU" Type="System.String" DbType="NChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="LILOCN" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IPO_HALE_DO_POPRAWY" Member="IPO_HALE_DO_POPRAWY">
+    <Type Name="IPO_HALE_DO_POPRAWY">
+      <Column Name="Data_ks" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="HALA" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Nr_zlec_IPO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILITM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILLITM" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="PRODDTA.F4111" Member="F4111">
+    <Type Name="F4111">
+      <Column Name="ILNLIN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILITM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILLITM" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="ILAITM" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="ILMCU" Type="System.String" DbType="NChar(12)" CanBeNull="true" />
+      <Column Name="ILLOCN" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="ILLOTN" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="ILPLOT" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="ILSTUN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILLDSQ" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILTRNO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILFRTO" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="ILLMCX" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="ILLOTS" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="ILLOTP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILLOTG" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="ILKIT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILMMCU" Type="System.String" DbType="NChar(12)" CanBeNull="true" />
+      <Column Name="ILDMCT" Type="System.String" DbType="NChar(12)" CanBeNull="true" />
+      <Column Name="ILDMCS" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILKCO" Type="System.String" DbType="NChar(5)" CanBeNull="true" />
+      <Column Name="ILDOC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILDCT" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="ILSFX" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="ILJELN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILICU" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILDGL" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ILGLPT" Type="System.String" DbType="NChar(4)" CanBeNull="true" />
+      <Column Name="ILDCTO" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="ILDOCO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILKCOO" Type="System.String" DbType="NChar(5)" CanBeNull="true" />
+      <Column Name="ILLNID" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILIPCD" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="ILTRDJ" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ILTRUM" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="ILAN8" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILTREX" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="ILTREF" Type="System.String" DbType="NChar(8)" CanBeNull="true" />
+      <Column Name="ILRCD" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="ILTRQT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILUNCS" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILPAID" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILTERM" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ILUKID" Type="System.Double" DbType="Float NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ILTDAY" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILUSER" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ILPID" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ILCRDJ" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ILAID" Type="System.String" DbType="NChar(8)" CanBeNull="true" />
+      <Column Name="ILASID" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="ILMCUZ" Type="System.String" DbType="NChar(12)" CanBeNull="true" />
+      <Column Name="ILOBJ" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
+      <Column Name="ILSBL" Type="System.String" DbType="NChar(8)" CanBeNull="true" />
+      <Column Name="ILSUB" Type="System.String" DbType="NChar(8)" CanBeNull="true" />
+      <Column Name="ILUOM2" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="ILCMOO" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="ILRE" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="ILSBLT" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="ILSQOR" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILVPEJ" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ILHDGJ" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ILSHAN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILOPSQ" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILRFLN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILTGN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ILLOTC" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="ILSVDT" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ILLRCD" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IPO_Rozpis_mat" Member="IPO_Rozpis_mat">
+    <Type Name="IPO_Rozpis_mat">
+      <Column Name="Typ_M" Type="System.String" DbType="NChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="wyrob_s" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="wyrob_l" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="skladnik_s" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="skladnik_l" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="ilosc" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Data_od" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Data_do" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="KDP" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="KDU" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="Nazwa_w" Type="System.String" DbType="NChar(60)" CanBeNull="true" />
+      <Column Name="Nazwa_s" Type="System.String" DbType="NChar(60)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SLOWNIK_1" Member="SLOWNIK_1">
+    <Type Name="SLOWNIK_1">
+      <Column Name="IMLITM" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="NAZWA" Type="System.String" DbType="NChar(60)" CanBeNull="true" />
+      <Column Name="IMUOM1" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="IMITM" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="KOLOR" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="KOD_PLAN" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="ZapasBezpieczenstwa" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Naddatek" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="SeriaOptymalna" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="PROD_MAG" Type="System.String" DbType="VarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="IMSHCN" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="IMSRP1" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.Koszt_Indeksu" Method="Koszt_Indeksu">
+    <Parameter Name="IMITM" Parameter="iMITM" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Koszt_IndeksuResult">
+      <Column Name="IMITM" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Koszt" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Koszt_Indeksu_JM_PROD" Method="Koszt_Indeksu_JM_PROD">
+    <Parameter Name="IMITM" Parameter="iMITM" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Koszt_Indeksu_JM_PRODResult">
+      <Column Name="IMITM" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="KOSZT_PROD" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Dane_do_metki" Method="Dane_do_metki">
+    <Parameter Name="litm" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="Dane_do_metkiResult">
+      <Column Name="ID_WYR" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="KOD_WYROBU" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="OPIS" Type="System.String" DbType="NChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="KOLOR" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="NR_RYSUNKU" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KOD_PO_WYKONCZENIU" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Date2JT" Method="Date2JT" IsComposable="true">
+    <Parameter Name="Geogian_in" Parameter="geogian_in" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.IPO_POPRAW_HALE_TREX" Method="IPO_POPRAW_HALE_TREX">
+    <Parameter Name="NR_ZLEC_IPO" Parameter="nR_ZLEC_IPO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="hala" Type="System.String" DbType="NVarChar(4)" />
+    <Parameter Name="data_jde_od" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.COPY_42199_FROM_CRP2PROD" Method="COPY_42199_FROM_CRP2PROD">
+    <Parameter Name="NR_ZLECENIA" Parameter="nR_ZLECENIA" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TYP_ZL" Parameter="tYP_ZL" Type="System.String" DbType="NChar(5)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ImportIPO" Method="ImportIPO">
+    <Parameter Name="qty" Type="System.Double" DbType="Float" />
+    <Parameter Name="kod" Type="System.String" DbType="NChar(25)" />
+    <Parameter Name="id_IPO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="trans_type" Type="System.String" DbType="NChar(2)" />
+    <Parameter Name="doc_type" Type="System.String" DbType="NChar(2)" />
+    <Parameter Name="mcu" Type="System.String" DbType="VarChar(12)" />
+    <Parameter Name="locn" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="hala" Type="System.String" DbType="VarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PODAJ_HALE_INDEKS" Method="PODAJ_HALE_INDEKS">
+    <Parameter Name="indeks" Type="System.Int32" DbType="Int" />
+    <ElementType Name="PODAJ_HALE_INDEKSResult">
+      <Column Name="Typ" Type="System.String" DbType="NChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Indeks" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="Nr_oper" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Grupa_oper" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="Opis" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Operacja" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Nr_Karty" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="HALA" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="krotki_nr" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.RozNormJdenPoziom_JedenWyrob" Method="RozNormJdenPoziom_JedenWyrob" IsComposable="true">
+    <Parameter Name="ItemCode" Parameter="itemCode" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="Quantity" Parameter="quantity" Type="System.Double" DbType="Float" />
+    <ElementType Name="RozNormJdenPoziom_JedenWyrobResult">
+      <Column Name="[Kod wyrobu]" Member="Kod_wyrobu" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="[Opis Wyrobu]" Member="Opis_Wyrobu" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="[Typ Normy]" Member="Typ_Normy" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="[Kod podzespołu]" Member="Kod_podzespołu" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="[Opis podzespołu]" Member="Opis_podzespołu" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="Ilość" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="JM" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="Substytut" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Baza_technol" Class="BAZA_RYSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DATABASE2;Initial Catalog=Baza_technol;Persist Security Info=True;User ID=valvex" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="Baza_technolConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.[Kartoteka rysunków konstrukcyjnych]" Member="Kartoteka_rysunków_konstrukcyjnyches">
+    <Type Name="Kartoteka_rysunków_konstrukcyjnych">
+      <Column Name="NrRysunku" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NazwaRysunku" Type="System.String" DbType="NVarChar(66)" CanBeNull="true" />
+      <Column Name="NazwaRysunkuAng" Type="System.String" DbType="NVarChar(66)" CanBeNull="true" />
+      <Column Name="Opis" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Rysunek" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="RysunekKatalog" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PowZewn_dm2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DataWprowadzenia" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NrUruchomienia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Schemat" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Nazwa_GB" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_D" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_F" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_ES" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_IT" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_CZ" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_SK" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_RUS" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_PL" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Pikt1" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Column Name="Pikt1_Opis" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="Pikt2" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Column Name="Pikt2_Opis" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Pikt3" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Column Name="Pikt3_Opis" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Pikt4" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Column Name="Pikt4_Opis" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Pikt5" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Column Name="Pikt5_Opis" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Pikt6" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Column Name="Pikt6_Opis" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Pikt7" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Column Name="Pikt7_Opis" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Pikt8" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Column Name="Pikt8_Opis" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Pikt9" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Column Name="Pikt9_Opis" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Pikt10" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Column Name="Pikt10_Opis" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Pikt11" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Column Name="Pikt11_Opis" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Pikt12" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Column Name="Pikt12_Opis" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="CennikLiczbaKolumn" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Nazwa_GB_Rough" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_D_Rough" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_F_Rough" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_ES_Rough" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_IT_Rough" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_CZ_Rough" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_SK_Rough" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_RUS_Rough" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_PL_Rough" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_GB_1" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_D_1" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_F_1" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_ES_1" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_IT_1" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_CZ_1" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_SK_1" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_RUS_1" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_PL_1" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_GB_2" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_D_2" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_F_2" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_ES_2" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_IT_2" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_CZ_2" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_SK_2" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_RUS_2" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_PL_2" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_GB_3" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_D_3" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_F_3" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_ES_3" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_IT_3" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_CZ_3" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_SK_3" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_RUS_3" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nazwa_PL_3" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Zweryfikowano_Ikonki" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Column Name="RysunekSzlif" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Archiwum" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

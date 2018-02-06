@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="RAPORTY" Class="DB2DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DATABASE2;Initial Catalog=RAPORTY;Persist Security Info=True;User ID=valvex" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="RAPORTYConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.INW_STANY_SPIS" Member="INW_STANY_SPIs">
+    <Type Name="INW_STANY_SPI">
+      <Column Name="PJITM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PJLITM" Type="System.String" DbType="NChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="PJSRP3" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="ILOSC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IMUOM1" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="WARTOSC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="mag" Type="System.String" DbType="NChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="lok" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INW_NR_INWENTARYZACJI_JDE" Member="INW_NR_INWENTARYZACJI_JDEs">
+    <Type Name="INW_NR_INWENTARYZACJI_JDE">
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INW_PRZYPISANIE_POLA_SPISOWE" Member="INW_PRZYPISANIE_POLA_SPISOWEs">
+    <Type Name="INW_PRZYPISANIE_POLA_SPISOWE">
+      <Column Name="[NR KOMISJI]" Member="NR_KOMISJI" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MAGAZYN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LOKALIZACJA" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="KOLOR" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INW_KOMUNIKATY" Member="INW_KOMUNIKATies">
+    <Type Name="INW_KOMUNIKATY">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NR_KOMISJI" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="TRESC" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="DATA_ODCZYTU" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PRZECZYTANY" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INW_SPIS" Member="INW_SPIs">
+    <Type Name="INW_SPI">
+      <Column Name="ID_ZAPISU" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NR_KOMISJI" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NR_INDEKSU_LITM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NR_INDEKSU_ITM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ILOSC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="JM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MAGAZYN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LOKALIZACJA" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DATA_ZAPISU" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ANULOWANY" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="KOMENTARZ" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="KOSZT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GUID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IPO_ZLECENIA" Member="IPO_ZLECENIAs">
+    <Type Name="IPO_ZLECENIA">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Indeks_zlecenia" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="contractor_id" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="koszt" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="nr_rysunku" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="zlec_wew" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ipo_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ipo_nr_zlec" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nr_ITM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="nr_zam_klienta" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="start_zam" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="stop_zam" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ilosc_zam" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ilosc_wypr" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ilosc_brak" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="nr_serii" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="status_zam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="magazyn_wej" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IPO_Tasks" Member="IPO_Tasks">
+    <Type Name="IPO_Task">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Opis_pracy" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Id_maszyny" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Id_pracownika" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Id_zlecenia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Nazwa_operacji" Type="System.String" DbType="NVarChar(70)" CanBeNull="true" />
+      <Column Name="Nr_zamowienia" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Indeks" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Ilosc_planowana" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Ilosc_wykonana" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Ilosc_brak" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Czas_start" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Czas_stop" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Czas_planowany" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Czas_realizacji" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Pracownik" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Indeks_ITM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Task_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.słownik_TKW" Member="słownik_TKWs">
+    <Type Name="słownik_TKW">
+      <Column Name="Indeks" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="Nazwa" Type="System.String" DbType="NChar(60)" CanBeNull="true" />
+      <Column Name="[Grupa materiałowa]" Member="Grupa_materiałowa" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="JM" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="Koszt" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Marka" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TELEFONY_STACJONARNE" Member="TELEFONY_STACJONARNEs">
+    <Type Name="TELEFONY_STACJONARNE">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="[User]" Member="User" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nr_tel" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="MAC" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Product_Model" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="SIP_SERWER" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="IP" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Subnet" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Gateway" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="DNS_Server" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="GRUPA" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="GRUPA2" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IPO_ZDAWKA_PW_" Member="IPO_ZDAWKA_PW_s">
+    <Type Name="IPO_ZDAWKA_PW_">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Nr_zam_klienta" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Koszt_IPO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Nr_indeksu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IPO_ID_POZYCJI" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ITM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Koszt_mat_IPO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Nazwa_pozycji" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nr_zlecenia_IPO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Kod_zlecenia_klienta" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Ilosc" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Nr_seryjny" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="typ" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Magazyn_IPO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Czy_korygowany" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Zaksiegowany_JDE" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Data_ksiegowania_JDE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Data_utworzenia_poz" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RW_PW" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="JM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Ostatnia_maszyna" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Hala" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Zak_ost_op" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Data_utw_int" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZMIANA" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="DATA_ZMIANY" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Ilosc_ks" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Koszt_IPO_ks" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="status_zam" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Powod_korekty" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Indeks_zlecenia" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IPO_MATERIALY_ZOP" Member="IPO_MATERIALY_ZOPs">
+    <Type Name="IPO_MATERIALY_ZOP">
+      <Column Name="IPO_LITM" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IPO_ITM" Type="System.String" DbType="NVarChar(140)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IPO_autoprodukcja" Member="IPO_autoprodukcja">
+    <Type Name="IPO_autoprodukcja">
+      <Column Name="JDE_ITM" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Partia_opt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Partia_min" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Naddatek" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IPO_pracownicy" Member="IPO_pracownicy">
+    <Type Name="IPO_pracownicy">
+      <Column Name="ID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Nazwa" Type="System.String" DbType="NVarChar(101)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IPO_ZDAWKA_PW_3" Member="IPO_ZDAWKA_PW_3">
+    <Type Name="IPO_ZDAWKA_PW_3">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Nr_zam_klienta" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Koszt_IPO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Nr_indeksu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IPO_ID_POZYCJI" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ITM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Koszt_mat_IPO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Nazwa_pozycji" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nr_zlecenia_IPO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Kod_zlecenia_klienta" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Ilosc" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Nr_seryjny" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="typ" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Magazyn_IPO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Czy_korygowany" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Zaksiegowany_JDE" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Data_ksiegowania_JDE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Data_utworzenia_poz" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RW_PW" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="JM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Powod_korekty" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Hala" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="Indeks_zlecenia" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IPO_zlecenia_do_zmiany" Member="IPO_zlecenia_do_zmiany">
+    <Type Name="IPO_zlecenia_do_zmiany">
+      <Column Name="NR_zlec" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IPO_reczne_ksiegowanie" Member="IPO_reczne_ksiegowanie">
+    <Type Name="IPO_reczne_ksiegowanie">
+      <Column Name="NR_zlecenia_IPO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Kod_materialu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Ilosc" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Typ_dok" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="zaksiegowane" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Dodano" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IPO_ZDAWKA_PW_NORMA" Member="IPO_ZDAWKA_PW_NORMA">
+    <Type Name="IPO_ZDAWKA_PW_NORMA">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nr_zam_klienta" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Koszt_IPO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Nr_indeksu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IPO_ID_POZYCJI" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ITM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Koszt_mat_IPO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Nazwa_pozycji" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nr_zlecenia_IPO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Kod_zlecenia_klienta" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Ilosc" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Nr_seryjny" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="typ" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Magazyn_IPO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Czy_korygowany" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Zaksiegowany_JDE" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Data_ksiegowania_JDE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Data_utworzenia_poz" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RW_PW" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="JM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Powod_korekty" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="HALA_PROD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IPO_ZDAWKA_PW" Member="IPO_ZDAWKA_PW">
+    <Type Name="IPO_ZDAWKA_PW">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nr_zam_klienta" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Koszt_IPO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Nr_indeksu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IPO_ID_POZYCJI" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ITM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Koszt_mat_IPO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Nazwa_pozycji" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Nr_zlecenia_IPO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Kod_zlecenia_klienta" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Ilosc" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Nr_seryjny" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="typ" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Magazyn_IPO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Czy_korygowany" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Zaksiegowany_JDE" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Data_ksiegowania_JDE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Data_utworzenia_poz" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RW_PW" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="JM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Powod_korekty" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="HALA_PROD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="do_kontroli" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IPO_INDEKSY_DO_WYPROSTOWANIA" Member="IPO_INDEKSY_DO_WYPROSTOWANIA">
+    <Type Name="IPO_INDEKSY_DO_WYPROSTOWANIA">
+      <Column Name="kodObcy" Type="System.String" DbType="NVarChar(140)" CanBeNull="true" />
+      <Column Name="indeks" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="indeks_JDE" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IPO_LOKALIZACJE_SZLIFIERNIA_62" Member="IPO_LOKALIZACJE_SZLIFIERNIA_62">
+    <Type Name="IPO_LOKALIZACJE_SZLIFIERNIA_62">
+      <Column Name="Lokalizacja" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.OdswiezKG" Method="OdswiezKG">
+    <Parameter Name="month" Type="System.Int32" DbType="Int" />
+    <Parameter Name="year" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

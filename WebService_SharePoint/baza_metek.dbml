@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="KARTY_PRODUKCJI" Class="baza_metekDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=database2;Initial Catalog=KARTY_PRODUKCJI;Persist Security Info=True;User ID=valvex" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="KARTY_PRODUKCJIConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Metki_PDF" Member="Metki_PDFs">
+    <Type Name="Metki_PDF">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nr_zlecenia" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PDF" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Data_utw" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Ilosc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Metki_" Member="Metki_bazas">
+    <Type Name="Metki_baza">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nr_zlecenia" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Nr_kodu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_id" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Data_utw" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Ilosc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GAL_kolory_kodow" Member="GAL_kolory_kodows">
+    <Type Name="GAL_kolory_kodow">
+      <Column Name="ID_WYR" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="KOD_WYROBU" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="OPIS" Type="System.String" DbType="NChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="KOLOR" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="NR_RYSUNKU" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KOD_PO_WYKONCZENIU" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GAL_POWIERZCHNIE" Member="GAL_POWIERZCHNIEs">
+    <Type Name="GAL_POWIERZCHNIE">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NR_RYS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="POW" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="STATUS" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Marszruta" Member="Marszruta">
+    <Type Name="Marszruta">
+      <Column Name="kod2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Nazwa_wyrobu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Id_wyrobu" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Kolor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Nr_grupy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Standard" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="KodOperacji" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CentrumRobocze" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="[Nr kol operacji]" Member="Nr_kol_operacji" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Typ" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="IloscSztZm" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DataWprowadzenia" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ObowiązujeOd" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ObowiązujeDo" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Marszruty_szlifiernia_" Member="Marszruty_szlif">
+    <Type Name="Marszruty_szlif">
+      <Column Name="Id_wyrobu" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Nazwa_wyrobu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Kolor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Nazwa operacji]" Member="Nazwa_operacji" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="KodOperacjiPS" Type="System.String" DbType="NChar(5)" CanBeNull="true" />
+      <Column Name="Id_operacji" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IloscSztZm" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NormaZatwierdzona" Type="System.String" DbType="NChar(3) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Szlifiernia_operacje_skan" Member="Szlifiernia_operacje_skan">
+    <Type Name="Szlifiernia_operacje_skan">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nr_zlecenia_nr_partii" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Nr_zlecenia" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Kod_detalu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Nazwa_operacji" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="ID_Operacji" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ID_Usera" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Nazwa_usera" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Ilosc_ok" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ilosc_izolator" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Czas_stop" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Do_poprawy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Wykonanie_szlifiernia_norma" Member="Wykonanie_szlifiernia_normas">
+    <Type Name="Wykonanie_szlifiernia_normas">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nr_zlecenia_nr_partii" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Nr_zlecenia" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Kod_detalu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ID_Operacji" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ID_Usera" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Nazwa_operacji" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Nazwisko_prac" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Ilosc_izolator" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Czas_start" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Czas_stop" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="czas_operacji_min" Type="System.Decimal" DbType="Decimal(24,6)" CanBeNull="true" />
+      <Column Name="IlośćSztukZm" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Minuty_wg_normy" Type="System.Decimal" DbType="Decimal(38,10)" CanBeNull="true" />
+      <Column Name="ilosc_wg_normy" Type="System.Decimal" DbType="Decimal(38,9)" CanBeNull="true" />
+      <Column Name="Ilosc_ok" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DATA_" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Nazwa_detalu" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

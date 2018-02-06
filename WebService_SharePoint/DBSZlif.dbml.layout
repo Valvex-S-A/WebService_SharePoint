@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DBSZlif">
+  <DataContextMoniker Name="/DBSZlifDataContext" />
+  <nestedChildShapes>
+    <classShape Id="f9a06851-54b7-4d92-a9a3-2428abe8055b" absoluteBounds="2.5, 4.375, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/DBSZlifDataContext/Pracownicy" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1f8f8ab2-81a2-4c82-8ff4-a6641848e4bb" absoluteBounds="2.515, 4.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0d3badf3-7530-4e33-93fd-b6e22d3ca76b" absoluteBounds="5.5, 1.25, 2, 4.2708154296875">
+      <DataClassMoniker Name="/DBSZlifDataContext/Operacje_PS" />
+      <nestedChildShapes>
+        <elementListCompartment Id="27c30387-6139-4d08-9d39-acdd18e81762" absoluteBounds="5.5150000000000006, 1.71, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
