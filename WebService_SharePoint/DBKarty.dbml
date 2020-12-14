@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="KARTY_PRODUKCJI" Class="DBKartyDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DATABASE2;Initial Catalog=KARTY_PRODUKCJI;User ID=valvex;Encrypt=False;TrustServerCertificate=True" SettingsObjectName="WebService_SharePoint.Properties.Settings" SettingsPropertyName="KARTY_PRODUKCJIConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.GAL_BAZA_ZAWIESZEK" Member="GAL_BAZA_ZAWIESZEK">
+    <Type Name="GAL_BAZA_ZAWIESZEK">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nr_zawieszki" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Created" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GALMAL" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GAL_wej_transakcje" Member="GAL_wej_transakcje">
+    <Type Name="GAL_wej_transakcje">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="indeks" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ilosc_szt" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="data_przyj" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="[user]" Member="user" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="komentarz" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="skan" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="lok" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="data_zamkniecia" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GAL_Stany" Member="GAL_Stany">
+    <Type Name="GAL_Stany">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="indeks" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="lok" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ilość" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

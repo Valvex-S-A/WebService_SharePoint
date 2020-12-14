@@ -1,0 +1,440 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Logic2" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/XELCODE.Server.Common" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/XELCODE.Valvex.RO" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ILogic2_GetDomains_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDomains" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_GetDomains_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDomainsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_LogOn_InputMessage">
+    <wsdl:part name="parameters" element="tns:LogOn" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_LogOn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogOnResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_LogOff_InputMessage">
+    <wsdl:part name="parameters" element="tns:LogOff" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_LogOff_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogOffResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_GetPrivileges_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrivileges" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_GetPrivileges_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrivilegesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_GetUserProfile_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserProfile" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_GetUserProfile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_SetUserProfile_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetUserProfile" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_SetUserProfile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetUserProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_IsAnybodyOutThere_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsAnybodyOutThere" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_IsAnybodyOutThere_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsAnybodyOutThereResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_Dummy_InputMessage">
+    <wsdl:part name="parameters" element="tns:Dummy" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_Dummy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DummyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_P00GetServerDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:RO_P00GetServerDate" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_P00GetServerDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RO_P00GetServerDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_P00GetServerTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:RO_P00GetServerTime" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_P00GetServerTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RO_P00GetServerTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_P00GetPrinters_InputMessage">
+    <wsdl:part name="parameters" element="tns:RO_P00GetPrinters" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_P00GetPrinters_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RO_P00GetPrintersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_P00GetAlphaName_InputMessage">
+    <wsdl:part name="parameters" element="tns:RO_P00GetAlphaName" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_P00GetAlphaName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RO_P00GetAlphaNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_P00GetConfig_InputMessage">
+    <wsdl:part name="parameters" element="tns:RO_P00GetConfig" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_P00GetConfig_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RO_P00GetConfigResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_P00GetUDCTable_InputMessage">
+    <wsdl:part name="parameters" element="tns:RO_P00GetUDCTable" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_P00GetUDCTable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RO_P00GetUDCTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_P00ValidateLocation_InputMessage">
+    <wsdl:part name="parameters" element="tns:RO_P00ValidateLocation" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_P00ValidateLocation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RO_P00ValidateLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_P00Dummy_InputMessage">
+    <wsdl:part name="parameters" element="tns:RO_P00Dummy" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_P00Dummy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RO_P00DummyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_P00GetItemInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:RO_P00GetItemInfo" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_P00GetItemInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RO_P00GetItemInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_P00GetItemInfos_InputMessage">
+    <wsdl:part name="parameters" element="tns:RO_P00GetItemInfos" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_P00GetItemInfos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RO_P00GetItemInfosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_P00GetUMStruct_InputMessage">
+    <wsdl:part name="parameters" element="tns:RO_P00GetUMStruct" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_P00GetUMStruct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RO_P00GetUMStructResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_VI_InventoryTransfer_InputMessage">
+    <wsdl:part name="parameters" element="tns:RO_VI_InventoryTransfer" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_VI_InventoryTransfer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RO_VI_InventoryTransferResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_VI_InventoryAdjustment_InputMessage">
+    <wsdl:part name="parameters" element="tns:RO_VI_InventoryAdjustment" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_VI_InventoryAdjustment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RO_VI_InventoryAdjustmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_VI_PurchaseReceipt_InputMessage">
+    <wsdl:part name="parameters" element="tns:RO_VI_PurchaseReceipt" />
+  </wsdl:message>
+  <wsdl:message name="ILogic2_RO_VI_PurchaseReceipt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RO_VI_PurchaseReceiptResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ILogic2">
+    <wsdl:operation name="GetDomains">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICommonLogic/GetDomains" message="tns:ILogic2_GetDomains_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommonLogic/GetDomainsResponse" message="tns:ILogic2_GetDomains_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LogOn">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICommonLogic/LogOn" message="tns:ILogic2_LogOn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommonLogic/LogOnResponse" message="tns:ILogic2_LogOn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LogOff">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICommonLogic/LogOff" message="tns:ILogic2_LogOff_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommonLogic/LogOffResponse" message="tns:ILogic2_LogOff_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPrivileges">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICommonLogic/GetPrivileges" message="tns:ILogic2_GetPrivileges_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommonLogic/GetPrivilegesResponse" message="tns:ILogic2_GetPrivileges_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProfile">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICommonLogic/GetUserProfile" message="tns:ILogic2_GetUserProfile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommonLogic/GetUserProfileResponse" message="tns:ILogic2_GetUserProfile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetUserProfile">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICommonLogic/SetUserProfile" message="tns:ILogic2_SetUserProfile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommonLogic/SetUserProfileResponse" message="tns:ILogic2_SetUserProfile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsAnybodyOutThere">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICommonLogic/IsAnybodyOutThere" message="tns:ILogic2_IsAnybodyOutThere_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommonLogic/IsAnybodyOutThereResponse" message="tns:ILogic2_IsAnybodyOutThere_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Dummy">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICommonLogic/Dummy" message="tns:ILogic2_Dummy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICommonLogic/DummyResponse" message="tns:ILogic2_Dummy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RO_P00GetServerDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILogic2/RO_P00GetServerDate" message="tns:ILogic2_RO_P00GetServerDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILogic2/RO_P00GetServerDateResponse" message="tns:ILogic2_RO_P00GetServerDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RO_P00GetServerTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILogic2/RO_P00GetServerTime" message="tns:ILogic2_RO_P00GetServerTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILogic2/RO_P00GetServerTimeResponse" message="tns:ILogic2_RO_P00GetServerTime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RO_P00GetPrinters">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILogic2/RO_P00GetPrinters" message="tns:ILogic2_RO_P00GetPrinters_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILogic2/RO_P00GetPrintersResponse" message="tns:ILogic2_RO_P00GetPrinters_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RO_P00GetAlphaName">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILogic2/RO_P00GetAlphaName" message="tns:ILogic2_RO_P00GetAlphaName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILogic2/RO_P00GetAlphaNameResponse" message="tns:ILogic2_RO_P00GetAlphaName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RO_P00GetConfig">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILogic2/RO_P00GetConfig" message="tns:ILogic2_RO_P00GetConfig_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILogic2/RO_P00GetConfigResponse" message="tns:ILogic2_RO_P00GetConfig_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RO_P00GetUDCTable">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILogic2/RO_P00GetUDCTable" message="tns:ILogic2_RO_P00GetUDCTable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILogic2/RO_P00GetUDCTableResponse" message="tns:ILogic2_RO_P00GetUDCTable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RO_P00ValidateLocation">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILogic2/RO_P00ValidateLocation" message="tns:ILogic2_RO_P00ValidateLocation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILogic2/RO_P00ValidateLocationResponse" message="tns:ILogic2_RO_P00ValidateLocation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RO_P00Dummy">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILogic2/RO_P00Dummy" message="tns:ILogic2_RO_P00Dummy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILogic2/RO_P00DummyResponse" message="tns:ILogic2_RO_P00Dummy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RO_P00GetItemInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILogic2/RO_P00GetItemInfo" message="tns:ILogic2_RO_P00GetItemInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILogic2/RO_P00GetItemInfoResponse" message="tns:ILogic2_RO_P00GetItemInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RO_P00GetItemInfos">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILogic2/RO_P00GetItemInfos" message="tns:ILogic2_RO_P00GetItemInfos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILogic2/RO_P00GetItemInfosResponse" message="tns:ILogic2_RO_P00GetItemInfos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RO_P00GetUMStruct">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILogic2/RO_P00GetUMStruct" message="tns:ILogic2_RO_P00GetUMStruct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILogic2/RO_P00GetUMStructResponse" message="tns:ILogic2_RO_P00GetUMStruct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RO_VI_InventoryTransfer">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILogic2/RO_VI_InventoryTransfer" message="tns:ILogic2_RO_VI_InventoryTransfer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILogic2/RO_VI_InventoryTransferResponse" message="tns:ILogic2_RO_VI_InventoryTransfer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RO_VI_InventoryAdjustment">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILogic2/RO_VI_InventoryAdjustment" message="tns:ILogic2_RO_VI_InventoryAdjustment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILogic2/RO_VI_InventoryAdjustmentResponse" message="tns:ILogic2_RO_VI_InventoryAdjustment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RO_VI_PurchaseReceipt">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILogic2/RO_VI_PurchaseReceipt" message="tns:ILogic2_RO_VI_PurchaseReceipt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILogic2/RO_VI_PurchaseReceiptResponse" message="tns:ILogic2_RO_VI_PurchaseReceipt_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ILogic2" type="tns:ILogic2">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDomains">
+      <soap:operation soapAction="http://tempuri.org/ICommonLogic/GetDomains" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogOn">
+      <soap:operation soapAction="http://tempuri.org/ICommonLogic/LogOn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogOff">
+      <soap:operation soapAction="http://tempuri.org/ICommonLogic/LogOff" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPrivileges">
+      <soap:operation soapAction="http://tempuri.org/ICommonLogic/GetPrivileges" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProfile">
+      <soap:operation soapAction="http://tempuri.org/ICommonLogic/GetUserProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetUserProfile">
+      <soap:operation soapAction="http://tempuri.org/ICommonLogic/SetUserProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsAnybodyOutThere">
+      <soap:operation soapAction="http://tempuri.org/ICommonLogic/IsAnybodyOutThere" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Dummy">
+      <soap:operation soapAction="http://tempuri.org/ICommonLogic/Dummy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RO_P00GetServerDate">
+      <soap:operation soapAction="http://tempuri.org/ILogic2/RO_P00GetServerDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RO_P00GetServerTime">
+      <soap:operation soapAction="http://tempuri.org/ILogic2/RO_P00GetServerTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RO_P00GetPrinters">
+      <soap:operation soapAction="http://tempuri.org/ILogic2/RO_P00GetPrinters" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RO_P00GetAlphaName">
+      <soap:operation soapAction="http://tempuri.org/ILogic2/RO_P00GetAlphaName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RO_P00GetConfig">
+      <soap:operation soapAction="http://tempuri.org/ILogic2/RO_P00GetConfig" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RO_P00GetUDCTable">
+      <soap:operation soapAction="http://tempuri.org/ILogic2/RO_P00GetUDCTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RO_P00ValidateLocation">
+      <soap:operation soapAction="http://tempuri.org/ILogic2/RO_P00ValidateLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RO_P00Dummy">
+      <soap:operation soapAction="http://tempuri.org/ILogic2/RO_P00Dummy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RO_P00GetItemInfo">
+      <soap:operation soapAction="http://tempuri.org/ILogic2/RO_P00GetItemInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RO_P00GetItemInfos">
+      <soap:operation soapAction="http://tempuri.org/ILogic2/RO_P00GetItemInfos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RO_P00GetUMStruct">
+      <soap:operation soapAction="http://tempuri.org/ILogic2/RO_P00GetUMStruct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RO_VI_InventoryTransfer">
+      <soap:operation soapAction="http://tempuri.org/ILogic2/RO_VI_InventoryTransfer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RO_VI_InventoryAdjustment">
+      <soap:operation soapAction="http://tempuri.org/ILogic2/RO_VI_InventoryAdjustment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RO_VI_PurchaseReceipt">
+      <soap:operation soapAction="http://tempuri.org/ILogic2/RO_VI_PurchaseReceipt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Logic2">
+    <wsdl:port name="BasicHttpBinding_ILogic2" binding="tns:BasicHttpBinding_ILogic2">
+      <soap:address location="http://web1:8731/XELCODE.Server.Valvex/Logic/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

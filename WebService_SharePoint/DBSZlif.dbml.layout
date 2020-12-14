@@ -14,5 +14,11 @@
         <elementListCompartment Id="27c30387-6139-4d08-9d39-acdd18e81762" absoluteBounds="5.5150000000000006, 1.71, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="93202910-2000-4747-a945-3b5d8a09804a" absoluteBounds="1.375, 2, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/DBSZlifDataContext/Zdawka" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2ebe7820-ab8a-4348-ae94-50ba8411aac7" absoluteBounds="1.3900000000000001, 2.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

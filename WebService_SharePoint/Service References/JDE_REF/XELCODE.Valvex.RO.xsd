@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/XELCODE.Valvex.RO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/XELCODE.Valvex.RO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfROBarCodePrinter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROBarCodePrinter" nillable="true" type="tns:ROBarCodePrinter" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfROBarCodePrinter" nillable="true" type="tns:ArrayOfROBarCodePrinter" />
+  <xs:complexType name="ROBarCodePrinter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="defaultFlag" type="xs:boolean" />
+      <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ipAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="processId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ROBarCodePrinter" nillable="true" type="tns:ROBarCodePrinter" />
+  <xs:complexType name="ROConfig">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="keys" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="values" nillable="true" type="q2:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ROConfig" nillable="true" type="tns:ROConfig" />
+  <xs:complexType name="ArrayOfROUdcCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROUdcCode" nillable="true" type="tns:ROUdcCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfROUdcCode" nillable="true" type="tns:ArrayOfROUdcCode" />
+  <xs:complexType name="ROUdcCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="description2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="specialHangling" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="udcCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ROUdcCode" nillable="true" type="tns:ROUdcCode" />
+  <xs:simpleType name="ROItemDefType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Number1" />
+      <xs:enumeration value="Number2" />
+      <xs:enumeration value="Number3" />
+      <xs:enumeration value="EanCode" />
+      <xs:enumeration value="Custom1" />
+      <xs:enumeration value="Custom2" />
+      <xs:enumeration value="Custom3" />
+      <xs:enumeration value="Custom4" />
+      <xs:enumeration value="Custom5" />
+      <xs:enumeration value="Custom6" />
+      <xs:enumeration value="Custom7" />
+      <xs:enumeration value="Custom8" />
+      <xs:enumeration value="Custom9" />
+      <xs:enumeration value="Custom10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ROItemDefType" nillable="true" type="tns:ROItemDefType" />
+  <xs:complexType name="ROItemDef">
+    <xs:sequence>
+      <xs:element name="description1" nillable="true" type="xs:string" />
+      <xs:element name="description2" nillable="true" type="xs:string" />
+      <xs:element name="eanCode" nillable="true" type="xs:string" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="eanCodes" nillable="true" type="q3:ArrayOfstring" />
+      <xs:element name="lotProcessing" type="xs:boolean" />
+      <xs:element name="lotProcessingMode" nillable="true" type="xs:string" />
+      <xs:element name="lotRequired" type="xs:boolean" />
+      <xs:element name="number1" nillable="true" type="xs:string" />
+      <xs:element name="number2" nillable="true" type="xs:string" />
+      <xs:element name="number3" nillable="true" type="xs:string" />
+      <xs:element name="prp1" nillable="true" type="xs:string" />
+      <xs:element name="prp6" nillable="true" type="xs:string" />
+      <xs:element name="srp0" nillable="true" type="xs:string" />
+      <xs:element name="srp1" nillable="true" type="xs:string" />
+      <xs:element name="srp4" nillable="true" type="xs:string" />
+      <xs:element name="umPurchase" nillable="true" type="xs:string" />
+      <xs:element name="umVolume" nillable="true" type="xs:string" />
+      <xs:element name="umWeight" nillable="true" type="xs:string" />
+      <xs:element name="uomList" nillable="true" type="tns:ArrayOfROItemUom" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ROItemDef" nillable="true" type="tns:ROItemDef" />
+  <xs:complexType name="ArrayOfROItemUom">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROItemUom" nillable="true" type="tns:ROItemUom" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfROItemUom" nillable="true" type="tns:ArrayOfROItemUom" />
+  <xs:complexType name="ROItemUom">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="structType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="toPrimary" type="xs:double" />
+      <xs:element minOccurs="0" name="umCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ROItemUom" nillable="true" type="tns:ROItemUom" />
+  <xs:complexType name="ArrayOfROItemDef">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROItemDef" nillable="true" type="tns:ROItemDef" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfROItemDef" nillable="true" type="tns:ArrayOfROItemDef" />
+  <xs:complexType name="ArrayOfROItemStruct">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROItemStruct" nillable="true" type="tns:ROItemStruct" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfROItemStruct" nillable="true" type="tns:ArrayOfROItemStruct" />
+  <xs:complexType name="ROItemStruct">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="structId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="structName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ROItemStruct" nillable="true" type="tns:ROItemStruct" />
+  <xs:complexType name="ROSessionData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="environment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="ser:guid" />
+      <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="warehouse" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ROSessionData" nillable="true" type="tns:ROSessionData" />
+  <xs:complexType name="ArrayOfROInventoryTransferVI">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROInventoryTransferVI" nillable="true" type="tns:ROInventoryTransferVI" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfROInventoryTransferVI" nillable="true" type="tns:ArrayOfROInventoryTransferVI" />
+  <xs:complexType name="ROInventoryTransferVI">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="itemNumber2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="locationFrom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="locationTo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="lotNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="quantity" type="xs:double" />
+      <xs:element minOccurs="0" name="reasonCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="transactionDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="transactionExplanation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="um" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="warehouseFrom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="warehouseTo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ROInventoryTransferVI" nillable="true" type="tns:ROInventoryTransferVI" />
+  <xs:complexType name="ArrayOfROInventoryAdjustmentVI">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROInventoryAdjustmentVI" nillable="true" type="tns:ROInventoryAdjustmentVI" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfROInventoryAdjustmentVI" nillable="true" type="tns:ArrayOfROInventoryAdjustmentVI" />
+  <xs:complexType name="ROInventoryAdjustmentVI">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="itemNumber2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="locationTo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="lotExpirationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="lotNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="memoLot1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="memoLot2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="quantity" type="xs:double" />
+      <xs:element minOccurs="0" name="reasonCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="transactionDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="transactionExplanation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="um" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="vendorLotNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="warehouseTo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ROInventoryAdjustmentVI" nillable="true" type="tns:ROInventoryAdjustmentVI" />
+  <xs:complexType name="ROPurchaseReceiptVI">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="company" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="details" nillable="true" type="tns:ArrayOfROPurchaseReceiptDetailVI" />
+      <xs:element minOccurs="0" name="orderNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="orderSuffix" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="orderType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ROPurchaseReceiptVI" nillable="true" type="tns:ROPurchaseReceiptVI" />
+  <xs:complexType name="ArrayOfROPurchaseReceiptDetailVI">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ROPurchaseReceiptDetailVI" nillable="true" type="tns:ROPurchaseReceiptDetailVI" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfROPurchaseReceiptDetailVI" nillable="true" type="tns:ArrayOfROPurchaseReceiptDetailVI" />
+  <xs:complexType name="ROPurchaseReceiptDetailVI">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="itemNumber2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="lotExpirationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="lotNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="orderLine" type="xs:double" />
+      <xs:element minOccurs="0" name="quantity" type="xs:double" />
+      <xs:element minOccurs="0" name="reasonCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="transactionDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="um" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="vendorLotNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ROPurchaseReceiptDetailVI" nillable="true" type="tns:ROPurchaseReceiptDetailVI" />
+</xs:schema>

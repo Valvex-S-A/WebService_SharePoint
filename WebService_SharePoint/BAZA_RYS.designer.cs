@@ -33,10 +33,13 @@ namespace WebService_SharePoint
     partial void InsertKartoteka_rysunków_konstrukcyjnych(Kartoteka_rysunków_konstrukcyjnych instance);
     partial void UpdateKartoteka_rysunków_konstrukcyjnych(Kartoteka_rysunków_konstrukcyjnych instance);
     partial void DeleteKartoteka_rysunków_konstrukcyjnych(Kartoteka_rysunków_konstrukcyjnych instance);
+    partial void InsertKarta_zmian_norm_pracy_kopia_zła(Karta_zmian_norm_pracy_kopia_zła instance);
+    partial void UpdateKarta_zmian_norm_pracy_kopia_zła(Karta_zmian_norm_pracy_kopia_zła instance);
+    partial void DeleteKarta_zmian_norm_pracy_kopia_zła(Karta_zmian_norm_pracy_kopia_zła instance);
     #endregion
 		
 		public BAZA_RYSDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["Baza_technolConnectionString"].ConnectionString, mappingSource)
+				base(global::WebService_SharePoint.Properties.Settings.Default.Baza_technolConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -70,6 +73,14 @@ namespace WebService_SharePoint
 			get
 			{
 				return this.GetTable<Kartoteka_rysunków_konstrukcyjnych>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Karta_zmian_norm_pracy_kopia_zła> Karta_zmian_norm_pracy_kopia_złas
+		{
+			get
+			{
+				return this.GetTable<Karta_zmian_norm_pracy_kopia_zła>();
 			}
 		}
 	}
@@ -2079,6 +2090,284 @@ namespace WebService_SharePoint
 					this._Archiwum = value;
 					this.SendPropertyChanged("Archiwum");
 					this.OnArchiwumChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[Karta zmian norm pracy_kopia_zła]")]
+	public partial class Karta_zmian_norm_pracy_kopia_zła : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _NrKartyZmian;
+		
+		private string _Wydział;
+		
+		private System.Nullable<System.DateTime> _DataZmiany;
+		
+		private string _PodstawaZmiany;
+		
+		private string _Wystawił;
+		
+		private System.Nullable<System.DateTime> _DataWystawienia;
+		
+		private string _Zatwierdził;
+		
+		private System.Nullable<System.DateTime> _DataZatwierdzenia;
+		
+		private System.Nullable<System.DateTime> _DataWprowadzenia;
+		
+		private System.Nullable<bool> _ZmienionoWJDE;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnNrKartyZmianChanging(string value);
+    partial void OnNrKartyZmianChanged();
+    partial void OnWydziałChanging(string value);
+    partial void OnWydziałChanged();
+    partial void OnDataZmianyChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataZmianyChanged();
+    partial void OnPodstawaZmianyChanging(string value);
+    partial void OnPodstawaZmianyChanged();
+    partial void OnWystawiłChanging(string value);
+    partial void OnWystawiłChanged();
+    partial void OnDataWystawieniaChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataWystawieniaChanged();
+    partial void OnZatwierdziłChanging(string value);
+    partial void OnZatwierdziłChanged();
+    partial void OnDataZatwierdzeniaChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataZatwierdzeniaChanged();
+    partial void OnDataWprowadzeniaChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataWprowadzeniaChanged();
+    partial void OnZmienionoWJDEChanging(System.Nullable<bool> value);
+    partial void OnZmienionoWJDEChanged();
+    #endregion
+		
+		public Karta_zmian_norm_pracy_kopia_zła()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NrKartyZmian", DbType="NVarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string NrKartyZmian
+		{
+			get
+			{
+				return this._NrKartyZmian;
+			}
+			set
+			{
+				if ((this._NrKartyZmian != value))
+				{
+					this.OnNrKartyZmianChanging(value);
+					this.SendPropertyChanging();
+					this._NrKartyZmian = value;
+					this.SendPropertyChanged("NrKartyZmian");
+					this.OnNrKartyZmianChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Wydział", DbType="NVarChar(50)")]
+		public string Wydział
+		{
+			get
+			{
+				return this._Wydział;
+			}
+			set
+			{
+				if ((this._Wydział != value))
+				{
+					this.OnWydziałChanging(value);
+					this.SendPropertyChanging();
+					this._Wydział = value;
+					this.SendPropertyChanged("Wydział");
+					this.OnWydziałChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataZmiany", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DataZmiany
+		{
+			get
+			{
+				return this._DataZmiany;
+			}
+			set
+			{
+				if ((this._DataZmiany != value))
+				{
+					this.OnDataZmianyChanging(value);
+					this.SendPropertyChanging();
+					this._DataZmiany = value;
+					this.SendPropertyChanged("DataZmiany");
+					this.OnDataZmianyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PodstawaZmiany", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+		public string PodstawaZmiany
+		{
+			get
+			{
+				return this._PodstawaZmiany;
+			}
+			set
+			{
+				if ((this._PodstawaZmiany != value))
+				{
+					this.OnPodstawaZmianyChanging(value);
+					this.SendPropertyChanging();
+					this._PodstawaZmiany = value;
+					this.SendPropertyChanged("PodstawaZmiany");
+					this.OnPodstawaZmianyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Wystawił", DbType="NVarChar(50)")]
+		public string Wystawił
+		{
+			get
+			{
+				return this._Wystawił;
+			}
+			set
+			{
+				if ((this._Wystawił != value))
+				{
+					this.OnWystawiłChanging(value);
+					this.SendPropertyChanging();
+					this._Wystawił = value;
+					this.SendPropertyChanged("Wystawił");
+					this.OnWystawiłChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataWystawienia", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DataWystawienia
+		{
+			get
+			{
+				return this._DataWystawienia;
+			}
+			set
+			{
+				if ((this._DataWystawienia != value))
+				{
+					this.OnDataWystawieniaChanging(value);
+					this.SendPropertyChanging();
+					this._DataWystawienia = value;
+					this.SendPropertyChanged("DataWystawienia");
+					this.OnDataWystawieniaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Zatwierdził", DbType="NVarChar(50)")]
+		public string Zatwierdził
+		{
+			get
+			{
+				return this._Zatwierdził;
+			}
+			set
+			{
+				if ((this._Zatwierdził != value))
+				{
+					this.OnZatwierdziłChanging(value);
+					this.SendPropertyChanging();
+					this._Zatwierdził = value;
+					this.SendPropertyChanged("Zatwierdził");
+					this.OnZatwierdziłChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataZatwierdzenia", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DataZatwierdzenia
+		{
+			get
+			{
+				return this._DataZatwierdzenia;
+			}
+			set
+			{
+				if ((this._DataZatwierdzenia != value))
+				{
+					this.OnDataZatwierdzeniaChanging(value);
+					this.SendPropertyChanging();
+					this._DataZatwierdzenia = value;
+					this.SendPropertyChanged("DataZatwierdzenia");
+					this.OnDataZatwierdzeniaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataWprowadzenia", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DataWprowadzenia
+		{
+			get
+			{
+				return this._DataWprowadzenia;
+			}
+			set
+			{
+				if ((this._DataWprowadzenia != value))
+				{
+					this.OnDataWprowadzeniaChanging(value);
+					this.SendPropertyChanging();
+					this._DataWprowadzenia = value;
+					this.SendPropertyChanged("DataWprowadzenia");
+					this.OnDataWprowadzeniaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZmienionoWJDE", DbType="Bit")]
+		public System.Nullable<bool> ZmienionoWJDE
+		{
+			get
+			{
+				return this._ZmienionoWJDE;
+			}
+			set
+			{
+				if ((this._ZmienionoWJDE != value))
+				{
+					this.OnZmienionoWJDEChanging(value);
+					this.SendPropertyChanging();
+					this._ZmienionoWJDE = value;
+					this.SendPropertyChanged("ZmienionoWJDE");
+					this.OnZmienionoWJDEChanged();
 				}
 			}
 		}

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="KARTY_PRODUKCJI" Class="baza_metekDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=database2;Initial Catalog=KARTY_PRODUKCJI;Persist Security Info=True;User ID=valvex" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="KARTY_PRODUKCJIConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DATABASE2;Initial Catalog=KARTY_PRODUKCJI;User ID=valvex;Encrypt=False;TrustServerCertificate=True" SettingsObjectName="WebService_SharePoint.Properties.Settings" SettingsPropertyName="KARTY_PRODUKCJIConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Metki_PDF" Member="Metki_PDFs">
     <Type Name="Metki_PDF">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -103,6 +103,38 @@
       <Column Name="Ilosc_ok" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DATA_" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Nazwa_detalu" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Słownik_TKW" Member="Słownik_TKWs">
+    <Type Name="Słownik_TKW">
+      <Column Name="Indeks" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="Nazwa" Type="System.String" DbType="NChar(60)" CanBeNull="true" />
+      <Column Name="[Grupa materiałowa]" Member="Grupa_materiałowa" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="JM" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="Koszt" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Marka" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GAL_kolory_kodow_view" Member="GAL_kolory_kodow_views">
+    <Type Name="GAL_kolory_kodow_view">
+      <Column Name="ID_WYR" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="KOD_WYROBU" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="OPIS" Type="System.String" DbType="NChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="KOLOR" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="NR_RYSUNKU" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="KOD_PO_WYKONCZENIU" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="KOD_PLAN" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="Expr1" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Metki_" Member="Metki_s">
+    <Type Name="Metki_">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nr_zlecenia" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Nr_kodu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_id" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Data_utw" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Ilosc" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

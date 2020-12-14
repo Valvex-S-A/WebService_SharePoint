@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="KARTY_PRODUKCJI" Class="dbKartyProdukcjiDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=database2;Initial Catalog=KARTY_PRODUKCJI;Persist Security Info=True;User ID=valvex" SettingsObjectName="WebService_SharePoint.Properties.Settings" SettingsPropertyName="KARTY_PRODUKCJIConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.KJ_szlifiernia_potwierdzone" Member="KJ_szlifiernia_potwierdzones">
+    <Type Name="KJ_szlifiernia_potwierdzone">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Kod_detalu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Nazwa_detalu" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Ilosc_ok" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Data_powierdzenia" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ID_usera" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Nagl_skan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="STATUS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Przesuniecie" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GAL_powody_brakow" Member="GAL_powody_brakow">
+    <Type Name="GAL_powody_brakow">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Kod_Braku" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Opis" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GAL_ZAWIESZKI" Member="GAL_ZAWIESZKIs">
+    <Type Name="GAL_ZAWIESZKI">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nr_rysunku" Type="System.String" DbType="NVarChar(90)" CanBeNull="true" />
+      <Column Name="Nr_zawieszki" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Program" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Il_szt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Komentarz" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Created" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Ilosc_zdjęć" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GALMAL" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GAL_ZDJECIA" Member="GAL_ZDJECIAs">
+    <Type Name="GAL_ZDJECIA">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_zawieszki" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Zdjecie" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Created" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Komentarz" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

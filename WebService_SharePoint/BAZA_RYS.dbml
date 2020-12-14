@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Baza_technol" Class="BAZA_RYSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=DATABASE2;Initial Catalog=Baza_technol;Persist Security Info=True;User ID=valvex" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="Baza_technolConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DATABASE2;Initial Catalog=Baza_technol;Persist Security Info=True;User ID=valvex" SettingsObjectName="WebService_SharePoint.Properties.Settings" SettingsPropertyName="Baza_technolConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.[Kartoteka rysunków konstrukcyjnych]" Member="Kartoteka_rysunków_konstrukcyjnyches">
     <Type Name="Kartoteka_rysunków_konstrukcyjnych">
       <Column Name="NrRysunku" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -85,6 +85,20 @@
       <Column Name="Zweryfikowano_Ikonki" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
       <Column Name="RysunekSzlif" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Archiwum" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Karta zmian norm pracy_kopia_zła]" Member="Karta_zmian_norm_pracy_kopia_złas">
+    <Type Name="Karta_zmian_norm_pracy_kopia_zła">
+      <Column Name="NrKartyZmian" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Wydział" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DataZmiany" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PodstawaZmiany" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Wystawił" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DataWystawienia" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Zatwierdził" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DataZatwierdzenia" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DataWprowadzenia" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ZmienionoWJDE" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

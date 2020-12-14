@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="trans" Class="dbtrans1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=database2;Initial Catalog=trans;Persist Security Info=True;User ID=valvex" SettingsObjectName="WebService_SharePoint.Properties.Settings" SettingsPropertyName="transConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Aktualne_grupy_view" Member="Aktualne_grupy_views">
+    <Type Name="Aktualne_grupy_view">
+      <Column Name="id_uzytkownika" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="login" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Nazwisko" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Imie" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Grupa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Opis_grupy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Doz_wyst_transfer" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Doz_wyk_trans" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Doz_wyst_komplet" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Doz_wyk_komplet" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="KOMPLETACJA_Z" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="KOMPLETACJA_DO" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="POTWIERDZANIE_DO" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Data_od" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="Data_do" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Grupy" Member="Grupies">
+    <Type Name="Grupy">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Grupa" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Opis_grupy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Doz_wyst_transfer" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Doz_wyk_trans" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Doz_wyst_komplet" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Doz_wyk_komplet" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="KOMPLETACJA_Z" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="KOMPLETACJA_DO" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="POTWIERDZANIE_DO" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.uzytkownicy" Member="uzytkownicies">
+    <Type Name="uzytkownicy">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="login" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Imie" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Nazwisko" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="tel_kom" Type="System.String" DbType="NVarChar(9)" CanBeNull="true" />
+      <Column Name="Aktywny" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Data_utworzenia" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Ostatnie_logowanie" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Konto_aktywne_do" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Konto_aktywne_od" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Komentarz" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+      <Column Name="salt" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.zlecenia_naglowki" Member="zlecenia_naglowkis">
+    <Type Name="zlecenia_naglowki">
+      <Column Name="Nr_zlecenia" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Opis" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="data_wymagana" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="BER" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Typ" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="LITM" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Utworzony_przez" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Data_utworzenia" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="Autor_ost_mod" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Data_ost_mod" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="odpowiedzialny" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.transfer_blokada_nagl" Member="transfer_blokada_nagls">
+    <Type Name="transfer_blokada_nagl">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="uzytkownik" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="id_zlecenia_transf" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="poczatek" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.zlecenia_naglowek_view" Member="zlecenia_naglowek_views">
+    <Type Name="zlecenia_naglowek_view">
+      <Column Name="Nr_zlecenia" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Opis" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="data_wymagana" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="BER" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Typ" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="LITM" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Utworzony_przez" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Data_utworzenia" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="Autor_ost_mod" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Data_ost_mod" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="odpowiedzialny" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="login" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Imie" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Nazwisko" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="tel_kom" Type="System.String" DbType="NVarChar(9)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
+      <Column Name="lok_docelowa" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Log_historia" Member="Log_historias">
+    <Type Name="Log_historia">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nr_kompletacji" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="lok" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="mag" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="nr_linii_kompletacji" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ilosc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Komentarz" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
+      <Column Name="Data_zdarzenia" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="LITM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Wersja_aplikacji" Member="Wersja_aplikacjis">
+    <Type Name="Wersja_aplikacji">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Wersja" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Opis" Type="System.String" DbType="NVarChar(550)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Komunikaty" Member="Komunikaties">
+    <Type Name="Komunikaty">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nr_zlecenia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Nr_linii" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Autor" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Data_utworzenia" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="Tresc" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Odbiorca" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Odczytano" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Data_odczytania" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="powiadom_do_email_utworzenie" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="powiadom_od_email_odczyt" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PALETY62" Member="PALETY62s">
+    <Type Name="PALETY62">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nr_palety" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="lok" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Data_utw" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="ANULOWANY" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Indeks" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.grupy_uzytkownicy" Member="grupy_uzytkownicies">
+    <Type Name="grupy_uzytkownicy">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_grupy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_uzytkownika" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Data_od" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="Data_do" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Wersja_aplikacji" Member="Wersja_aplikacji1s">
+    <Type Name="Wersja_aplikacji1">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Wersja" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Opis" Type="System.String" DbType="NVarChar(550)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.H7_REKLASYFIKACJA" Member="H7_REKLASYFIKACJAs">
+    <Type Name="H7_REKLASYFIKACJA">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="indeks_z" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="indeks_do" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ilosc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="magazyn_z" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="lokalizacja_z" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="wynik" Type="System.String" DbType="NVarChar(550)" CanBeNull="true" />
+      <Column Name="[User]" Member="User" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Data_utw" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.zlecenia_szczegoly" Member="zlecenia_szczegoly">
+    <Type Name="zlecenia_szczegoly">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_zlecenia" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nr_linii" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="itm" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="litm" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="opis" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="magazyn_z" Type="System.String" DbType="NChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="magazyn_do" Type="System.String" DbType="NChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="lokalizacja_z" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="lokalizacja_do" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="ilosc_zamowiona" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="ilosc_otwarta" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ilosc_zrealizowana" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="JM" Type="System.String" DbType="NChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="autor_zlecenia" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="data_utworzenia" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="autor_ost_oper" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="data_ost_oper" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="status_linii" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="SRP3" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="PRP4" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="Opis_statusu" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
+      <Column Name="Weryfikacja" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Column Name="Status_ksiegowania" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Odciaganie_galwanizernia" Member="Odciaganie_galwanizernia">
+    <Type Name="Odciaganie_galwanizernia">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Data_Start" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="Data_Stop" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="Indeks" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Nazwa" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Ilosc_zawieszona" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ilosc_odciagnieta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Data_utworzena" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="Utworzyl" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Data_modyfikacji" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="Modyfikowal" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Komentarz" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Dziennik_operacji" Member="Dziennik_operacjis">
+    <Type Name="Dziennik_operacji">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="typ_operacji" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="data_start" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="data_stop" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="komentarz" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="ilosc_zdarzen" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ilosc_sztuk" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Zlecenia_szczegoly_SL" Member="Zlecenia_szczegoly_SLs">
+    <Type Name="Zlecenia_szczegoly_SL">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_zlecenia" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nr_linii" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="itm" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="litm" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="opis" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="magazyn_z" Type="System.String" DbType="NChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="magazyn_do" Type="System.String" DbType="NChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="lokalizacja_z" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="lokalizacja_do" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="ilosc_zamowiona" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="ilosc_otwarta" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ilosc_zrealizowana" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="JM" Type="System.String" DbType="NChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="autor_zlecenia" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="data_utworzenia" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="autor_ost_oper" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="data_ost_oper" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="status_linii" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="SRP3" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="PRP4" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="Opis_statusu" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
+      <Column Name="KOD_PLAN" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="KOLOR" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="PROD_MAG" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="IMSTKT" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="Typ" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="BER" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="data_wymagana" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Opis_nagl" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="JM_PROD" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="il_zam_JMPROD" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Weryfikacja" Type="System.String" DbType="NVarChar(9)" CanBeNull="true" />
+      <Column Name="Status_ksiegowania" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.Next_nr_doco" Method="Next_nr_doco">
+    <ElementType Name="Next_nr_docoResult">
+      <Column Name="Next_number" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>

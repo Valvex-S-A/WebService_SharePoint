@@ -1,28 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Services;
 using SP = Microsoft.SharePoint.Client;
 using System.Net;
 using System.Threading;
-using System.Data.SqlClient;
-using System.Data.Sql;
 using System.Reflection;
 using System.Data;
 using DB = System.Data.SQLite;
 using System.IO;
-using System.Net.Cache;
-using System.Text.RegularExpressions;
 using NLog;
 using System.Net.Mail;
-using System.Web.Script.Serialization;
 using System.Security.Principal;
 using API;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 using System.Drawing;
 using System.Text;
+using System.Web.Script.Serialization;
 
 namespace WebService_SharePoint
 {
@@ -42,7 +37,7 @@ namespace WebService_SharePoint
         {
             DateTime dateTime = DateTime.MinValue;
 
-        
+
 
             String output = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
 
@@ -51,7 +46,54 @@ namespace WebService_SharePoint
         }
 
 
-       [WebMethod]
+        [WebMethod]
+        public void BW_usun_zapis(int id)
+        {
+            DB2DataContext db = new DB2DataContext();
+            var l = from c in db.SZLIF_NA_INNY_KOLORs where c.ID == id select c;
+
+            db.SZLIF_NA_INNY_KOLORs.DeleteAllOnSubmit(l);
+            db.SubmitChanges();
+
+
+
+
+        }
+
+
+        [WebMethod]
+        public List<SZLIF_NA_INNY_KOLOR> BW_WEZ_ZAPISY()
+        {
+
+            DB2DataContext db = new DB2DataContext();
+            var l = from c in db.SZLIF_NA_INNY_KOLORs select c;
+
+            return l.ToList();
+
+
+        }
+
+
+        [WebMethod]
+        public void BW_DODAJ_ZAPIS_SZLIF2GAL(string indeks_z, string kolor, int ilosc)
+        {
+
+            try
+            {
+                DB2DataContext db = new DB2DataContext();
+
+                SZLIF_NA_INNY_KOLOR sz = new SZLIF_NA_INNY_KOLOR();
+                sz.DO_KOLORU = kolor;
+                sz.Ilosc = ilosc;
+                sz.Indeks_szlif = indeks_z;
+
+                db.SZLIF_NA_INNY_KOLORs.InsertOnSubmit(sz);
+                db.SubmitChanges();
+            }
+            catch { }
+        }
+
+        [WebMethod]
         public void COPY_FROM_CRP2PROD_42199(int nr_zlecenia, string typ_zlecenia)
         {
 
@@ -66,47 +108,52 @@ namespace WebService_SharePoint
         }
 
         [WebMethod]
-        public DataTable INW_z_lok_ind(string lok, string ind)
+        public DataTable INW_z_ind_spr(string ind)
         {
-            DB2DataContext db = new DB2DataContext();
 
-
+            DBDataContext db1 = new DBDataContext();
+            DB2DataContext db2 = new DB2DataContext();
             DataTable dt = new DataTable();
 
 
-            if (!string.IsNullOrEmpty(lok) && string.IsNullOrEmpty(ind))
-            {
-                dt = new DataTable();
-                var zap = (from c in db.INW_SPIs
-                           where c.LOKALIZACJA == lok && c.ANULOWANY == false  
-                           select new { c.NR_INDEKSU_LITM, c.ILOSC, c.NR_KOMISJI, c.LOKALIZACJA });
-                dt = LINQToDataTable(zap);
-                dt.TableName = "Spis";
-                return dt;
-            }
-            if (string.IsNullOrEmpty(lok) && !string.IsNullOrEmpty(ind) )
-            {
-                dt = new DataTable();
-                var zap = (from c in db.INW_SPIs
-                           where c.ANULOWANY == false && c.NR_INDEKSU_LITM.Contains(ind)
-                           select new { c.NR_INDEKSU_LITM, c.ILOSC, c.NR_KOMISJI, c.LOKALIZACJA });
-                dt = LINQToDataTable(zap);
-                dt.TableName = "Spis";
-                return dt;
-            }
-            if (!string.IsNullOrEmpty(lok) && !string.IsNullOrEmpty(ind))
-            {
-                dt = new DataTable();
-                var zap = (from c in db.INW_SPIs
-                           where c.LOKALIZACJA == lok &&  c.ANULOWANY == false && c.NR_INDEKSU_LITM.Contains(ind)
-                           select new { c.NR_INDEKSU_LITM, c.ILOSC, c.NR_KOMISJI, c.LOKALIZACJA });
-                dt = LINQToDataTable(zap);
-                dt.TableName = "Spis";
-                return dt;
-            }
 
-            dt.TableName = "Spis";
+            dt = new DataTable();
+            var zap = (from c in db2.INW_SPIs
+                       where c.NR_INDEKSU_LITM.Trim().ToLower() == ind.Trim().ToLower() && c.ANULOWANY == false
+                       orderby c.NR_INDEKSU_LITM
+                       select new { c.LOKALIZACJA, c.NR_INDEKSU_LITM, c.ILOSC, c.NR_KOMISJI, c.MAGAZYN }).Take(50);
+            dt = LINQToDataTable(zap);
+            dt.TableName = "Stan";
             return dt;
+
+
+
+
+        }
+
+
+        [WebMethod]
+        public DataTable INW_z_lok_ind(string lok, string ind)
+        {
+
+            DBDataContext db1 = new DBDataContext();
+            DB2DataContext db2 = new DB2DataContext();
+            DataTable dt = new DataTable();
+
+
+
+            dt = new DataTable();
+            var zap = (from c in db2.INW_STANY_SPIs
+                       where c.lok.Trim().ToLower() == lok.Trim().ToLower()
+                       orderby c.PJLITM
+                       select new { c.PJLITM, c.ILOSC, c.Nazwa }).Take(50);
+            dt = LINQToDataTable(zap);
+            dt.TableName = "Stan";
+            return dt;
+
+
+
+
         }
 
 
@@ -147,14 +194,54 @@ namespace WebService_SharePoint
 
 
         [WebMethod]
+        public void INW_do_korekty_metka(string nr_komisji, string litm, string ip_drukarki, int port)
+        {
+            DB2DataContext db = new DB2DataContext();
+
+            var zap = from c in db.INW_ROZNICE_ALLs   where c.NR_INDEKSU_LITM.Trim().ToLower() == litm.Trim().ToLower()
+                      select c;
+
+            var kom = (from c in db.INW_SPIs
+                      where  c.ANULOWANY == false && c.NR_INDEKSU_LITM.Trim().ToLower() == litm.Trim().ToLower()
+                      select c.NR_KOMISJI).Distinct();
+
+
+            StringBuilder str = new StringBuilder();
+            int n = 0;
+
+
+            str.Append($@"Dla: {nr_komisji},  \& {litm} - spisane przez:");
+            foreach (var k in kom)
+            {
+                str.Append($@"{k},");
+            }
+
+            str.Append($@"\&");
+
+
+            foreach (var i in zap)
+            {
+                if (n == 0) str.Append(i.NAZWA +@"\&");
+
+                str.Append($@"[  ] {i.LOKALIZACJA.Trim()} \& {i.ILOSC_NA_STANIE} {i.JM} STAN |{i.ILOSC_SPISANA} SPIS\& |____________ \& ");
+                n++;
+
+            }
+
+            JDE_Drukuj_prosta_metke(ip_drukarki, port, "INW!!!", str.ToString());
+
+
+        }
+
+        [WebMethod]
         public DataTable INW_do_korekty(string nr_komisji)
         {
             DB2DataContext db = new DB2DataContext();
 
             DataTable dt = new DataTable();
             var zap = (from c in db.INW_SPIs
-                      where c.ANULOWANY == true && c.KOMENTARZ == "kor"
-                      select new { c.LOKALIZACJA, c.MAGAZYN, c.NR_INDEKSU_LITM, c.ILOSC, c.JM, c.KOMENTARZ,c.ID_ZAPISU }).Take(1);
+                       where c.ANULOWANY == true && c.KOMENTARZ == nr_komisji
+                       select new { c.LOKALIZACJA, c.MAGAZYN, c.NR_INDEKSU_LITM, c.ILOSC, c.JM, c.KOMENTARZ, c.ID_ZAPISU }).Take(1);
 
             dt = LINQToDataTable(zap);
             dt.TableName = "Spis";
@@ -169,7 +256,7 @@ namespace WebService_SharePoint
                 foreach (var z in kzap)
                 {
                     z.KOMENTARZ
-                        = "POBRANE";
+                        = "DO spr. przez " + nr_komisji;
 
 
                 }
@@ -220,7 +307,7 @@ namespace WebService_SharePoint
                 client.Close();
                 return "OK";
             }
-            catch (Exception ex)
+            catch
             {
                 return "ERROR!!!";
             }
@@ -263,7 +350,7 @@ namespace WebService_SharePoint
         public string UpdateDB_stan()
         {
 
-            string db_index = Path.GetTempPath() + @"\\db_index.sqlite";
+            string db_index = @"c:\\temp\\db_index.sqlite";  // Path.GetTempPath() + @"\\edb_index.sqlite";
             string index_source_string = "DataSource=" + db_index + ";Version=3;BinaryGUID=False";
             string sql;
             DB.SQLiteConnection conn;
@@ -273,15 +360,22 @@ namespace WebService_SharePoint
             if (!File.Exists(db_index))
             {
                 DB.SQLiteConnection.CreateFile(db_index);
+
+
+
+            }
+
+            try
+            {
+
                 conn = new DB.SQLiteConnection(index_source_string);
                 conn.Open();
                 sql = "CREATE TABLE stany (ITM INT,mag NVARCHAR(50),lok NVARCHAR (50),ilosc DOUBLE,wartosc DOUBLE); ";
                 cm = new DB.SQLiteCommand(sql, conn);
                 cm.ExecuteNonQuery();
                 conn.Close();
-
-
-            }
+            } catch
+            { }
 
 
             conn = new DB.SQLiteConnection(index_source_string);
@@ -296,7 +390,7 @@ namespace WebService_SharePoint
             cm.ExecuteNonQuery();
             DB2DataContext db = new DB2DataContext();
             var sl = (from c in db.INW_STANY_SPIs
-                      select c);
+                      select c).ToList();
             sql = "INSERT INTO stany (ITM,mag,lok,ilosc,wartosc) VALUES (@ITM,@mag,@lok,@ilosc,@wartosc) ";
             cm = new DB.SQLiteCommand(sql, conn);
             cm.Parameters.Add("@ITM", DbType.Int32);
@@ -313,7 +407,7 @@ namespace WebService_SharePoint
                 cm.Parameters["@lok"].Value = s.lok;
                 cm.Parameters["@ilosc"].Value = s.ILOSC;
                 cm.Parameters["@wartosc"].Value = s.WARTOSC;
-                cm.ExecuteNonQuery();
+                _ = cm.ExecuteNonQuery();
 
 
                 n++;
@@ -323,14 +417,14 @@ namespace WebService_SharePoint
 
 
 
-           conn.Close();
+            conn.Close();
 
 
 
-         return "OK";
+            return "OK";
 
 
-          }
+        }
 
 
         [WebMethod]
@@ -373,7 +467,7 @@ namespace WebService_SharePoint
             {
                 Guid gt = Insert_spis(
                         (bool)dr["ANULOWANY"], ((DateTime)dr["DATA_ZAPISU"]).AddHours(-6), double.Parse(dr["ILOSC"].ToString()), (string)dr["JM"],
-                        "ZAPISANE", 0, ((string)dr["LOKALIZACJA"]).Replace(".",""), (string)dr["MAGAZYN"], (int)dr["NR_INDEKSU_ITM"],
+                        "ZAPISANE", 0, ((string)dr["LOKALIZACJA"]).Replace(".", ""), (string)dr["MAGAZYN"], (int)dr["NR_INDEKSU_ITM"],
                         (string)dr["NR_INDEKSU_LITM"], (string)dr["NR_KOMISJI"], (Guid)dr["GUID"]);
 
                 gd.Add(gt);
@@ -409,8 +503,9 @@ namespace WebService_SharePoint
         {
             DBDataContext db = new DBDataContext();
             DB2DataContext db2 = new DB2DataContext();
+            db2.CommandTimeout = 10000000;
             API.IPO_API api = new API.IPO_API();
-            var indeksy = from c in db2.IPO_autoprodukcja
+            var indeksy = from c in db2.IPO_autoprodukcjas
                           select c;
 
             foreach (var indeks in indeksy)
@@ -422,60 +517,105 @@ namespace WebService_SharePoint
 
             return "ok";
         }
-
-
         [WebMethod]
-        public string IPO_Zmien_autoprodukcje(bool status, bool autogrow)
+        public double? Pobierz_Stan_szlifierni(string litm)
         {
             DBDataContext db = new DBDataContext();
+
+
+            var stan = (from c in db.IPO_STANies
+                        where c.LITM == litm
+                        && c.mag_ipo == "PROD_P31SZLIFPOL" && c.MAG_ZAK == 0
+
+                        select c).Sum(o => o.QTY_PODST);
+
+
+
+            return stan ?? 0;
+        }
+
+        [WebMethod]
+        public string IPO_Zmien_autoprodukcje_litm(bool status, bool autogrow, int itm, int partia_opt, int partia_min)
+        {
+            DBDataContext db = new DBDataContext();
+
             DB2DataContext db2 = new DB2DataContext();
+            db2.CommandTimeout = 1000000;
             API.IPO_API api = new API.IPO_API();
-            var indeksy = from c in db2.IPO_autoprodukcja
-                          select c;
 
-            foreach (var indeks in indeksy)
+
+
+            String ERROR = "";
+
+
+
+
+            API.Item item = api.ITEM_GET(itm.ToString());
+
+            var tlist = api.GET_TEMPLATE_LIST(item.item_id);
+            var tlist_akt = from c in tlist
+                            where c.default_template
+                            select c;
+
+            if (tlist_akt.Count() == 0)
             {
-                int itm = (int)db.SLOWNIK_1.Where(x => x.IMLITM == indeks.JDE_ITM).First().IMITM;
+                ERROR = ERROR + " " + itm.ToString();
+
+            }
+            else
+            {
+
+                template_link tpl = new template_link();
+
+                tpl.item_id = item.item_id;
+                tpl.optimal_qty = null;
+                tpl.production_split = false;
+                tpl.trigger_type = 1;
+                tpl.trigger_value = 1;
+                tpl.auto_production = true;
 
 
-                API.Item item = api.ITEM_GET(itm.ToString());
-                item.auto_production = status;
-                item.min_qty = indeks.Partia_min;
-                item.production_qty = indeks.Partia_opt;
-                item.auto_grow = autogrow;
 
-                api.ITEM_POST(item);
+
+                bool test = api.LINK_TEMPLATE_PUT(tpl, tlist_akt.First().template_id);
 
             }
 
+            item.auto_production = status;
+            //item.min_qty = partia_min; //indeks.Partia_min;
+            //item.production_qty = partia_opt; // indeks.Partia_opt;
+            item.auto_balance = true;
 
+            item.auto_grow = autogrow;
 
-            return "OK";
+            api.ITEM_POST(item);
+
+            return ERROR;
+
         }
 
-
         [WebMethod]
-        public Guid Insert_spis(bool anulowany, DateTime data_zapisu, double ilosc, string jm, string komentarz, double koszt, string loc, string mag, int litm, string indeks,
-            string nr_komisji, Guid Gd)
+        public Guid Insert_spis_test(bool anulowany, DateTime data_zapisu, double ilosc, string jm, string komentarz, double koszt, string loc, string mag, int litm, string indeks,
+          string nr_komisji)
         {
             DBDataContext d = new DBDataContext();
             DB2DataContext db = new DB2DataContext();
-
+            Guid Gd = Guid.NewGuid();
             var check = from c in db.INW_SPIs
                         where c.GUID == Gd
                         select c.ID_ZAPISU;
 
-            if (indeks.Length>11)
+            if (indeks.Length > 11)
             {
                 var kod = (from c in d.INW_KODY_EAN1s
-                          where c.IVCITM == indeks
-                          select c).Take(1);
+                           where c.IVCITM == indeks
+                           select c).Take(1);
                 if (kod.Count() == 1)
                 {
                     var k = kod.Single();
                     indeks = k.indeks;
                 }
-                
+
 
             }
 
@@ -487,7 +627,7 @@ namespace WebService_SharePoint
 
 
 
-                var itm = (from c in d.SLOWNIK_1
+                var itm = (from c in d.SLOWNIK_1s
                            where c.IMLITM == indeks
                            select c.IMITM).Single();
                 litm = (int)itm;
@@ -495,14 +635,21 @@ namespace WebService_SharePoint
 
             }
 
-
+            //4600325
 
             if (check.ToArray().Length == 0)
             {
 
                 INW_SPI spis = new INW_SPI();
-                var k = d.Koszt_Indeksu(litm).Single();
-                koszt = (double)((double)ilosc * k.Koszt);
+
+                try
+                {
+                    var k = (d.Koszt_Indeksu(litm).Single());
+                    double? k1 = k.Koszt;
+
+                    koszt = (double)((double)ilosc * k1 ?? 0);
+                }
+                catch { }
                 spis.ANULOWANY = anulowany;
                 spis.DATA_ZAPISU = data_zapisu;
                 spis.ILOSC = ilosc;
@@ -525,25 +672,235 @@ namespace WebService_SharePoint
         }
 
         [WebMethod]
+        public string IPO_DeleteOrder(string id)
+        {
+            API.IPO_API api = new API.IPO_API();
+            api.DELETE_PRODUCTION_ORDER(id);
+            return "ok";
+        }
+
+        /// <summary>
+        /// Metoda służy do wygenerowania zwrotu materiałów po zaksięgowaniu braku na zleceniu MGRAFF
+        /// </summary>
+        /// <param name="id"></param>
+        [WebMethod]
+        public void IPO_Zwrot_mat_po_braku(string nr_zlecenia, int ilosc_brak, double ilosc_total)
+        {
+
+            var db = new DB2DataContext();
+
+            //var lista_
+
+
+
+            
+        }
+
+
+        [WebMethod]
+        public string IPO_CreateOrder(DateTime ExecutionDate, string litm, int item_quantity, bool use_optimal, int stan_zlec, int execute_type, string Nr_zam, string doc_no, string user_id)
+        {
+            API.IPO_API api = new API.IPO_API();
+            API.Production_Order order = new API.Production_Order();
+            var db = new DBDataContext();
+
+            var itm = (from c in db.SLOWNIK_1s where c.IMLITM == litm select c.IMITM).FirstOrDefault();
+            if (Nr_zam.Length > 40)
+            {
+                // Nr_zam = Nr_zam.Substring(1, 39) + "#";
+
+            }
+
+            string _creator = "2268";
+            if (user_id.ToLower() == "bjurek") _creator = "1290";
+            if (user_id.ToLower() == "bwaga") _creator = "1480";
+            if (user_id.ToLower() == "adeda") _creator = "12345";
+            if (user_id.ToLower() == "tjaroszewski") _creator = "2345";
+            if (user_id.ToLower() == "mmusz") _creator = "24xxx";
+            if (user_id.ToLower() == "mstoklosa") _creator = "1614";
+            if (user_id.ToLower() == "nkot") _creator = "6667";
+            if (user_id.ToLower() == "apawlowski") _creator = "2268";
+            if (user_id.ToLower() == "hporebska") _creator = "4571a";
+            if (user_id.ToLower() == "skostruch") _creator = "2338";
+            if (user_id.ToLower() == "amaslowska") _creator = "833";
+            if (user_id.ToLower() == "mpajak") _creator = "1019";
+
+
+
+            order.order_id = RandomString(8);
+            order.execution_date = ExecutionDate;
+
+            order.use_optimal = use_optimal;
+            order.creator_id = _creator;
+            order.doc_no = doc_no;
+            order.doc_state = stan_zlec;
+            order.contractor_order_no = Nr_zam;
+            order.item_id = itm.ToString();
+            order.item_quantity = item_quantity;
+            order.warehouse_id = "PROD";
+            order.execute_type = execute_type;
+            order.description = $"Utworzono: {DateTime.Now.ToString()}";
+            order.order_no_cust = litm;
+
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            string data = serializer.Serialize(order);
+            return api.PUT_PRODUCTION_ORDER(order);
+
+
+
+        }
+        private static Random random = new Random();
+        public static string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+        [WebMethod]
+        public Guid Insert_spis(bool anulowany, DateTime data_zapisu, double ilosc, string jm, string komentarz, double koszt, string loc, string mag, int litm, string indeks,
+            string nr_komisji, Guid Gd)
+        {
+            DBDataContext d = new DBDataContext();
+            DB2DataContext db = new DB2DataContext();
+
+            var check = from c in db.INW_SPIs
+                        where c.GUID == Gd
+                        select c.ID_ZAPISU;
+
+            if (indeks.Length > 11)
+            {
+                var kod = (from c in d.INW_KODY_EAN1s
+                           where c.IVCITM == indeks
+                           select c).Take(1);
+                if (kod.Count() == 1)
+                {
+                    var k = kod.Single();
+                    indeks = k.indeks;
+                }
+
+
+            }
+
+
+
+
+            if (litm == 0)
+            {
+
+
+
+                var itm = (from c in d.SLOWNIK_1s
+                           where c.IMLITM == indeks
+                           select c.IMITM).Single();
+                litm = (int)itm;
+
+
+            }
+
+            //4600325
+
+            if (check.ToArray().Length == 0)
+            {
+
+                INW_SPI spis = new INW_SPI();
+
+                try
+                {
+                    var k = (d.Koszt_Indeksu(litm).Single());
+                    double? k1 = k.Koszt;
+
+                    koszt = (double)((double)ilosc * k1 ?? 0);
+                }
+                catch { }
+                spis.ANULOWANY = anulowany;
+                spis.DATA_ZAPISU = data_zapisu;
+                spis.ILOSC = ilosc;
+                spis.JM = jm;
+                spis.KOMENTARZ = komentarz;
+                spis.KOSZT = koszt;
+                spis.LOKALIZACJA = loc;
+                spis.MAGAZYN = mag;
+                spis.NR_INDEKSU_ITM = litm;
+                spis.NR_INDEKSU_LITM = indeks;
+                spis.NR_KOMISJI = nr_komisji;
+                spis.GUID = Gd;
+
+                db.INW_SPIs.InsertOnSubmit(spis);
+                db.SubmitChanges();
+
+            }
+
+            return Gd;
+        }
+        [WebMethod]
+        public DataTable INW_stan_polki(string lok, string mag)
+        {
+            DBDataContext db = new DBDataContext();
+
+            var stan = (from c in db.IPO_STANY_MAGs
+                        where c.MAG_ZAK == 0 && c.LOK.Trim() == lok.Trim() && c.MAG.Trim() == mag.Trim()
+                        select new { INDEKS = c.LITM, ILOSC = c.QTY_PODST, JM = c.JM_PODST, NAZWA = c.Nazwa }).Take(50);
+            DataTable st = new DataTable();
+
+            st = LINQToDataTable(stan);
+            st.TableName = "polki";
+
+            return st;
+
+
+        }
+
+        [WebMethod]
+        public DataTable INW_znajdz_Kindeksy(string fr_litm, string kolor, string fr_nazwa)
+        {
+            if (string.IsNullOrEmpty(kolor)) kolor = " ";
+            if (string.IsNullOrEmpty(fr_nazwa)) fr_nazwa = " ";
+            if (string.IsNullOrEmpty(fr_litm)) fr_litm = " ";
+            DataTable dt = new DataTable();
+            var db = new baza_metekDataContext();
+
+
+            var lista = (from c in db.GAL_kolory_kodow_views
+                         where (c.KOD_WYROBU.ToLower()).Contains(fr_litm.ToLower())
+                         && (c.KOLOR.ToLower() + " ").Contains(kolor.ToLower())
+                         && (c.OPIS.Trim().ToLower() + " ").Contains(fr_nazwa.ToLower())
+                         select new { KOD = c.KOD_WYROBU, KOL = c.KOLOR.Trim(), OPIS = c.OPIS.Trim() }).Take(35).ToList();
+
+            if (!string.IsNullOrEmpty(kolor.Trim()))
+            {
+                lista = (from c in db.GAL_kolory_kodow_views
+                         where (c.KOD_WYROBU.ToLower()).Contains(fr_litm.ToLower())
+                         && (c.KOLOR.ToLower().Trim()).Equals(kolor.ToLower().Trim())
+                         && (c.OPIS.Trim().ToLower() + " ").Contains(fr_nazwa.ToLower())
+                         select new { KOD = c.KOD_WYROBU, KOL = c.KOLOR.Trim(), OPIS = c.OPIS.Trim() }).Take(35).ToList();
+            }
+
+
+
+            dt = LINQToDataTable(lista);
+            dt.TableName = "Indeksy";
+
+            return dt;
+        }
+
+        [WebMethod]
         public DataTable INW_Dane_indeks(string litm)
         {
 
             DB2DataContext db = new DB2DataContext();
+            DBDataContext db2 = new DBDataContext();
             litm = litm.ToUpper();
-            if (litm.Length>11)
+            if (litm.Length > 11)
             {
-                DBDataContext db2 = new DBDataContext();
+
                 var kd = (from c in db2.INW_KODY_EAN1s
                           where c.IVCITM == litm
                           select c).Take(1);
                 if (kd.Count() == 1)
                 {
-                   var  kod = kd.Single();
+                    var kod = kd.Single();
                     litm = kod.indeks;
                 }
-                        
-
-
             }
 
 
@@ -554,16 +911,40 @@ namespace WebService_SharePoint
 
             DataTable st = new DataTable();
             st.TableName = "indeks";
-            
+
             var i = from c in db.słownik_TKWs
                     where c.Indeks.ToUpper() == litm
                     select new { c.Nazwa, c.JM, c.Koszt, c.Marka, ITM = 0, c.Indeks };
+
+            //sprobuj znalec kod Amerykanski
+            if (i.Count() == 0)
+            {
+                try
+                {
+                    var ameryka = from c in db2.F4101s
+                                  where c.IMAITM.Trim().ToUpper() == litm.Trim().ToUpper()
+                                  select c;
+                    if (ameryka.Count() == 1)
+                    {
+
+
+                        litm = ameryka.First().IMLITM.Trim();
+                    }
+                }
+                catch { }
+
+            }
+
+            i = from c in db.słownik_TKWs
+                where c.Indeks.ToUpper() == litm
+                select new { c.Nazwa, c.JM, c.Koszt, c.Marka, ITM = 0, c.Indeks };
+
             if (i.Count() == 1)
             {
-                var item = i.Single();
+
 
                 DBDataContext db1 = new DBDataContext();
-                var itm = (from c in db1.SLOWNIK_1
+                var itm = (from c in db1.SLOWNIK_1s
                            where c.IMLITM == litm
                            select c.IMITM).Single();
                 st = LINQToDataTable(i);
@@ -579,7 +960,7 @@ namespace WebService_SharePoint
 
 
 
-            
+
             db.Dispose();
             return st;
         }
@@ -608,6 +989,40 @@ namespace WebService_SharePoint
 
         }
 
+
+
+        [WebMethod]
+        public DataTable INW_Znajdz_indeksy(string litm, string kolor)
+        {
+            DB2DataContext db = new DB2DataContext();
+            DataTable st = new DataTable();
+
+
+            string pattn = litm.Replace('*', '%');
+            var s = (from c in db.SLOWNIK_1_ONLINEs
+                     where System.Data.Linq.SqlClient.SqlMethods.Like(c.IMLITM, pattn)
+                     select new { Indeks = c.IMLITM, c.NAZWA, c.KOLOR, c.KOD_PLAN }).Distinct().Take(100);
+
+            if (!string.IsNullOrEmpty(kolor))
+            {
+
+                s = s.Where(x => x.NAZWA.ToUpper().Contains(kolor.ToUpper()));
+
+            }
+
+            st = LINQToDataTable(s);
+            st.TableName = "Indeksy";
+
+
+
+
+
+
+            return st;
+        }
+
+
+
         [WebMethod]
         public DataTable INW_Pobierz_stany(string litm)
         {
@@ -616,8 +1031,8 @@ namespace WebService_SharePoint
 
             if (!litm.Contains("*"))
             {
-               
-                var s = from c in db.INW_STANY_SPIs
+
+                var s = from c in db.INW_STANY_SPIS_ONLINEs
                         where c.PJLITM == litm
                         select new { c.mag, c.lok, c.ILOSC, c.WARTOSC };
 
@@ -628,9 +1043,9 @@ namespace WebService_SharePoint
             else
             {
                 string pattn = litm.Replace('*', '%');
-                var s = (from c in db.INW_STANY_SPIs
-                        where System.Data.Linq.SqlClient.SqlMethods.Like(c.PJLITM, pattn )
-                        select new { Indeks=c.PJLITM,c.ILOSC,JM=c.IMUOM1,c.lok,c.mag }).Take(100);
+                var s = (from c in db.SLOWNIK_1_ONLINEs
+                         where System.Data.Linq.SqlClient.SqlMethods.Like(c.IMLITM, pattn)
+                         select new { Indeks = c.IMLITM, c.NAZWA, c.KOLOR, c.KOD_PLAN }).Distinct().Take(100);
                 st = LINQToDataTable(s);
                 st.TableName = "Indeksy";
 
@@ -681,10 +1096,10 @@ namespace WebService_SharePoint
 
             cm.ExecuteNonQuery();
             DBDataContext db = new DBDataContext();
-            var sl = (from c in db.SLOWNIK_1
+            var sl = (from c in db.SLOWNIK_1s
 
-                      where c.IMSRP1 != "WYG"
-                      select c);
+
+                      select c).ToList();
             sql = "INSERT INTO lista_indeksow (ID,indeks,nazwa,JM,LITM) VALUES (@ID,@indeks,@nazwa,@JM,@LITM) ";
             cm = new DB.SQLiteCommand(sql, conn);
             cm.Parameters.Add("@ID", DbType.Int32);
@@ -701,7 +1116,7 @@ namespace WebService_SharePoint
                 cm.Parameters["@nazwa"].Value = s.NAZWA;
                 cm.Parameters["@JM"].Value = s.IMUOM1;
                 cm.Parameters["@LITM"].Value = s.IMLITM;
-                cm.ExecuteNonQuery();
+                _ = cm.ExecuteNonQuery();
 
 
                 n++;
@@ -726,6 +1141,7 @@ namespace WebService_SharePoint
         public API.IPO_Order IPO_GET_ORDER(int IPO_ORDER_ID)
         {
             API.IPO_API api2 = new API.IPO_API();
+
             API.IPO_Order order = api2.GET_ORDER_BY_IPO_NO(IPO_ORDER_ID);
 
             return order;
@@ -733,18 +1149,287 @@ namespace WebService_SharePoint
 
 
         }
+        [WebMethod]
+        public List<API_prace_zewn_wszystkie> IPO_GET_EXTERNAL_TASKS_LIST(int IPO_ORDER_ID)
+        {
+
+            DataTable dt = new DataTable();
+
+            var db = new DB2DataContext();
+            var prace = (from c in db.API_prace_zewn_wszystkies where c.zlecenie == IPO_ORDER_ID select c).ToList();
+            //var lista = from c in prace orderby c.id select new { c.Stan_pracy, c.okprac, c.iloscWe, c.iloscWy, c.iloscBr, c.ilosc_zam, c.id };
+
+
+            return prace;
+
+        }
+
+        public void IPO_ZWROT_MATERIALOW(int nr_zlecenia, int ilosc_brak, string utworzyl)
+        {
+
+            DB2DataContext db = new DB2DataContext();
+
+            var lista = from c in db.IPO_ZDAWKA_PW where c.RW_PW == "RW" && c.Nr_zlecenia_IPO == nr_zlecenia group c by new { c.Nr_indeksu, c.Nazwa_pozycji } into grp
+                        select new { grp.Key.Nr_indeksu, grp.Key.Nazwa_pozycji, total = grp.Sum(x => x.Ilosc) };
+
+            foreach (var l in lista)
+            {
+            
+            
+            
+            
+            }
+
+
+
+
+
+
+
+        }
+
+        /// <summary>
+        /// Lista materiałow ze zlecenia, które powodują że zlecenie sie nie uruchamia...
+        /// </summary>
+        /// <param name="ipo_order_id"></param>
+        /// <returns></returns>
+        [WebMethod]
+        public DataTable IPO_GET_INCORRECT_MATERIALS(int ipo_order_id)
+        {
+            DataTable dt = new DataTable();
+            var db = new DB2DataContext();
+
+            var lista = from c in db.API_materialy_zlecenias where c.Nr_zlecenia == ipo_order_id select new { c.Indeks_mat, c.mnazwa, c.ilosc_planowana };
+
+            dt = LINQToDataTable(lista);
+
+
+            dt.TableName = "MAT";
+            return dt;
+
+        }
+
+
+            [WebMethod]
+        public DataTable IPO_GET_MATERIALS(int ipo_order_id)
+        {
+
+            DataTable dt = new DataTable();
+            var db = new DB2DataContext();
+
+            var lista = from c in db.IPO_ZDAWKA_PW where c.RW_PW == "RW" select new { c.Nr_indeksu, NAZWA = c.Nazwa_pozycji.Trim(), c.Ilosc, c.JM };
+
+            dt = LINQToDataTable(lista);
+            dt.TableName = "MAT";
+            return dt;
+
+        }
+
+
+
+
+        [WebMethod]
+        public string IPO_PUT_NEW_MATERIAL_NEW(string element_id, template_material mat, string token, string uri)
+        {
+            //"ahp9zee4gi5Oi9Ae", "http://192.168.1.130:13002"
+            API.IPO_API api = new API.IPO_API(token, uri);
+            return api.PUT_NEW_MATERIAL_NEW(element_id, mat);
+        }
+        [WebMethod]
+        public string IPO_TEMPLATE_CONFIRM_PUT_NEW(string template_id, string token, string uri)
+        {
+
+            API.IPO_API api = new API.IPO_API(token, uri); ;
+            return api.TEMPLATE_CONFIRM_PUT_NEW(template_id);
+
+        }
+        [WebMethod]
+        public List<template_list> IPO_GET_TEMPLATE_LIST_NEW(int itm, string token, string uri)
+        {
+
+            API.IPO_API api = new API.IPO_API(token, uri);
+            return api.GET_TEMPLATE_LIST(itm.ToString());
+
+        }
+
+        [WebMethod]
+        public new_element_response IPO_PUT_TEMPLATE_ADD_ELEMENT(int element_id, template_element element, string token, string uri)
+        {
+            API.IPO_API api = new API.IPO_API(token, uri);
+            return (api.PUT_TEMPLATE_ADD_ELEMENT(element, element_id));
+        }
+
+
+        [WebMethod]
+        public string IPO_PUT_TEMPLATE_ADD_TASK_NEW(string element_id, template_task task, string token, string uri)
+        {
+
+            API.IPO_API api = new API.IPO_API(token,uri);
+            
+            return api.PUT_TEMPLATE_ADD_TASK_NEW(element_id, task);
+
+        }
+        [WebMethod]
+        public string IPO_PUT_TEMPLATE_ADD_SPECIAL_TASK_NEW(string element_id, template_task task,string token, string uri)
+        {
+
+            API.IPO_API api = new API.IPO_API(token,uri); ;
+            return api.PUT_TEMPLATE_ADD_SPECIAL_TASK_NEW(element_id, task);
+
+        }
+        [WebMethod]
+        public new_template_response IPO_PUT_NEW_TEMPLATE_NEW(new_template tmpl, string token, string uri)
+        {
+
+            API.IPO_API api = new API.IPO_API(token,uri); ;
+            tmpl.category = 0;
+            return api.PUT_NEW_TEMPLATE_NEW(tmpl);
+
+
+        }
+
+
+        [WebMethod]
+        public string IPO_TEMPLATE_DROP_PUT_NEW(string templateid,string token, string uri)
+        {
+
+            API.IPO_API api = new API.IPO_API(token,uri); 
+
+            return "OK";
+            //return api.TEMPLATE_DROP_PUT(templateid);
+        }
+
+
+
+
+
+
+
+
+
+        //dodane
+        [WebMethod]
+        public string IPO_PUT_NEW_MATERIAL(string element_id, template_material mat)
+        {
+            //"ahp9zee4gi5Oi9Ae", "http://192.168.1.130:13002"
+            API.IPO_API api = new API.IPO_API(); ;
+            return api.PUT_NEW_MATERIAL(element_id, mat);
+        }
+        //dodane
+        [WebMethod]
+        public string IPO_TEMPLATE_CONFIRM_PUT(string template_id)
+        {
+             
+            API.IPO_API api = new API.IPO_API(); ;
+            return api.TEMPLATE_CONFIRM_PUT(template_id);
+
+        }
+
+        //dodane
+        [WebMethod]
+        public List<template_list> IPO_GET_TEMPLATE_LIST(int itm)
+        {
+            
+            API.IPO_API api = new API.IPO_API(); ;
+            return api.GET_TEMPLATE_LIST(itm.ToString());
+
+        }
+
+         
+
+        //dodane
+        [WebMethod]
+        public string IPO_PUT_TEMPLATE_ADD_TASK(string element_id, template_task task)
+        {
+            
+            API.IPO_API api = new API.IPO_API();
+             
+            return api.PUT_TEMPLATE_ADD_TASK(element_id, task);
+            
+        }
+        //dodane
+        [WebMethod]
+        public string IPO_PUT_TEMPLATE_ADD_SPECIAL_TASK(string element_id, template_task task)
+        {
+             
+            API.IPO_API api = new API.IPO_API(); ;
+            return api.PUT_TEMPLATE_ADD_SPECIAL_TASK(element_id, task);
+
+        }
+
+        //dodane
+        [WebMethod]
+        public new_template_response IPO_PUT_NEW_TEMPLATE(new_template tmpl)
+        {
+            
+            API.IPO_API api = new API.IPO_API(); ;
+            return api.PUT_NEW_TEMPLATE(tmpl);
+
+
+        }
+
+
+        [WebMethod]
+        public string IPO_TEMPLATE_DROP_PUT(string templateid)
+        {
+
+            API.IPO_API api = new API.IPO_API(); ;
+           
+            return "OK";
+            //return api.TEMPLATE_DROP_PUT(templateid);
+        }
+
 
         [WebMethod]
         public API.Item IPO_GET_ITEM_BY_ITM(int itm)
         {
 
-            API.Item i = null;
+            API.Item i = new Item();
 
             API.IPO_API api = new API.IPO_API();
             i = api.ITEM_GET(itm.ToString());
 
+
+            //DBDataContext db = new DBDataContext();
+
+
+            //var litm = (from c in db.SLOWNIK_1s
+            //            where c.IMITM == itm
+            //            select c).First();
+
+            // i.name = litm.NAZWA;
+            // i.index = litm.IMLITM.Trim();
+            // i.item_id = itm.ToString();
+
             return i;
         }
+
+
+        [WebMethod]
+        public API.Item IPO_GET_ITEM_BY_ITM_NEW(int itm,string token, string uri)
+        {
+
+            API.Item i = new Item();
+
+            API.IPO_API api = new API.IPO_API(token,uri);
+            i = api.ITEM_GET(itm.ToString());
+
+
+            //DBDataContext db = new DBDataContext();
+
+
+            //var litm = (from c in db.SLOWNIK_1s
+            //            where c.IMITM == itm
+            //            select c).First();
+
+            // i.name = litm.NAZWA;
+            // i.index = litm.IMLITM.Trim();
+            // i.item_id = itm.ToString();
+
+            return i;
+        }
+
+
 
 
         [WebMethod]
@@ -753,7 +1438,7 @@ namespace WebService_SharePoint
             DBDataContext db = new DBDataContext();
 
 
-            var itm = from c in db.SLOWNIK_1
+            var itm = from c in db.SLOWNIK_1s
                       where c.IMLITM == litm
                       select c.IMITM;
 
@@ -767,21 +1452,21 @@ namespace WebService_SharePoint
 
             }
 
-            
+
 
 
 
             return i;
         }
 
-        
+
         [WebMethod]
         public API.Item IPO_GET_ITEM(string litm)
         {
             DBDataContext db = new DBDataContext();
 
 
-            var itm = from c in db.SLOWNIK_1
+            var itm = from c in db.SLOWNIK_1s
                       where c.IMLITM == litm
                       select c.IMITM;
 
@@ -903,11 +1588,37 @@ namespace WebService_SharePoint
         }
 
         [WebMethod]
+        public void IPO_zmien_symbol(string litm, string n_symbol)
+        {
+            var db2008 = new DBDataContext();
+
+
+            try
+            {
+                var item = (from c in db2008.SLOWNIK_1s
+                            where c.IMLITM.Trim() == litm
+                            select c).First();
+                API.IPO_API api = new API.IPO_API();
+
+                var IPO_item = api.ITEM_GET(item.IMITM.ToString());
+
+                IPO_item.symbol = n_symbol;
+
+                api.ITEM_POST(IPO_item);
+
+
+            }
+            catch { }
+
+
+        }
+
+        [WebMethod]
         public string Wyprostuj_indeksy_zbiorczo()
         {
             DB2DataContext rap = new DB2DataContext();
             API.IPO_API api2 = new API.IPO_API();
-            string komunikat = "indeks ok";
+             
             DBDataContext db = new DBDataContext();
             var indeksy = from c in rap.IPO_INDEKSY_DO_WYPROSTOWANIA
                           select c;
@@ -930,12 +1641,32 @@ namespace WebService_SharePoint
         }
 
 
+        [WebMethod]
+        public string IPO_ITEM_POST_NEW(Item itm,string token, string uri)
+        {
+            API.IPO_API api2 = new API.IPO_API(token,uri);
+
+            return api2.ITEM_POST(itm);
+
+
+        }
+
+
+        [WebMethod]
+        public string IPO_ITEM_POST(Item itm)
+        {
+            API.IPO_API api2 = new API.IPO_API();
+
+            return api2.ITEM_POST(itm);
+
+
+        }
 
         [WebMethod]
         public string IPO_wyprostuj_dane_ITM_indeksu(int itm)
         {
-         
-            
+
+
 
             API.IPO_API api2 = new API.IPO_API();
             string komunikat = "indeks ok";
@@ -943,9 +1674,9 @@ namespace WebService_SharePoint
             DB2DataContext db2 = new DB2DataContext();
 
 
-             
 
-            var JDEindeks = from c in db.SLOWNIK_1
+
+            var JDEindeks = from c in db.SLOWNIK_1s
                             where c.IMITM == itm
                             select c.IMLITM;
 
@@ -953,24 +1684,24 @@ namespace WebService_SharePoint
             var ipo_litm = from c in db2.IPO_MATERIALY_ZOPs
                            where c.IPO_LITM == JDEindeks.First()
                            select c.IPO_ITM;
-                            
 
 
 
 
 
-                int inny_itm = int.Parse(ipo_litm.First());
-                Item it = api2.ITEM_GET(inny_itm.ToString());
-                string LITM = it.index;
 
-                it.index = "ITM" + itm.ToString(); //zmień ten indeks na inny bo taki może być już w bazie;
-                api2.ITEM_POST(it);
-                IPOupdateItem_LITM(LITM);
+            int inny_itm = int.Parse(ipo_litm.First());
+            Item it = api2.ITEM_GET(inny_itm.ToString());
+            string LITM = it.index;
+
+            it.index = "ITM" + itm.ToString(); //zmień ten indeks na inny bo taki może być już w bazie;
+            api2.ITEM_POST(it);
+            IPOupdateItem_LITM(LITM);
 
 
 
 
-            return   LITM + "  " +  komunikat;
+            return LITM + "  " + komunikat;
         }
 
         [WebMethod]
@@ -985,7 +1716,7 @@ namespace WebService_SharePoint
 
             return 0;
         }
-        
+
         public List<string> IPO_Get_active_empl(DateTime from, DateTime to)
         {
 
@@ -1008,7 +1739,7 @@ namespace WebService_SharePoint
             {
                 API.EmployeeReport rep = api2.EMPLOYEE_REPORT(empl, from, to);
                 if (rep != null) {
-                    
+
                     foreach (Task t in rep.tasks)
                     {
                         if (t.operation_name == "USTAWIENIE MASZYNY")
@@ -1017,71 +1748,54 @@ namespace WebService_SharePoint
                             string nr_zlec = t.ipo_order_no.ToString();
                             string prac = t.employee_id;
                             string oper = t.description + ";" + t.description_ex;
-                            string masz = t.device_id; 
-                                
-                            report_list.Add(task_id + "@" + nr_zlec + "@" + prac + "@" + oper + "@" + masz );
+                            string masz = t.device_id;
+
+                            report_list.Add(task_id + "@" + nr_zlec + "@" + prac + "@" + oper + "@" + masz);
                         }
 
                     }
 
 
-                     }
+                }
 
             }
             return report_list.ToArray();
         }
 
 
-
-
-
-
         [WebMethod]
-        public string IPO_Update_order_sql(int ipo_order_no)
+        public string IPO_Update_symbol()
         {
             API.IPO_API api2 = new API.IPO_API();
 
             DB2DataContext db = new DB2DataContext();
+            DBDataContext db2 = new DBDataContext();
+            var indeksy = from c in db.IPO_SYMBOLs
+                          select c;
 
-               
-            var zlec = from c in db.IPO_ZLECENIAs
-                       where c.ipo_nr_zlec == (int)ipo_order_no
-                       select c;
-            db.IPO_ZLECENIAs.DeleteAllOnSubmit(zlec);
-            db.SubmitChanges();
+            foreach (var indeks in indeksy)
+            {
+                double itemid = db2.SLOWNIK_1s.Where(x => x.IMLITM == indeks.JDE_ITM).First().IMITM;
 
-            API.IPO_Order izlec = api2.GET_ORDER_BY_IPO_NO(ipo_order_no);
+                Item it = api2.ITEM_GET(itemid.ToString());
+                it.symbol = indeks.KTO + ";" + indeks.PLANISTA;
 
-
-            IPO_ZLECENIA bzlec = new IPO_ZLECENIA();
-            bzlec.contractor_id = izlec.contractor_id;
-            bzlec.ilosc_brak = izlec.quantity_short;
-            bzlec.ilosc_wypr = izlec.quantity_out;
-            bzlec.ilosc_zam = izlec.quantity;
-            bzlec.Indeks_zlecenia = izlec.client_order_no;
-            bzlec.ipo_id = izlec.ipo_order_id;
-            bzlec.ipo_nr_zlec = izlec.ipo_order_no;
-            bzlec.koszt = izlec.cost;
-            bzlec.magazyn_wej = izlec.warehouse_id;
-            bzlec.nr_ITM = izlec.item_id;
-            bzlec.nr_rysunku = izlec.drawing_no;
-            bzlec.nr_serii = izlec.serial_no;
-            bzlec.nr_zam_klienta = izlec.order_no_cust;
-            bzlec.start_zam = izlec.order_start;
-            bzlec.status_zam = izlec.state.ToString();
-            bzlec.stop_zam = izlec.order_stop;
-            bzlec.zlec_wew = izlec.inner;
-
-            db.IPO_ZLECENIAs.InsertOnSubmit(bzlec);
-            db.SubmitChanges();
-
-
-
+                api2.ITEM_POST(it);
+            }
 
             return "OK";
         }
 
+        [WebMethod]
+        public string IPO_Update_order_sql(int ipo_order_no)
+        {
 
+
+
+
+            return "BLAD";
+
+        }
 
         [WebMethod]
         public string IPO_Delete_item(int item_id_itm)
@@ -1092,7 +1806,7 @@ namespace WebService_SharePoint
             bool test = api.ITEM_DELETE(item_id_itm.ToString());
             if (test) logger.Info("Skasowano w ipo indeks (itm)" + item_id_itm);
 
-            return (test)? "OK" : "BŁAD" ;
+            return (test) ? "OK" : "BŁAD";
         }
         [WebMethod]
         public string IPO_Delete_Warehouse(string whid)
@@ -1106,14 +1820,17 @@ namespace WebService_SharePoint
             return (test) ? "OK" : "BŁAD";
         }
 
+
+
+
         [WebMethod]
         public string IPO_Multi_update(string items)
         {
             string[] items_t = items.Split(',');
             foreach (string item in items_t)
             {
-                
-              //  IPOupdateItem(item);
+
+                //  IPOupdateItem(item);
             }
             return "...";
 
@@ -1121,7 +1838,7 @@ namespace WebService_SharePoint
 
         }
 
-        
+
         /// <summary>
         /// Aktualizuje dane indeksu w IPO
         /// </summary>
@@ -1133,7 +1850,7 @@ namespace WebService_SharePoint
             DBDataContext db = new DBDataContext();
 
 
-            var itm = from c in db.SLOWNIK_1
+            var itm = from c in db.SLOWNIK_1s
                       where c.IMLITM == litm
                       select c.IMITM;
             if (itm.Count() == 1)
@@ -1149,10 +1866,10 @@ namespace WebService_SharePoint
         }
 
 
-       /// <summary>
-       /// Aktualizuje dane indeksu w IPO
-       /// </summary>
-       /// <param name="item_id_itm">Krótki numer indeksu</param>
+        /// <summary>
+        /// Aktualizuje dane indeksu w IPO
+        /// </summary>
+        /// <param name="item_id_itm">Krótki numer indeksu</param>
         [WebMethod]
         public void IPOupdateItem(int item_id_itm)
         {
@@ -1160,25 +1877,29 @@ namespace WebService_SharePoint
 
             DB2DataContext dbr = new DB2DataContext();
             DBDataContext db = new DBDataContext();
+
             db.CommandTimeout = 1000000;
             API.Warehouse_Settings mag_wej;
 
             int kol_mag = 1;
             List<API.Warehouse_Settings> wsl = new List<API.Warehouse_Settings>();
 
+            var ITEM_JDE_CHECK = (from c in db.SLOWNIK_1s
+                                  where c.IMITM == item_id_itm
+                                  select c);
+            SLOWNIK_1 ITEM_JDE = new SLOWNIK_1();
+            if (ITEM_JDE_CHECK.Count() == 1)
+            {
+                ITEM_JDE = ITEM_JDE_CHECK.Single();
+            }
+            else { logger.Error("BRAK W F4101 indeksu itm:" + item_id_itm.ToString()); return; }
+
+
+
             if (!api.ITEM_HEAD(item_id_itm.ToString()))
             {
                 //    logger.Debug("Nie ma ... zakładam.");
                 //     new_item = true;
-                var ITEM_JDE_CHECK = (from c in db.SLOWNIK_1
-                                      where c.IMITM == item_id_itm
-                                      select c);
-                SLOWNIK_1 ITEM_JDE = new SLOWNIK_1();
-                if (ITEM_JDE_CHECK.Count() == 1)
-                {
-                    ITEM_JDE = ITEM_JDE_CHECK.Single();
-                }
-                else { logger.Error("BRAK W F4101 indeksu itm:" + item_id_itm.ToString()); return; }
 
                 var k1 = db.Koszt_Indeksu(item_id_itm).Single();
                 // logger.Debug("Koszt zaktualizowany");
@@ -1198,12 +1919,12 @@ namespace WebService_SharePoint
                     item_id = item_id_itm.ToString(),
                     manager_id = "",
                     max_qty = 0,
-                    measure_unit = ITEM_JDE.IMUOM1,
+                    measure_unit = ITEM_JDE.JM_PROD.Trim(),
                     min_qty = 0,
-                    name = ITEM_JDE.NAZWA,
+                    name = $"{ITEM_JDE_CHECK.Single().NAZWA.Trim()}/{ITEM_JDE_CHECK.Single().IMSHCN.Trim()}/{ITEM_JDE_CHECK.Single().KOD_PLAN.Trim()}/{(ITEM_JDE_CHECK.Single().KOLOR ?? "").Trim()}",
                     only_integer = false,
                     order_qty = 0,
-                    production_qty = 0,
+                    production_qty = (int)ITEM_JDE.SeriaOptymalna,
                     sell_price = 0,
                     service = false,
                     symbol = "",
@@ -1228,18 +1949,18 @@ namespace WebService_SharePoint
             //aktualizacja czasu realizacji zamówienia zakupowego
             var i_jde_ = from c in db.F4101s
                          where c.IMITM == item_id_itm
-                         select new { c.IMLTCM, c.IMPRP8, c.IMSRP3, c.IMLITM };
+                         select new { c.IMLTCM, c.IMPRP8, c.IMSRP3, c.IMLITM, c.IMUOM8 };
 
-            var mag_pw_jde = from c in db.IPO_MAGAZYN_PODSTAWOWY_PWs
+            var mag_pw_jde = from c in db.IPO_MAGAZYN_PODSTAWOWY_PW
                              where c.LIITM == item_id_itm
                              select c.mag_ipo;
 
-            var ITEM_JDE_CHECK2 = (from c in db.SLOWNIK_1
-                                   where c.IMITM == item_id_itm
-                                   select c);
-            if (ITEM_JDE_CHECK2.Count() == 1)
+             
+            if (ITEM_JDE_CHECK.Count() == 1)
             {
-                item.name = ITEM_JDE_CHECK2.Single().NAZWA.Trim() + "/" + ITEM_JDE_CHECK2.Single().KOD_PLAN.Trim() + "/" + ITEM_JDE_CHECK2.Single().KOLOR.Trim();
+                //item.min_qty = GetMinQtyOnPurchase();
+                item.measure_unit = i_jde_.Single().IMUOM8;
+                item.name = $"{ITEM_JDE_CHECK.Single().NAZWA.Trim()}/{ITEM_JDE_CHECK.Single().IMSHCN.Trim()}/{ITEM_JDE_CHECK.Single().KOD_PLAN.Trim()}/{(ITEM_JDE_CHECK.Single().KOLOR ?? "").Trim()}";
             }
 
 
@@ -1250,7 +1971,7 @@ namespace WebService_SharePoint
 
                 item.def_warehouse = domyslny_magazyn_wejsciowy;
                 CheckCreateWH(api, item.def_warehouse);
-                logger.Debug(item.index + " - dodano magazyn podstawowy:" + item.def_warehouse);
+                // logger.Debug(item.index + " - dodano magazyn podstawowy:" + item.def_warehouse);
             }
 
 
@@ -1262,7 +1983,7 @@ namespace WebService_SharePoint
                 int.TryParse(i_jde.IMLTCM.ToString(), out dni);
 
                 var k = db.Koszt_Indeksu(item_id_itm).Single();
-
+                if (item.measure_unit == "SZ") item.only_integer = true;
                 item.cost = (decimal)k.Koszt;
                 item.delivery_day = (dni == 0 ? 3 : dni);
                 item.index = i_jde.IMLITM;
@@ -1279,7 +2000,7 @@ namespace WebService_SharePoint
                 API.Item item1 = api.ITEM_GET(item_id_itm.ToString());
                 item1.measure_unit = stan.JM_PROD;
                 api.ITEM_POST(item1);
-
+                
 
                 string wh_name = stan.MAG + (string.IsNullOrEmpty(stan.LOK) ? "" : "_" + stan.LOK).Replace(".", "").Replace("-", "").Replace(",", "").Replace("/", "/").Replace("\\", "").Replace(" ", "");
 
@@ -1293,18 +2014,74 @@ namespace WebService_SharePoint
                 if (wh_name.StartsWith("MWG")) mag_wej.direction = 3;
                 if (wh_name.StartsWith("MK")) mag_wej.direction = 3;
                 if (wh_name == "PROD") mag_wej.direction = 3;
+                if (wh_name.StartsWith("PROD_S4")) mag_wej.direction = 3;
+                if (wh_name.StartsWith("PROD_S1")) mag_wej.direction = 1;
+                if (wh_name.StartsWith("PROD_SUPERMARKET1")) mag_wej.direction = 1;
+                if (wh_name.StartsWith("PROD_S3")) mag_wej.direction = 1;
+                if (wh_name.StartsWith("PROD_SUPERMARKET3")) mag_wej.direction = 1;
+                if (wh_name.StartsWith("PROD_SUPERMARKET4")) mag_wej.direction = 1;
+                if (wh_name.StartsWith("PROD_SUPERMARKET5")) mag_wej.direction = 1;
+                if (wh_name.StartsWith("PROD_P5G")) mag_wej.direction = 3;
+                if (wh_name.StartsWith("PROD_S2")) mag_wej.direction = 1;
+
+                if (wh_name.Contains("SURPOP")) mag_wej.direction = 3;
+                if (wh_name.Contains("GALPAR")) mag_wej.direction = 3;
+                if (wh_name.Contains("GALWBUFOR")) mag_wej.direction = 3;
+                if (wh_name.Contains("GALPOP")) mag_wej.direction = 3;
+                if (wh_name.Contains("POLER")) mag_wej.direction = 3;
+                if (wh_name.Contains("ODCIAGANIE")) mag_wej.direction = 3;
+
+                
                 if (wh_name.Contains("H7PROD")) mag_wej.direction = 3;
-                if (wh_name.Contains("BOX05")) mag_wej.direction = 1;
-                if (wh_name.Contains("BOX07")) mag_wej.direction = 1;
-                if (wh_name.Contains("BOX09")) mag_wej.direction = 1;
-                if (wh_name.Contains("BOX15")) mag_wej.direction = 1;
+                if (wh_name.Contains("FABRYK")) mag_wej.direction = 3;
+
+                if (wh_name.Contains("62_BOX")) mag_wej.direction = 1;
+                if (wh_name.Contains("TECH")) mag_wej.direction = 1;
+                if (wh_name.Contains("PROD_GALWBUFORMALARNIA")) mag_wej.direction = 3;
+                if (wh_name == "PROD_POUSŁUDZE") mag_wej.direction = 3;
+                if (wh_name == "PROD_SZLIFIERNIAPOPRAWA") mag_wej.direction = 3;
+                if (wh_name.Contains("FABRYK")) mag_wej.direction = 3;
+                //pod potrzeby szlifierni i montazu - żeby nie zabierało materiału z galwanizerni.
+                if (wh_name.Contains("GALW") && domyslny_magazyn_wejsciowy.Contains("GALW")) mag_wej.direction = 3;
+
+                if (domyslny_magazyn_wejsciowy == "PROD_P31SZLIFPOL" && !wh_name.Contains("GAL") && !wh_name.Contains("PRASO") && !wh_name.Contains("O0404"))
+                {
+                    mag_wej.direction = 3;
+
+                }
+
+                //pod UB i UBB
+                if (item1.name.Contains("SZLIFIERNIA/UB") && wh_name.Contains("P42MONTA") )
+                {
+                    mag_wej.direction = 1;
+
+                }
+                if (item1.name.Contains("SZLIFIERNIA/PO") && wh_name.Contains("P42MONTA"))
+                {
+                    mag_wej.direction = 1;
+
+                }
 
 
-                var mag = from c in dbr.IPO_LOKALIZACJE_SZLIFIERNIA_62
-                          where c.Lokalizacja == wh_name
-                          select c;
+                if (item1.name.Contains("/GALWANIKA/") && wh_name == "PROD_P5GALWNIZERNIA" )
+                {
+                    mag_wej.direction = 3;
 
-                if (mag.Count() != 0) mag_wej.direction = 1;
+                }
+                if (item1.name.Contains("/GALWANIKA/") && wh_name == "PROD_P31SZLIFPOL")
+                {
+                    mag_wej.direction = 3;
+
+                }
+
+
+                if ( (item1.name.Contains("UBB/SZLIFIERNIA") || item1.name.Contains("UB/SZLIFIERNIA")) && wh_name.Contains("P31SZLIFPOL"))
+                {
+                    mag_wej.direction = 1;
+
+                }
+
+
 
 
                 mag_wej.warehouse_id = wh_name;
@@ -1316,10 +2093,25 @@ namespace WebService_SharePoint
                     _zalozony_mag_wejsciowy = true;
                     mag_wej.direction = 2;
                     // tutaj sprawdzenie wyjątków - np tam gdzie chcemy żeby sie zmienił na buforowy wejściowy
-                    if (mag_wej.warehouse_id == "PROD_P2OBRÓBKA") mag_wej.direction = 4;
+                    if (mag_wej.warehouse_id == "PROD_P2OBRÓBKA" && ITEM_JDE.KOLOR != "CIE") mag_wej.direction = 4;
+                    if (mag_wej.warehouse_id == "PROD") mag_wej.direction = 4;
+
                     if (mag_wej.warehouse_id == "PROD_P31SZLIFPOL") mag_wej.direction = 4;
                     if (mag_wej.warehouse_id.Contains("MSU")) mag_wej.direction = 4;
+
+                    if (mag_wej.warehouse_id.Contains("PROD_S4")) mag_wej.direction = 4;
+                    if (mag_wej.warehouse_id.Contains("PROD_SUPERMARKET4")) mag_wej.direction = 4;
+
+                    if (mag_wej.warehouse_id.Contains("PROD_S3")) mag_wej.direction = 4;
+                    if (mag_wej.warehouse_id.Contains("PROD_SUPERMARKET3")) mag_wej.direction = 4;
+
+                    if (mag_wej.warehouse_id.Contains("PROD_S1")) mag_wej.direction = 4;
+                    if (mag_wej.warehouse_id.Contains("PROD_SUPERMARKET1")) mag_wej.direction = 4;
+
+
+
                     if (mag_wej.warehouse_id == "62_") mag_wej.direction = 4;
+                    if (mag_wej.warehouse_id == "PROD_POUSŁUDZE") mag_wej.direction = 4;
 
                 }
 
@@ -1366,7 +2158,7 @@ namespace WebService_SharePoint
             if (!_zalozony_mag_wejsciowy)
             {
                 mag_wej = new API.Warehouse_Settings();
-                mag_wej.direction = 2;
+                mag_wej.direction = 4;
                 mag_wej.warehouse_id = domyslny_magazyn_wejsciowy;
                 mag_wej.order = kol_mag;
                 wsl.Add(mag_wej);
@@ -1392,7 +2184,8 @@ namespace WebService_SharePoint
 
             if (api.ITEM_STOCK_POST(item_stocks, item_id_itm.ToString()))
 
-            { //logger.Info("Stany dla indeksu " + item_id_itm.ToString() + " zaktualizowane");
+            {
+                logger.Info("Stany dla indeksu " + item_id_itm.ToString() + " zaktualizowane");
 
 
 
@@ -1401,10 +2194,43 @@ namespace WebService_SharePoint
             {
                 logger.Error("Stany dla indeksu " + item_id_itm.ToString() + " niezaktualizowane!!!");
             }
+            //usun z tabeli 
+            var do_usuniecia = from c in db.IPO_to_update
+                               where c.ITM == item_id_itm
+                               select c;
+
+            db.IPO_to_update.DeleteAllOnSubmit(do_usuniecia);
+            db.SubmitChanges();
 
 
 
         }
+
+        
+
+        [WebMethod]
+        public string IPO_UPDATE_100_ITEMS()
+        {
+
+            var db = new DBDataContext();
+            var items = (from c in db.IPO_to_update
+                         select c.ITM).Take(100).ToArray();
+
+
+            foreach (int item in items)
+            {
+
+                IPOupdateItem(item);
+
+            }
+
+
+
+
+            return "OK";
+        }
+
+
 
         private static void CheckCreateWH(API.IPO_API api, string wh_name)
         {
@@ -1430,6 +2256,7 @@ namespace WebService_SharePoint
                 MailMessage mail = new MailMessage("alert@zimbra.valvex.com", to);
                 mail.Subject = "ALERT:  " + subject;
                 mail.Body = body;
+                mail.IsBodyHtml = true;
                 cl.Send(mail);
             }
         }
@@ -1444,8 +2271,8 @@ namespace WebService_SharePoint
             foreach (var item in items)
             {
                 var i_jde = (from c in db.F4101s
-                            where c.IMITM == item.Value
-                            select c.IMLTCM).Single();
+                             where c.IMITM == item.Value
+                             select c.IMLTCM).Single();
 
                 int dni = 0;
                 int.TryParse(i_jde.ToString(), out dni);
@@ -1462,7 +2289,7 @@ namespace WebService_SharePoint
 
 
 
-   
+
         }
 
 
@@ -1473,8 +2300,8 @@ namespace WebService_SharePoint
             DBDataContext db = new DBDataContext();
 
 
-            var t = (from c in db.SLOWNIK_1
-                     select new {c.IMLITM,c.NAZWA,c.IMUOM1 });
+            var t = (from c in db.SLOWNIK_1s
+                     select new { c.IMLITM, c.NAZWA, c.IMUOM1 });
 
             DataTable dt = this.LINQToDataTable(t);
             dt.TableName = "indeksy";
@@ -1482,7 +2309,7 @@ namespace WebService_SharePoint
             return dt;
 
         }
-         
+
 
 
 
@@ -1490,15 +2317,15 @@ namespace WebService_SharePoint
         public void local_New_Item_SP(string title, string kod, string user, string typ, string opis, string operacja)
         {
             string siteUrl = "http://SP2013/tech";
-            
+
             SP.ClientContext clientContext = new SP.ClientContext(siteUrl);
-             
+
 
             CredentialCache cc = new CredentialCache();
             cc.Add(new Uri(siteUrl), "NTLM", new NetworkCredential("apawlowski", "cbv3.560671bf", "valvex"));
             clientContext.Credentials = cc;
             clientContext.AuthenticationMode = SP.ClientAuthenticationMode.Default;
-            
+
             var list = clientContext.Web.Lists.GetById(new System.Guid("33f1edb7-b412-485a-83cf-2cece9f361ed"));
             clientContext.ExecuteQuery();
 
@@ -1515,7 +2342,7 @@ namespace WebService_SharePoint
 
 
             listItem.Update();
-         
+
             clientContext.ExecuteQuery();
 
             return;
@@ -1530,7 +2357,7 @@ namespace WebService_SharePoint
                 DB2DataContext db = new DB2DataContext();
                 db.CommandTimeout = 1000000;
                 int i = db.OdswiezKG(miesiac, rok);
-                SendAlert(mail_komunikat, "Odświeżanie KG zakończone " + rok.ToString() + miesiac.ToString(),"");
+                SendAlert(mail_komunikat, "Odświeżanie KG zakończone " + rok.ToString() + miesiac.ToString(), "");
 
 
             }).Start();
@@ -1554,14 +2381,14 @@ namespace WebService_SharePoint
                 _IPO_KSIEGUJ_RW_PW((int)r.ID, " ");
             }
         }
-            
+
         [WebMethod]
         public string SendSMS(string nr, string txt)
         {
 
             string URI = @"http://192.168.1.125/send_sms.php?recipient=$rec&txt=$txt";
 
-            URI = URI.Replace("$rec", "48"+ nr);
+            URI = URI.Replace("$rec", "48" + nr);
             URI = URI.Replace("$txt", txt);
             WebClient client = new WebClient();
             Stream str = client.OpenRead(URI);
@@ -1570,7 +2397,7 @@ namespace WebService_SharePoint
             return rd.ReadToEnd();
 
 
-            
+
         }
 
         [WebMethod]
@@ -1640,25 +2467,96 @@ namespace WebService_SharePoint
         }
 
         [WebMethod]
-        public string IPO_akt_dane_zlec(int nr_zlec, string Nr_zlec_F, string Nr_zam, int priorytet, bool autopodzial, decimal ilosc)
+        public bool IPO_DELETE_TEMPLATE(int template_id)
+        {
+
+            API.IPO_API api2 = new API.IPO_API();
+
+
+            return true;
+            //var test = api2.DELETE_TEMPLATE(template_id);
+            //return test;
+
+        }
+
+
+        [WebMethod]
+        public string IPO_akt_dane_zlec_cechy(int nr_zlec, string cechaA, string cechaB, string cechaP, string cechaQ)
+        {
+            Change_Order Ord = new Change_Order();
+            API.IPO_API api = new API.IPO_API();
+            var zl = api.GET_ORDER_BY_IPO_NO(nr_zlec);
+
+
+            if (!string.IsNullOrEmpty(cechaA)) Ord.feature_a = cechaA;
+            if (!string.IsNullOrEmpty(cechaB)) Ord.feature_b = cechaB;
+            if (!string.IsNullOrEmpty(cechaP)) Ord.feature_p = cechaP;
+            if (!string.IsNullOrEmpty(cechaQ)) Ord.feature_q = cechaQ;
+
+            string kom = api.CHANGE_ORDER(zl.ipo_order_id, Ord);
+
+
+            return kom;
+        }
+
+        [WebMethod]
+        public string IPO_akt_dane_zlec(int nr_zlec, string Nr_zlec_F, string Nr_zam, int priorytet, bool autopodzial, decimal ilosc, bool tryb_f, bool tryb_zam)
         {
 
             string kom = "OK";
+            DBDataContext db = new DBDataContext();
+            
+      
             API.IPO_API api = new API.IPO_API();
             var zl = api.GET_ORDER_BY_IPO_NO(nr_zlec);
             
             if (zl.ipo_order_id != 0)
             {
 
+                var indeks = from c in db.SLOWNIK_1s
+                             where c.IMITM == double.Parse(zl.item_id)
+                             select c.IMLITM.Trim();
+                string litm = "";
+
+                if (indeks.Count() == 1) litm = indeks.First();
+
+
                 Change_Order Ord = new Change_Order();
+                
+                if (!string.IsNullOrEmpty(Nr_zlec_F))
+                {
+                    if (tryb_f) { Ord.order_no_cust = litm; } else
+                    { Ord.order_no_cust = litm + Nr_zlec_F; }
+                    
+                }
 
-                if (!string.IsNullOrEmpty(Nr_zlec_F)) Ord.order_no_cust = Nr_zlec_F;
-                if (!string.IsNullOrEmpty(Nr_zam)) Ord.client_order_no = Nr_zam;
+
+
+                if (!string.IsNullOrEmpty(Nr_zam))
+                {
+                    if (tryb_zam)
+                    {
+                        Ord.client_order_no = zl.order_no_cust+Nr_zam;
+                    }
+                    else
+                    { Ord.client_order_no = Nr_zam; }
+                }
+
+                Ord.priority = null;
                 if (priorytet != -1) Ord.priority = priorytet;
-                Ord.fast_start_enabled = autopodzial;
-                Ord.fast_start_quantity = ilosc;
 
-                kom = api.CHANGE_ORDER(zl.ipo_order_id, Ord);
+                int nilosc =  (int)( Math.Round(    ((decimal)zl.quantity * (decimal)ilosc) / 100 ,MidpointRounding.AwayFromZero ) );
+                if (nilosc == 0) nilosc = 1;
+                
+                Ord.fast_start_enabled = autopodzial;
+                Ord.fast_start_quantity = nilosc;
+
+
+                System.Threading.Tasks.Task.Run(() =>
+                    {
+                        api.CHANGE_ORDER(zl.ipo_order_id, Ord);
+                    });
+                 
             }
                 return kom;
         }
@@ -1704,8 +2602,10 @@ namespace WebService_SharePoint
                     { Ord.order_no_cust = zl.client_order_no + tekst; }
                     else
                     { Ord.order_no_cust = zl.client_order_no.Replace(tekst,""); }
-                     
+
+               
                     api.CHANGE_ORDER(zl.ipo_order_id, Ord);
+         
 
                 }
 
@@ -1733,8 +2633,8 @@ namespace WebService_SharePoint
             {
                 var zlec = api.GET_ORDER_BY_IPO_NO((int)rec.NR_zlecenia_IPO);
 
-                var slownik = (from g in db2.SLOWNIK_1 where g.IMLITM == rec.Kod_materialu select g).Single();
-                var mag_podst = (from g in db2.IPO_MAGAZYN_PODSTAWOWY_PWs where g.LIITM == double.Parse(zlec.item_id) select g.mag_ipo).Single();
+                var slownik = (from g in db2.SLOWNIK_1s where g.IMLITM == rec.Kod_materialu select g).Single();
+                var mag_podst = (from g in db2.IPO_MAGAZYN_PODSTAWOWY_PW where g.LIITM == double.Parse(zlec.item_id) select g.mag_ipo).Single();
 
                 var nrec = new IPO_ZDAWKA_PW();
 
@@ -1846,6 +2746,24 @@ namespace WebService_SharePoint
             return "OK";
         }
 
+        [WebMethod]
+        public string Rozpis_za_okres(int okres)
+        {
+            DB2DataContext raporty = new DB2DataContext();
+
+            var i3s = from c in raporty.IPO_ZDAWKA_PW
+                      where c.RW_PW == "PW" && (c.Data_utworzenia_poz.Value.Year * 100 + c.Data_utworzenia_poz.Value.Month) == okres
+                      select c;
+
+
+            return "0";
+
+
+
+        }
+
+
+
 
         [WebMethod]
         public string Dodaj_rozpis_do_Tabeli(int Nr_zlecenia_IPO, int ITM, double qty)
@@ -1860,14 +2778,14 @@ namespace WebService_SharePoint
                 ITM = int.Parse(zlec.item_id);
 
             }
-            var indeksy = from c in db2008.SLOWNIK_1 where c.IMITM == ITM select c;
+            var indeksy = from c in db2008.SLOWNIK_1s where c.IMITM == ITM select c;
             if (indeksy.Count() != 1) { return "BŁĄD!!!";  }
 
             var dane = indeksy.Single();
             
-            if (dane.KOD_PLAN == "MONT.VALVEX")
+            if (dane.KOD_PLAN == "MONT.VALVEX" || dane.KOD_PLAN == "MONT.GRAFF")
             {
-                var rozpis = db2008.RozNormJdenPoziom_JedenWyrob(dane.IMLITM, qty);
+                var rozpis = db2008.RozNormJdenPoziom_JedenWyrob(dane.IMLITM, qty).Where(x => x.Typ_Normy == "M");
                 foreach (var linia in rozpis)
                 {
 
@@ -1892,8 +2810,8 @@ namespace WebService_SharePoint
             else
             {
 
-                var rozpis = from c in db2008.IPO_Rozpis_mat
-                             where c.wyrob_s == dane.IMITM
+                var rozpis = from c in db2008.IPO_Rozpis_mats
+                             where c.wyrob_s == dane.IMITM && c.Typ_M == "M"
                              select c;
 
                 foreach (var l in rozpis)
@@ -1932,19 +2850,19 @@ namespace WebService_SharePoint
 
 
         [WebMethod]
-        public string Popraw_zuzycie_montaz_valvex(DateTime od, DateTime _do, string magazyn)
+        public int Popraw_zuzycie_montaz_valvex(DateTime od, DateTime _do, string magazyn)
         {
             DB2DataContext db = new DB2DataContext();
             db.CommandTimeout = 10000000;
             var zlecenia = (from c in db.IPO_ZDAWKA_PW_3
-                            where c.Magazyn_IPO != "PROD_P41MONTARMINST" && c.Data_utworzenia_poz >= od && c.Data_utworzenia_poz <= _do && c.Hala == "[H4]" && c.Magazyn_IPO.StartsWith(magazyn) && c.RW_PW == "RW"
+                            where c.Magazyn_IPO != "PROD_P41MONTARMINST" && c.Data_utworzenia_poz.Value.Date >= od.Date && c.Data_utworzenia_poz.Value.Date <= _do.Date && c.Hala == "[H4]" && c.Magazyn_IPO.StartsWith(magazyn) && c.RW_PW == "RW"
                             //where c.Magazyn_IPO != "PROD_P41MONTARMINST" && c.Data_utworzenia_poz >= od && c.Data_utworzenia_poz <= _do && c.Hala == "[H4]" && c.Magazyn_IPO.StartsWith(magazyn) && c.RW_PW == "RW"
-                            select new { c.ID, c.Nr_zlecenia_IPO , c.Magazyn_IPO, c.Nr_indeksu, c.Ilosc }).Distinct();
-
+                            select new { c.ID, c.Nr_zlecenia_IPO , c.Magazyn_IPO, c.Nr_indeksu, c.Ilosc }).Distinct().ToArray();
+            int n = 0;
             foreach (var zlec in zlecenia)
             {
                 var suma = (from c in db.IPO_ZDAWKA_PW where c.Magazyn_IPO==zlec.Magazyn_IPO  && c.Nr_indeksu == zlec.Nr_indeksu && c.Nr_zlecenia_IPO == zlec.Nr_zlecenia_IPO select c.Ilosc).Sum();
-                if (suma !=0)
+                if (suma >0.001 || suma< -0.001)
                 {
                     var rekord = (from c in db.IPO_ZDAWKA_PW where c.ID == zlec.ID select c).Single();
                     var rekord_usun = Clone<IPO_ZDAWKA_PW>(rekord);
@@ -1963,7 +2881,7 @@ namespace WebService_SharePoint
 
                     db.IPO_ZDAWKA_PW.InsertOnSubmit(rekord_usun);
                     db.IPO_ZDAWKA_PW.InsertOnSubmit(rekord_nowy);
-
+                    n++;
                     db.SubmitChanges();
 
                 }
@@ -1974,8 +2892,57 @@ namespace WebService_SharePoint
 
 
 
-            return "0";
+            return n;
         }
+
+
+
+        [WebMethod]
+        public int Popraw_zuzycie_montaz_graff(DateTime od, DateTime _do, string magazyn)
+        {
+            DB2DataContext db = new DB2DataContext();
+            db.CommandTimeout = 10000000;
+            var zlecenia = (from c in db.IPO_ZDAWKA_PW_3
+                            where c.Magazyn_IPO != "PROD_P42MONTAŻBATERII" && c.Magazyn_IPO != "PROD_P423" && c.Data_utworzenia_poz.Value.Date >= od.Date && c.Data_utworzenia_poz.Value.Date <= _do.Date && c.Hala == "[H8]" && c.Magazyn_IPO.StartsWith(magazyn) && c.RW_PW == "RW"
+
+                            select new { c.ID, c.Nr_zlecenia_IPO, c.Magazyn_IPO, c.Nr_indeksu, c.Ilosc }).Distinct().ToArray() ;
+            int n = 0;
+            foreach (var zlec in zlecenia)
+            {
+                var suma = (from c in db.IPO_ZDAWKA_PW where c.Magazyn_IPO == zlec.Magazyn_IPO && c.Nr_indeksu == zlec.Nr_indeksu && c.Nr_zlecenia_IPO == zlec.Nr_zlecenia_IPO select c.Ilosc).Sum();
+                if (suma != 0)
+                {
+                    var rekord = (from c in db.IPO_ZDAWKA_PW where c.ID == zlec.ID select c).Single();
+                    var rekord_usun = Clone<IPO_ZDAWKA_PW>(rekord);
+                    var rekord_nowy = Clone<IPO_ZDAWKA_PW>(rekord);
+
+                    rekord_usun.Ilosc = rekord_usun.Ilosc * -1;
+                    rekord_usun.Koszt_IPO = rekord_usun.Koszt_IPO * -1;
+                    rekord_usun.Zaksiegowany_JDE = false;
+                    rekord_usun.Data_utworzenia_poz = DateTime.Now;
+                    rekord_usun.Powod_korekty = "automatyczna korekta magazynu";
+
+                    rekord_nowy.Zaksiegowany_JDE = false;
+                    rekord_nowy.Data_utworzenia_poz = DateTime.Now;
+                    rekord_nowy.Magazyn_IPO = "PROD_P42MONTAŻBATERII";
+                    rekord_nowy.Powod_korekty = "automatyczna korekta magazynu";
+
+                    db.IPO_ZDAWKA_PW.InsertOnSubmit(rekord_usun);
+                    db.IPO_ZDAWKA_PW.InsertOnSubmit(rekord_nowy);
+                    n++;
+                    db.SubmitChanges();
+
+                }
+
+
+            }
+
+
+
+
+            return n;
+        }
+
 
 
         [WebMethod]
@@ -1996,7 +2963,7 @@ namespace WebService_SharePoint
                 if (order.ipo_order_no != 0 && !(order.item_id is null))
                 {
                     
-                    var kody = from c in db.SLOWNIK_1
+                    var kody = from c in db.SLOWNIK_1s
                                where c.IMITM == Double.Parse(order.item_id)
                                select c;
                     if (kody.Count() == 1)
@@ -2079,7 +3046,7 @@ namespace WebService_SharePoint
             document.NewPage();
 
 
-            Paragraph nri = new Paragraph("39WF01 rev. 27.10.2016", f);
+            Paragraph nri = new Paragraph("Z1_I16.55 rev. 18.10.2018", f);
             nri.Alignment = 2;
             document.Add(nri);
             nri = new Paragraph("KKC - KARTA KONTROLI CYKLU DO ZLECENIA IPO NR: " + nr_zlec.ToString(), fb);
@@ -2098,7 +3065,7 @@ namespace WebService_SharePoint
 
             string co_ile = "";
 
-            co_ile = "Kontrolować zgodnie z instrukcją 39W.";
+            co_ile = "Kontrolować zgodnie z instrukcją I16.55.";
 
             document.Add(new Paragraph(" ", f));
             document.Add(new Paragraph("Wymiary kontrolne. " + co_ile, fb));
@@ -2254,7 +3221,15 @@ namespace WebService_SharePoint
             int nwidth = 450;
             int nheight = (original.Height * nwidth) / original.Width;
             Bitmap resized = new Bitmap(original, new Size( nwidth ,  nheight ));
-             
+            
+            if (nheight > 450 )
+            {
+              nheight = 450;
+              nwidth = (nheight * original.Width) / original.Height;
+              resized = new Bitmap(original, new Size(nwidth, nheight));
+
+            }
+
 
             Bitmap Bmp = FloydSteinberg.FloydSteinbergDither.Process(resized, new Color[] { Color.FromArgb(0, 0, 0), Color.FromArgb(255, 255, 255) });
 
@@ -2308,12 +3283,13 @@ namespace WebService_SharePoint
             API.IPO_Order zlecenie = IPO_GET_ORDER(nr_zlecenia);
             if (zlecenie.ipo_order_id != 0)
             {
-               
+                // string[] Lines = new string[1] { "100" }; //do testów
+
                 double itm = double.Parse(zlecenie.item_id);
                // if (zlecenie.ipo_order_no == 0) itm = nitm;
 
                 DBDataContext db = new DBDataContext();
-                var idx = (from c in db.SLOWNIK_1
+                var idx = (from c in db.SLOWNIK_1s
                            where c.IMITM == itm
                            select c).Single();
                 string w_logged_user = WindowsIdentity.GetCurrent().Name;
@@ -2346,7 +3322,7 @@ namespace WebService_SharePoint
                 string kod_materialu = "BRAK";
                 if (bom.Count() > 0)
                 {
-                    var idxm = (from c in db.SLOWNIK_1
+                    var idxm = (from c in db.SLOWNIK_1s
                                 where c.IMITM == bom[0].item_id
                                 select c).Single();
                     kod_materialu = idxm.IMLITM;
@@ -2366,11 +3342,640 @@ namespace WebService_SharePoint
 
 
         }
+
         [WebMethod]
-        public byte[] IPO_Metki(int zlec_szlif, int zlec_galw, string _logged_user)
+        public void Update_RW_old()
+        {
+            API.IPO_API api = new API.IPO_API();
+
+            DBDataContext db2008 = new DBDataContext();
+            DB2DataContext db = new DB2DataContext();
+            List<API.ItemsOut> rw = api.ITEMS_OUT_GET();
+
+            
+
+
+            if (rw.Count != 0) logger.Info("Pobrano " + rw.Count.ToString() + " RW do zaksięgowania.");
+            foreach (API.ItemsOut item in rw)
+            {
+
+                var hala_id = (from c in db.IPO_ZLECENIA where c.ipo_nr_zlec == item.order_no select c.hala_id).First();
+                bool IsAlreadyInserted = false;  //domyślnie zakładamy że insert po raz pierwszy
+                double koszt = 0;
+                API.Item item_rw = api.ITEM_GET(item.item_id);
+
+                var id = from c in db.IPO_ZDAWKA_PW
+                         where c.IPO_ID_POZYCJI == (int)item.ipo_position_id && c.RW_PW == "RW"
+                         select c;
+
+                if (id.Count() != 0)
+                {
+                    IsAlreadyInserted = true;
+
+
+                    API.RWConfirmation conf_ = new API.RWConfirmation();
+                    conf_.cost = 1;
+                    conf_.cost_confirmed = false;
+                    conf_.doc_no = item.ipo_position_id.ToString();
+
+                    API.Supply spl1 = new API.Supply();
+                    spl1.description = "RW JDE";
+                    spl1.individual_cost = 1;
+                    spl1.quantity = Convert.ToDouble(item.quantity);
+                    spl1.supply_doc = "DOSTAWA JDE";
+
+                    conf_.supplies = new List<API.Supply>() { spl1 };
+
+
+                    var test = api.PUT_ITEM_OUT_CONFIRMATION((int)item.ipo_position_id, conf_);
+
+                    if (!test) SendAlert("it@valvex.com", "Próba ponownego zaksięgowania RW z IPO zlecenie: " + item.order_no.ToString(), "ID IPO" + item.ipo_position_id.ToString());
+
+                    continue;
+                }
+
+
+                try
+                {
+                    var k1 = db2008.Koszt_Indeksu_JM_PROD(int.Parse(item.item_id)).First();
+                    koszt = (double)k1.KOSZT_PROD;
+                }
+                catch (Exception ex)
+                {
+                    logger.Error("Bład kosztu !!!" + item.item_id + ". " + ex.Message);
+                }
+
+                var zlec = api.GET_ORDER_BY_IPO_NO((int)item.order_no);
+                string kod_planisty_zlecenie = "";
+                var indeksy = from c in db2008.SLOWNIK_1s
+                              where c.IMITM == int.Parse(zlec.item_id ?? "0")
+                              select c;
+                string hala = "[?]";
+                if (indeksy.Count() == 1)
+                {
+                    kod_planisty_zlecenie = indeksy.First().KOD_PLAN;
+                    hala = indeksy.First().HALA_PROD.Trim();
+                }
+
+
+
+                var kodrw = db2008.SLOWNIK_1s.Where(x => x.IMLITM.Trim().ToLower() == item.index.Trim().ToLower()).ToList().FirstOrDefault();
+
+
+
+                IPO_ZDAWKA_PW pb = new IPO_ZDAWKA_PW();
+                pb.HALA_PROD = hala;
+                pb.JM = item_rw.measure_unit;
+                pb.Kod_zlecenia_klienta = item.client_order_no;
+                pb.Nr_indeksu = item.index;
+                pb.IPO_ID_POZYCJI = (int)item.ipo_position_id;
+                pb.ITM = item.item_id;
+                pb.Nazwa_pozycji = item_rw.name;
+                pb.Nr_zlecenia_IPO = item.order_no;
+                pb.Nr_zam_klienta = item.order_no_cust;
+                pb.Ilosc = (double)item.quantity;
+                pb.Nr_seryjny = item.serial_no;
+                pb.Magazyn_IPO = item.warehouse_id;
+                pb.RW_PW = "RW";
+
+                //przypadki specjalne - 
+                if (hala_id == 15) { pb.RW_PW = "I4"; hala = "[NA]"; }
+                // jezeli montaz valvex to zamien magazyn na P42 lub zistaw P423
+                if (kod_planisty_zlecenie == "PO.USL" && pb.Magazyn_IPO != "PROD_DOUSŁUGI" && pb.Magazyn_IPO != "TEMP")
+                {
+                    logger.Info("podmiana magazynu z " + pb.Magazyn_IPO + " na PROD_DOUSŁUGI");
+                    try
+                    {
+                       // Service1.Service1 srv = new Service1.Service1();
+                        this.SendAlert("magazyn62@valvex.com", "Podmiana magazynu " + pb.Nr_zlecenia_IPO,
+                            "Zamieniono magazyn " + pb.Magazyn_IPO + " na PROD_DOUSŁUGI, dla RW na indeksie " + pb.Nr_indeksu);
+                    }
+                    catch { }
+                    pb.Powod_korekty = "zmiana mag";
+                    pb.Magazyn_IPO = "PROD_DOUSŁUGI";
+                }
+
+
+                if (kod_planisty_zlecenie == "MONT.GRAFF" && pb.Magazyn_IPO == "TEMP" && kodrw.IMSRP6.Trim() != "K0")
+                {
+                    logger.Info("podmiana magazynu z " + pb.Magazyn_IPO + "  PROD_P42MONTAŻBATERII");
+                    pb.Magazyn_IPO = "PROD_P42MONTAŻBATERII";
+                    pb.Powod_korekty = "zmiana TEMP na P42";
+                }
+
+                if (kod_planisty_zlecenie == "MONT.VALVEX" && pb.Magazyn_IPO == "TEMP" && kodrw.IMSRP6.Trim() != "K0")
+                {
+                    logger.Info($"podmiana magazynu z { pb.Magazyn_IPO } na PROD_P41MONTARMINST");
+                    pb.Magazyn_IPO = "PROD_P41MONTARMINST";
+                    pb.Powod_korekty = "zmiana TEMP na P41";
+                }
+
+
+                if (kod_planisty_zlecenie == "MONT.GRAFF"
+                    && pb.Magazyn_IPO != "PROD_P42MONTAŻBATERII" && pb.Magazyn_IPO != "PROD_P423" && pb.Magazyn_IPO != "TEMP"
+
+                    )
+
+                {
+                    logger.Info($"podmiana magazynu z {pb.Magazyn_IPO } na PROD_P42MONTAŻBATERII");
+                    pb.Magazyn_IPO = "PROD_P42MONTAŻBATERII";
+                    pb.Powod_korekty = "zmiana mag pa P42";
+
+                }
+                if (kod_planisty_zlecenie == "MONT.VALVEX"
+                    && pb.Magazyn_IPO != "PROD_P41MONTARMINST" && pb.Magazyn_IPO != "TEMP"
+
+                    )
+
+                {
+                    logger.Info("podmiana magazynu z " + pb.Magazyn_IPO + " na PROD_P42MONTARMINST");
+                    pb.Magazyn_IPO = "PROD_P41MONTARMINST";
+                    pb.Powod_korekty = "zmiana mag pa P41";
+
+                }
+
+
+
+
+
+
+
+                pb.Zaksiegowany_JDE = false;
+                pb.Czy_korygowany = false;
+                pb.Data_utworzenia_poz = DateTime.Now;
+                pb.Koszt_IPO = koszt * (double)item.quantity;
+
+                //if (pb.RW_PW == "RW" && pb.Magazyn_IPO == "61")
+                //{
+                // pb.RW_PW = "MI";
+                // SendAlert("pawel.korbel@valvex.com", "Dokument MI " + pb.Nr_zlecenia_IPO.ToString(),
+                //     "Utworzono dokument MI - zlecenie IPO " + pb.Nr_zlecenia_IPO.ToString());
+
+                //}
+
+
+
+
+                API.RWConfirmation conf = new API.RWConfirmation();
+                conf.cost = 1;
+                conf.cost_confirmed = false;
+                conf.doc_no = item.ipo_position_id.ToString();
+
+                API.Supply spl = new API.Supply();
+                spl.description = "RW JDE";
+                spl.individual_cost = 1;
+                spl.quantity = Convert.ToDouble(pb.Ilosc);
+                spl.supply_doc = "DOSTAWA JDE";
+
+                conf.supplies = new List<API.Supply>() { spl };
+
+
+
+                logger.Info("Kolejka RW: zlec:" + pb.Nr_zlecenia_IPO + " indeks: " + pb.Nr_indeksu + " Mag:" + pb.Magazyn_IPO + " Il:" + pb.Ilosc.ToString());
+
+                if (!item.order_no_cust.Contains("@") && item.warehouse_id != "TEMP") //jeżeli nr zlecenia zawiera znak @ to zlecenie ma nie ksiegowac materialow i zdawki. Magazyn TEMP jest magazynem
+                                                                                      // wirtualnym - tylko na etytkiety, instrukcje - drukowane na wydziałach
+                {
+                    db.IPO_ZDAWKA_PW.InsertOnSubmit(pb);
+                }
+                db.SubmitChanges();
+                // if (pb.HALA_PROD == "[GA]") { srv2.Wyczysc_zlecenie_z_telewizora((int)pb.Nr_zlecenia_IPO); }
+
+                api.PUT_ITEM_OUT_CONFIRMATION((int)item.ipo_position_id, conf);
+            }
+
+
+        }
+
+
+        [WebMethod]
+        public void UpdateRW()
+        {
+
+            API.IPO_API api = new API.IPO_API();
+
+
+            // logger.Info("PW TICK!");
+            DBDataContext db2008 = new DBDataContext();
+            DB2DataContext db = new DB2DataContext();
+            //List<API.ItemsOut> rw = api.ITEMS_OUT_GET();
+            //Service2.Service2 srv2 = new Service2.Service2();
+
+            var rw = db.API_Wydanias.Where(c => c.dataZatwierdzenia == null).Take(1).ToList();
+
+            if (rw.Count() != 0) logger.Info("Pobrano " + rw.Count().ToString() + " RW do zaksięgowania.");
+            foreach (var item in rw)
+            {
+
+                var hala_id = (from c in db.IPO_ZLECENIA where c.ipo_nr_zlec == item.zlecenie select c.hala_id).First();
+                bool IsAlreadyInserted = false;  //domyślnie zakładamy że insert po raz pierwszy
+                double koszt = 0;
+                var item_rw = db.IPO_MATERIALY_ZOPs.Where(x => x.id == item.material).First();
+
+                var id = from c in db.IPO_ZDAWKA_PW
+                         where c.IPO_ID_POZYCJI == (int)item.id && c.RW_PW == "RW"
+                         select c;
+
+                if (id.Count() != 0)
+                {
+                    IsAlreadyInserted = true;
+
+
+                    API.RWConfirmation conf_ = new API.RWConfirmation();
+                    conf_.cost = 1;
+                    conf_.cost_confirmed = false;
+                    conf_.doc_no = item.id.ToString();
+
+                    API.Supply spl1 = new API.Supply();
+                    spl1.description = "RW JDE";
+                    spl1.individual_cost = 1;
+                    spl1.quantity = Convert.ToDouble(item.ilosc);
+                    spl1.supply_doc = "DOSTAWA JDE";
+
+                    conf_.supplies = new List<API.Supply>() { spl1 };
+
+
+                    var test = api.PUT_ITEM_OUT_CONFIRMATION((int)item.id, conf_);
+
+                    if (!test) SendAlert("it@valvex.com", "Próba ponownego zaksięgowania RW z IPO zlecenie: " + item.zlecenie.ToString(), "ID IPO" + item.id.ToString());
+
+                    continue;
+                }
+
+
+                try
+                {
+                    var k1 = db2008.Koszt_Indeksu_JM_PROD(int.Parse(item_rw.IPO_ITM)).First();
+                    koszt = (double)k1.KOSZT_PROD;
+                }
+                catch (Exception ex)
+                {
+                    logger.Error("Bład kosztu !!!" + item_rw.IPO_LITM + ". " + ex.Message);
+                }
+                var zlec_gl = db.IPO_ZLECENIA.Where(x => x.id == (int)item.zlecenie);
+
+
+
+                if (zlec_gl.Count() == 1)
+                {
+                    var zlec = zlec_gl.First();
+
+                    string kod_planisty_zlecenie = "";
+                    var indeksy = from c in db2008.SLOWNIK_1s
+                                  where c.IMLITM.Trim() == zlec.Indeks_zlecenia.Trim()
+                                  select c;
+                    string hala = "[?]";
+                    if (indeksy.Count() == 1)
+                    {
+                        kod_planisty_zlecenie = indeksy.First().KOD_PLAN;
+                        hala = indeksy.First().HALA_PROD.Trim();
+                    }
+                }
+
+
+
+
+                var kodrw = db2008.SLOWNIK_1s.Where(x => x.IMLITM.Trim().ToLower() == item_rw.IPO_LITM.Trim().ToLower()).ToList().FirstOrDefault();
+
+
+
+                IPO_ZDAWKA_PW pb = new IPO_ZDAWKA_PW();
+                pb.HALA_PROD = zlec_gl.First().HALA_PROD;
+                pb.JM = item_rw.jm.Trim();
+                // pb.Kod_zlecenia_klienta = ;
+                // pb.Nr_indeksu = item.index;
+                pb.IPO_ID_POZYCJI = (int)item.id;
+                // pb.ITM = item.item_id;
+                // pb.Nazwa_pozycji = item_rw.name;
+                //  pb.Nr_zlecenia_IPO = item.order_no;
+                // pb.Nr_zam_klienta = item.order_no_cust;
+                //  pb.Ilosc = (double)item.quantity;
+                //  pb.Nr_seryjny = item.serial_no;
+                //  pb.Magazyn_IPO = item.warehouse_id;
+                pb.RW_PW = "RW";
+
+                //przypadki specjalne - 
+                //  if (hala_id == 15) { pb.RW_PW = "I4"; hala = "[NA]"; }
+                // jezeli montaz valvex to zamien magazyn na P42 lub zistaw P423
+                //   if (kod_planisty_zlecenie == "PO.USL" && pb.Magazyn_IPO != "PROD_DOUSŁUGI" && pb.Magazyn_IPO != "TEMP")
+                {
+                    logger.Info("podmiana magazynu z " + pb.Magazyn_IPO + " na PROD_DOUSŁUGI");
+                    try
+                    {
+
+                    }
+                    catch { }
+                    pb.Powod_korekty = "zmiana mag";
+                    pb.Magazyn_IPO = "PROD_DOUSŁUGI";
+                }
+
+
+                //   if (kod_planisty_zlecenie == "MONT.GRAFF" && pb.Magazyn_IPO == "TEMP" && kodrw.IMSRP6.Trim() != "K0")
+                {
+                    logger.Info("podmiana magazynu z " + pb.Magazyn_IPO + "  PROD_P42MONTAŻBATERII");
+                    pb.Magazyn_IPO = "PROD_P42MONTAŻBATERII";
+                    pb.Powod_korekty = "zmiana TEMP na P42";
+                }
+
+                //   if (kod_planisty_zlecenie == "MONT.VALVEX" && pb.Magazyn_IPO == "TEMP" && kodrw.IMSRP6.Trim() != "K0")
+                {
+                    logger.Info($"podmiana magazynu z { pb.Magazyn_IPO } na PROD_P41MONTARMINST");
+                    pb.Magazyn_IPO = "PROD_P41MONTARMINST";
+                    pb.Powod_korekty = "zmiana TEMP na P41";
+                }
+
+
+                //   if (kod_planisty_zlecenie == "MONT.GRAFF"  && pb.Magazyn_IPO != "PROD_P42MONTAŻBATERII" && pb.Magazyn_IPO != "PROD_P423" && pb.Magazyn_IPO != "TEMP")
+
+                {
+                    logger.Info($"podmiana magazynu z {pb.Magazyn_IPO } na PROD_P42MONTAŻBATERII");
+                    pb.Magazyn_IPO = "PROD_P42MONTAŻBATERII";
+                    pb.Powod_korekty = "zmiana mag pa P42";
+
+                }
+              //  if (kod_planisty_zlecenie == "MONT.VALVEX" && pb.Magazyn_IPO != "PROD_P41MONTARMINST" && pb.Magazyn_IPO != "TEMP")
+
+                {
+                    logger.Info("podmiana magazynu z " + pb.Magazyn_IPO + " na PROD_P42MONTARMINST");
+                    pb.Magazyn_IPO = "PROD_P41MONTARMINST";
+                    pb.Powod_korekty = "zmiana mag pa P41";
+
+                }
+
+
+
+
+
+
+
+                pb.Zaksiegowany_JDE = false;
+                pb.Czy_korygowany = false;
+                pb.Data_utworzenia_poz = DateTime.Now;
+              //  pb.Koszt_IPO = koszt * (double)item.quantity;
+
+                //if (pb.RW_PW == "RW" && pb.Magazyn_IPO == "61")
+                //{
+                // pb.RW_PW = "MI";
+                // SendAlert("pawel.korbel@valvex.com", "Dokument MI " + pb.Nr_zlecenia_IPO.ToString(),
+                //     "Utworzono dokument MI - zlecenie IPO " + pb.Nr_zlecenia_IPO.ToString());
+
+                //}
+
+
+
+
+                API.RWConfirmation conf = new API.RWConfirmation();
+                conf.cost = 1;
+                conf.cost_confirmed = false;
+             //   conf.doc_no = item.ipo_position_id.ToString();
+
+                API.Supply spl = new API.Supply();
+                spl.description = "RW JDE";
+                spl.individual_cost = 1;
+                spl.quantity = Convert.ToDouble(pb.Ilosc);
+                spl.supply_doc = "DOSTAWA JDE";
+
+                conf.supplies = new List<API.Supply>() { spl };
+
+
+
+                logger.Info("Kolejka RW: zlec:" + pb.Nr_zlecenia_IPO + " indeks: " + pb.Nr_indeksu + " Mag:" + pb.Magazyn_IPO + " Il:" + pb.Ilosc.ToString());
+
+           ////     if (!item.order_no_cust.Contains("@") && item.warehouse_id != "TEMP") //jeżeli nr zlecenia zawiera znak @ to zlecenie ma nie ksiegowac materialow i zdawki. Magazyn TEMP jest magazynem
+                                                                                      // wirtualnym - tylko na etytkiety, instrukcje - drukowane na wydziałach
+                {
+                    db.IPO_ZDAWKA_PW.InsertOnSubmit(pb);
+                }
+                db.SubmitChanges();
+                // if (pb.HALA_PROD == "[GA]") { srv2.Wyczysc_zlecenie_z_telewizora((int)pb.Nr_zlecenia_IPO); }
+
+          //      api.PUT_ITEM_OUT_CONFIRMATION((int)item.ipo_position_id, conf);
+            }
+
+        }
+
+
+        private static string Planista2Hala(string kod_planisty)
+        {
+
+            string Hala = "[?]";
+
+            if (kod_planisty == "ODLEWNIA") Hala = "[H1]";
+            if (kod_planisty == "PRASOWNIA") Hala = "[H1]";
+            if (kod_planisty == "OBRÓBKA") Hala = "[H2]";
+            if (kod_planisty == "MONT.VALVEX") Hala = "[H4]";
+            if (kod_planisty == "SZLIFIERNIA") Hala = "[H5]";
+            if (kod_planisty == "GALWANIKA") Hala = "[H6]";
+            if (kod_planisty == "PO.OBR") Hala = "[H7]";
+            if (kod_planisty == "MONT.GRAFF") Hala = "[H8]";
+            if (kod_planisty == "NARZEDZIA") Hala = "[H9]";
+            return Hala;
+        }
+
+       
+        
+
+        [WebMethod]
+        public byte[] GetImage(string nr_rys)
+        {
+            
+
+            System.Drawing.Image image = GenPDF.GetImage(nr_rys);
+            MemoryStream ms = new MemoryStream();
+            image.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+            byte[] Pic_arr = new byte[ms.Length];
+            ms.Position = 0;
+            ms.Read(Pic_arr, 0, Pic_arr.Length);
+            ms.Close();
+
+            return Pic_arr;
+
+        }
+
+        [WebMethod]
+        public void _UpdatePW()
+        {
+
+            API.IPO_API api = new API.IPO_API();
+
+            // logger.Info("PW TICK!");
+            DBDataContext db2008 = new DBDataContext();
+            db2008.CommandTimeout = 1000000;
+            DB2DataContext db = new DB2DataContext();
+            db.CommandTimeout = 1000000;
+
+            List<API.ItemsIn> pw = api.ITEMS_IN_GET();
+
+
+            if (pw.Count != 0) logger.Info("Pobrano " + pw.Count.ToString() + " PW do zaksięgowania.");
+            foreach (API.ItemsIn item in pw)
+            {
+
+
+
+                bool IsAlreadyInserted = false;
+                double koszt = 0;
+                API.Item item_rw = api.ITEM_GET(item.item_id);
+
+                var id = from c in db.IPO_ZDAWKA_PW
+                         where c.IPO_ID_POZYCJI == (int)item.ipo_position_id
+                         select c;
+
+                // if (id.Count() != 0) { IsAlreadyInserted = true; SendAlert("andrzej.pawlowski@valvex.com", "Próba ponownego zaksięgowania PW z IPO zlecenie: " + item.order_no.ToString(), "ID IPO" + item.ipo_position_id.ToString()); }
+
+
+
+
+                try
+                {
+                    var k1 = db2008.Koszt_Indeksu_JM_PROD(int.Parse(item.item_id)).First();
+                    koszt = (double)k1.KOSZT_PROD;
+                }
+                catch (Exception ex)
+                {
+                    logger.Error("Bład kosztu !!!" + item.item_id + ". " + ex.Message);
+                }
+
+                try
+                {
+                    var zlec = api.GET_ORDER_BY_IPO_NO((int)item.order_no);
+                    string kod_planisty_zlecenie = "";
+
+                    string nr_zl_f = zlec.item_id ?? "0";
+
+                    string indeks_zlecenia = "";
+
+                    var indeksy = from c in db2008.SLOWNIK_1s
+                                  where c.IMITM == int.Parse(nr_zl_f)
+
+                                  select c;
+
+                    string hala = "[?]";
+                    if (indeksy.Count() == 1)
+                    {
+                        hala = indeksy.First().HALA_PROD.Trim();
+                        indeks_zlecenia = indeksy.First().IMLITM.Trim();
+
+                    }
+
+
+                    IPO_ZDAWKA_PW zd = new IPO_ZDAWKA_PW();
+                    zd.HALA_PROD = hala;
+                    zd.JM = item_rw.measure_unit;
+                    zd.Kod_zlecenia_klienta = item.client_order_no;
+                    zd.Koszt_IPO = koszt * (Double)item.quantity;
+                    zd.IPO_ID_POZYCJI = item.ipo_position_id;
+                    zd.ITM = item.item_id;
+                    zd.Koszt_mat_IPO = 0;
+                    try
+                    {
+                        zd.Koszt_mat_IPO = Math.Round((double)item.material_cost, 3);
+                    }
+                    catch { }
+
+                    zd.Nazwa_pozycji = item_rw.name;
+                    zd.Nr_zlecenia_IPO = item.order_no;
+                    zd.Nr_zam_klienta = item.order_no_cust;
+                    zd.Ilosc = (Double)item.quantity;
+                    zd.Nr_seryjny = item.serial_no;
+                    zd.typ = item.type;
+                    zd.Magazyn_IPO = item.warehouse_id;
+                    zd.Nr_indeksu = item.index;
+                    zd.Zaksiegowany_JDE = false;
+                    zd.Czy_korygowany = false;
+                    zd.Data_utworzenia_poz = DateTime.Now;
+                    zd.RW_PW = (zd.typ != 1) ? "PW" : "PU";
+
+                    try
+                    {
+                        if (zd.RW_PW == "PW" && zd.Nr_indeksu.Trim() != indeks_zlecenia && indeks_zlecenia != "")
+                        {
+                            zd.RW_PW = "RW";
+                            zd.Ilosc = -zd.Ilosc;
+                            logger.Debug("Podmieniono na zleceniu " + zd.Nr_zlecenia_IPO + " dokument RW na PW. Indeks materialu" + zd.Nr_indeksu + ", indeks zlec " + indeks_zlecenia);
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                        logger.Error("###Blad przy konwersji I3 na I2 " + ex.Message);
+                    }
+                    //przypadki specjalne
+                    if (kod_planisty_zlecenie == "NARZEDZIA") zd.RW_PW = "MP";
+
+                    if (zd.RW_PW == "PW" && zd.Magazyn_IPO.Contains("PROD_P5GALW"))
+                    {
+
+                        try
+                        {
+                            logger.Debug("IPO ZDAWKA GALWANIZERNIA" + zd.Nr_indeksu + ", IPO:" + zd.Nr_zlecenia_IPO);
+                            GAL_wej_transakcje tr = new GAL_wej_transakcje();
+                            tr.data_przyj = DateTime.Now;
+                            tr.user = "IPO";
+                            tr.data_zamkniecia = DateTime.Now;
+                            tr.ilosc_szt = (int)zd.Ilosc;
+                            tr.indeks = zd.Nr_indeksu.Trim();
+                            tr.komentarz = "ZDAWKA IPO, zlec:" + zd.Nr_zlecenia_IPO.ToString();
+
+                            //"OB","Acu", "ABB", "SN", "WT", "BK", "BG", "CZ", "GL", "MT"
+                            tr.lok = "Z_DOBRE!";
+                            tr.skan = "IPO - Z_DOBRE!";
+                            if (zd.Nazwa_pozycji.ToUpper().Contains(@"GALWANIKA/OB")) { tr.lok = "Z_DOBRE_MAL"; tr.skan = "IPO - Z_DOBRE_MAL"; }
+                            if (zd.Nazwa_pozycji.ToUpper().Contains(@"GALWANIKA/ACU")) { tr.lok = "Z_DOBRE_MAL"; tr.skan = "IPO - Z_DOBRE_MAL"; }
+                            if (zd.Nazwa_pozycji.ToUpper().Contains(@"GALWANIKA/ABB")) { tr.lok = "Z_DOBRE_MAL"; tr.skan = "IPO - Z_DOBRE_MAL"; }
+                            if (zd.Nazwa_pozycji.ToUpper().Contains(@"GALWANIKA/SN")) { tr.lok = "Z_DOBRE_MAL"; tr.skan = "IPO - Z_DOBRE_MAL"; }
+                            if (zd.Nazwa_pozycji.ToUpper().Contains(@"GALWANIKA/WT")) { tr.lok = "Z_DOBRE_MAL"; tr.skan = "IPO - Z_DOBRE_MAL"; }
+                            if (zd.Nazwa_pozycji.ToUpper().Contains(@"GALWANIKA/BK")) { tr.lok = "Z_DOBRE_MAL"; tr.skan = "IPO - Z_DOBRE_MAL"; }
+                            if (zd.Nazwa_pozycji.ToUpper().Contains(@"GALWANIKA/BG")) { tr.lok = "Z_DOBRE_MAL"; tr.skan = "IPO - Z_DOBRE_MAL"; }
+                            if (zd.Nazwa_pozycji.ToUpper().Contains(@"GALWANIKA/CZ")) { tr.lok = "Z_DOBRE_MAL"; tr.skan = "IPO - Z_DOBRE_MAL"; }
+                            if (zd.Nazwa_pozycji.ToUpper().Contains(@"GALWANIKA/GL")) { tr.lok = "Z_DOBRE_MAL"; tr.skan = "IPO - Z_DOBRE_MAL"; }
+                            if (zd.Nazwa_pozycji.ToUpper().Contains(@"GALWANIKA/MT")) { tr.lok = "Z_DOBRE_MAL"; tr.skan = "IPO - Z_DOBRE_MAL"; }
+
+                            //DBRaportyDataContext dbr = new DBRaportyDataContext();
+                           // dbr.GAL_wej_transakcjes.InsertOnSubmit(tr);
+                            //dbr.SubmitChanges();
+                        }
+                        catch (Exception ex)
+                        {
+
+                            logger.Error("Bład GALWANIKA " + item.item_id + ". " + ex.Message);
+                        }
+
+
+                    }
+
+                    //jezeli PW na P5_GALWANIZERNIA to 
+                    //wydrukuj metkę na stole
+                    //zrób polecenie transferu na skaner
+
+                    if (!item.order_no_cust.Contains("@"))
+                    {
+                        db.IPO_ZDAWKA_PW.InsertOnSubmit(zd);
+                    }
+                    logger.Info("Kolejka PW: zlec:" + zd.Nr_zlecenia_IPO + " indeks: " + zd.Nr_indeksu + " Mag:" + zd.Magazyn_IPO + " Il:" + zd.Ilosc.ToString());
+
+
+
+
+                    db.SubmitChanges(); //jezeli uda się zapis do bazy, to potwierdz w IPO
+                    api.PUT_ITEM_IN_CONFIRMATION(item.ipo_position_id, "PW_IPO");
+                }
+                catch (Exception ex)
+                {
+
+                    logger.Info("BŁĄD PW " + ex.Message);
+                }
+            }
+
+
+        }
+
+        [WebMethod]
+        public byte[] IPO_Metki_galwanizernia(int zlec_galw, string _logged_user)
         {
             metka m = new metka();
-            if (zlec_galw == 0) zlec_galw = zlec_szlif + 1;
+             
 
             API.IPO_Order zlecenie = IPO_GET_ORDER(zlec_galw);
             if (zlecenie.ipo_order_id != 0)
@@ -2379,10 +3984,10 @@ namespace WebService_SharePoint
                 double itm = double.Parse(zlecenie.item_id);
 
                 DBDataContext db = new DBDataContext();
-                var idx = (from c in db.SLOWNIK_1
+                var idx = (from c in db.SLOWNIK_1s
                            where c.IMITM == itm
                            select c).Single();
-                _logged_user = WindowsIdentity.GetCurrent().Name;
+                //_logged_user = WindowsIdentity.GetCurrent().Name;
 
                 List<API.IPO_BOM_Line> bom = IPO_BOM_ITEM(idx.IMLITM);
 
@@ -2398,7 +4003,7 @@ namespace WebService_SharePoint
                 string kod_materialu = "BRAK";
                 if (bom.Count() > 0)
                 {
-                    var idxm = (from c in db.SLOWNIK_1
+                    var idxm = (from c in db.SLOWNIK_1s
                                 where c.IMITM == bom[0].item_id
                                 select c).Single();
                     kod_materialu = idxm.IMLITM;
@@ -2422,16 +4027,81 @@ namespace WebService_SharePoint
             return GenPDF.GenMetka_GAL_SZL(m);
 
         }
+        [WebMethod]
+        public byte[] IPO_Metki_galwanizerniaV2(int zlec_galw, string _logged_user, int szt) //dodano ilosc sztuk na metce
+        {
+            metka m = new metka();
+
+
+            API.IPO_Order zlecenie = IPO_GET_ORDER(zlec_galw);
+            if (zlecenie.ipo_order_id != 0)
+            {
+
+                double itm = double.Parse(zlecenie.item_id);
+
+                DBDataContext db = new DBDataContext();
+                var idx = (from c in db.SLOWNIK_1s
+                           where c.IMITM == itm
+                           select c).Single();
+                //_logged_user = WindowsIdentity.GetCurrent().Name;
+
+                List<API.IPO_BOM_Line> bom = IPO_BOM_ITEM(idx.IMLITM);
+
+                var dane = db.Dane_do_metki(idx.IMLITM).Take(1).Single();
+
+
+                m.kod_zlecenia = idx.IMLITM;
+                m.ilosc_szt = new double[1] { (double)szt };
+                m.il_stron = 1;
+                m.nr_zlec_galw = zlec_galw;
+                m.komentarz = zlecenie.order_no_cust;
+
+                string kod_materialu = "BRAK";
+                if (bom.Count() > 0)
+                {
+                    var idxm = (from c in db.SLOWNIK_1s
+                                where c.IMITM == bom[0].item_id
+                                select c).Single();
+                    kod_materialu = idxm.IMLITM;
+                }
+
+                m.kod_materialu_galw = kod_materialu;
+                m.kolor = dane.KOLOR;
+                m.nazwa = zlecenie.name;
+                m.nr_rysunku = zlecenie.drawing_no;
+                m.nr_zlec_galw = int.Parse(zlecenie.ipo_order_no.ToString());
+                m.rysunek = GenPDF.GetImage(zlecenie.drawing_no);
+                m.userid = _logged_user;
+
+
+
+
+
+
+
+            }
+            return GenPDF.GenMetka_GAL_SZL(m);
+
+        }
+
 
         [WebMethod]
         public int JDE_Drukuj_prosta_metke(string ip_drukarki, int port, string tytul, string text)
         {
-            string tekst = "^XA^LL1350^CI28^CF0,290^FO20,190^FD%TITLE%^FS^FS^CF0,80^FO20,700^TBN,700,350^FD%TEXT%^FS^XZ";
+
+
+            string tekst = "^XA^LL1350^CI28^CF0,290^FO20,190^FD%TITLE%^FS^FS^CF0,80^FO20,700^TBN,700,350^FD%TEXT%^FS^FO50,30^GB700,1,3^FS^BY3,2,80^FO50,50^BC^FD%TITLE%^FS^XZ";
             tekst = tekst.Replace("%TITLE%", tytul).Replace("%TEXT%", text);
 
 
             //tekst = tekst.Replace("ż", "z").Replace("ó", "o").Replace("ł", "l").Replace("ć", "c").Replace("ś", "s").Replace("ą", "a").Replace("ź", "z").Replace("ń", "n").Replace("ę", "e");
             //tekst = tekst.Replace("Ż", "Z").Replace("Ó", "O").Replace("Ł", "L").Replace("Ć", "C").Replace("Ś", "S").Replace("Ą", "A").Replace("Ź", "Z").Replace("Ń", "N").Replace("Ę", "E");
+            if (tytul == "INW!!!")
+            {
+                tekst = "^XA^LL1350^CI28^CF0,290^FS^FS^CF0,50^FO20,40^TBN,700,700^FD%text%^FS^FO50,30^GB700,1,3^FS^BY3,2,80^FS^XZ";
+                tekst = tekst.Replace("%text%", text);
+            }
+
 
             SendToZebra(ip_drukarki, port, tekst);
 
@@ -2476,13 +4146,13 @@ namespace WebService_SharePoint
             return 0;
         }
         [WebMethod]
-        public int JDE_Drukuj_metkę(string ip_drukarki, int port, string litm, string typ_metki, int ilosc)
+        public int JDE_Drukuj_metkę(string ip_drukarki, int port, string litm, string typ_metki, int ilosc, string sztuki)
         {
             string nazwa = "BLAD!";
             string rys = "BRAK!";
             DBDataContext db = new DBDataContext();
-            var nazwa_S = from g in db.SLOWNIK_1 where g.IMLITM == litm select new { g.NAZWA, g.IMLITM };
-            var rys_S = from g in db.F4101s where g.IMLITM == litm select new { g.IMINMG };
+            var nazwa_S = (from g in db.SLOWNIK_1s where g.IMLITM == litm select new { g.NAZWA, g.IMLITM }).ToList();
+            var rys_S = (from g in db.F4101s where g.IMLITM == litm select new { g.IMINMG }).ToList();
 
             if (nazwa_S.Count() == 1) { nazwa = nazwa_S.First().NAZWA; litm = nazwa_S.First().IMLITM; }
             if (rys_S.Count() == 1) { rys = rys_S.First().IMINMG;}
@@ -2531,13 +4201,17 @@ namespace WebService_SharePoint
             "^BY3,1,50" +
             "^FO50,175^BC^FD%ITEMID%^FS" +
             "^CF0,40" +
-            "^FO550,480^FDSZTUKI:^FS" +
+            "^FO550,480^FDILOSC:^FS" +
+            "^CF0,90" +
+            "^FO550,540^FD%SZTUKI%^FS" +
+            "^CF0,40" +
             "^FO520,755^FD%DATE%^FS" +
             "^PQ%QTY%^XZ";
 
 
             tekst = tekst.Replace("%QTY%", ilosc.ToString());
             tekst = tekst.Replace("%TEXT%", nazwa);
+            tekst = tekst.Replace("%SZTUKI%", sztuki);
             tekst = tekst.Replace("%ITEMID%", litm);
             tekst = tekst.Replace("%DATE%", DateTime.Now.ToString());
             if (typ_metki == "m")
@@ -2557,6 +4231,270 @@ namespace WebService_SharePoint
             return 0;
 
         }
+
+
+        [WebMethod]
+        public string JDE_Drukuj_metkę_KJ(string ip_drukarki, int port, string litm, string typ_metki, int ilosc, string sztuki)
+        {
+            string nazwa = "BLAD!";
+            string rys = "BRAK!";
+            DBDataContext db = new DBDataContext();
+            var nazwa_S = from g in db.SLOWNIK_1s where g.IMLITM == litm select new { g.NAZWA, g.IMLITM };
+            var rys_S = from g in db.F4101s where g.IMLITM == litm select new { g.IMINMG };
+
+            if (nazwa_S.Count() == 1) { nazwa = nazwa_S.First().NAZWA; litm = nazwa_S.First().IMLITM; }
+            if (rys_S.Count() == 1) { rys = rys_S.First().IMINMG; }
+            //nazwa = nazwa.Replace("ż", "z").Replace("ó", "o").Replace("ł", "l").Replace("ć", "c").Replace("ś", "s").Replace("ą", "a").Replace("ź", "z").Replace("ń", "n").Replace("ę", "e");
+            //nazwa = nazwa.Replace("Ż", "Z").Replace("Ó", "O").Replace("Ł", "L").Replace("Ć", "C").Replace("Ś", "S").Replace("Ą", "A").Replace("Ź", "Z").Replace("Ń", "N").Replace("Ę", "E");
+
+            if (nazwa.Length > 39) nazwa = nazwa.Substring(0, 38);
+
+            string tekstm = "^XA^LL1350^CI28^FO50,550^GB700,1,3^FS^BY3,2,80 " +
+            "^FO50,570^BC^FD%ITEMID%^FS^CF0,50" +
+            "^FO30,690^FD%TEXT%^FS" +
+            "^CF0,70^FO50,740^FD%ITEMID%^FS" +
+            "^CF0,20^FO550,760^FD%DATE%^FS" +
+            "^FO50,290^GB700,1,3^FS^BY3,2,80^FO50,310^BC^FD%ITEMID%^FS" +
+            "^CF0,50^FO30,430^FD%TEXT%^FS" +
+            "^CF0,70^FO50,480^FD%ITEMID%^FS" +
+            "^CF0,20^FO550,500^FD%DATE%^FS" +
+            "^FO50,30^GB700,1,3^FS^BY3,2,80^FO50,50^BC^FD%ITEMID%^FS" +
+            "^CF0,50^FO30,170^FD%TEXT%^FS" +
+            "^CF0,70^FO50,220^FD%ITEMID%^FS" +
+            "^CF0,20^FO550,240^FD%DATE%^FS^PQ%QTY%^XZ";
+            tekstm = tekstm.Replace("%TEXT%", nazwa);
+            tekstm = tekstm.Replace("%ITEMID%", litm);
+            tekstm = tekstm.Replace("%DATE%", DateTime.Now.ToString());
+            tekstm = tekstm.Replace("%QTY%", ilosc.ToString());
+
+
+            string zkod;
+            if (litm.Length > 9)
+            {
+                zkod = "^CF0,100^FO20,40^FD%ITEMID%^FS";
+            }
+            else
+            {
+                zkod = "^CF0,170^FO20,40^FD%ITEMID%^FS";
+
+            }
+
+            string tekst = "^XA^LL1350^CI28" +
+                zkod +
+            "^FS^CF0,70" +
+            "^FO40,265" +
+            "^TBN,700,350" +
+            "^FD%TEXT%^FS" +
+            "^FO50,400^GB700,1,3^FS^FO30,410%GRAF%" +
+            "^BY3,1,50" +
+            "^FO50,175^BC^FD%ITEMID%^FS" +
+            "^CF0,40" +
+            "^FO550,480^FDILOSC:^FS" +
+            "^CF0,90" +
+            "^FO550,540^FD%SZTUKI%^FS" +
+            "^CF0,40" +
+            "^FO520,755^FD%DATE%^FS" +
+            "^PQ%QTY%^XZ";
+
+
+            tekst = tekst.Replace("%QTY%", ilosc.ToString());
+            tekst = tekst.Replace("%TEXT%", nazwa);
+            tekst = tekst.Replace("%SZTUKI%", sztuki);
+            tekst = tekst.Replace("%ITEMID%", litm);
+            tekst = tekst.Replace("%DATE%", DateTime.Now.ToString());
+            if (typ_metki == "m")
+            { SendToZebra(ip_drukarki, port, tekstm); }
+            else
+            {
+                //duza metka - dodaj grafikę
+
+
+                tekst = tekst.Replace("%GRAF%", RETURN_GFA_ZPL(rys));
+
+                //SendToZebra(ip_drukarki, port, tekst);
+
+
+            }
+
+            return tekst;
+
+        }
+
+
+
+        [WebMethod]
+        public int INW_JDE_Drukuj_metkę(string ip_drukarki, int port, string litm, string typ_metki, int ilosc, string sztuki, string kom)
+        {
+            string nazwa = "BLAD!";
+            string rys = "BRAK!";
+            DBDataContext db = new DBDataContext();
+            DB2DataContext db2 = new DB2DataContext();
+            string osoby = "";
+
+            try
+            {
+                var komisja = (from c in db2.INW_PRZYPISANIE_POLA_SPISOWEs where c.NR_KOMISJI == kom select c).FirstOrDefault();
+                osoby = komisja.OBSADA;
+            }
+            catch { }
+
+            var nazwa_S = from g in db.SLOWNIK_1s where g.IMLITM == litm select new { g.NAZWA, g.IMLITM };
+            var rys_S = from g in db.F4101s where g.IMLITM == litm select new { g.IMINMG };
+
+            if (nazwa_S.Count() == 1) { nazwa = nazwa_S.First().NAZWA; litm = nazwa_S.First().IMLITM; }
+            if (rys_S.Count() == 1) { rys = rys_S.First().IMINMG; }
+            //nazwa = nazwa.Replace("ż", "z").Replace("ó", "o").Replace("ł", "l").Replace("ć", "c").Replace("ś", "s").Replace("ą", "a").Replace("ź", "z").Replace("ń", "n").Replace("ę", "e");
+            //nazwa = nazwa.Replace("Ż", "Z").Replace("Ó", "O").Replace("Ł", "L").Replace("Ć", "C").Replace("Ś", "S").Replace("Ą", "A").Replace("Ź", "Z").Replace("Ń", "N").Replace("Ę", "E");
+
+            if (nazwa.Length > 39) nazwa = nazwa.Substring(0, 38);
+
+            string tekstm = "^XA^LL1350^CI28^FO50,550^GB700,1,3^FS^BY3,2,80 " +
+            "^FO50,570^BC^FD%ITEMID%^FS^CF0,50" +
+            "^FO30,690^FD%TEXT%^FS" +
+            "^CF0,70^FO50,740^FD%ITEMID%^FS" +
+            "^CF0,20^FO550,760^FD%DATE%^FS" +
+            "^FO50,290^GB700,1,3^FS^BY3,2,80^FO50,310^BC^FD%ITEMID%^FS" +
+            "^CF0,50^FO30,430^FD%TEXT%^FS" +
+            "^CF0,70^FO50,480^FD%ITEMID%^FS" +
+            "^CF0,20^FO550,500^FD%DATE%^FS" +
+            "^FO50,30^GB700,1,3^FS^BY3,2,80^FO50,50^BC^FD%ITEMID%^FS" +
+            "^CF0,50^FO30,170^FD%TEXT%^FS" +
+            "^CF0,70^FO50,220^FD%ITEMID%^FS" +
+            "^CF0,15^FO500,240^FD%TXT%^FS" +
+            "^CF0,20^FO550,240^FD%DATE%^FS^PQ%QTY%^XZ";
+            tekstm = tekstm.Replace("%TEXT%", nazwa);
+            tekstm = tekstm.Replace("%ITEMID%", litm);
+            tekstm = tekstm.Replace("%DATE%", DateTime.Now.ToString());
+            tekstm = tekstm.Replace("%QTY%", ilosc.ToString());
+            tekstm = tekstm.Replace("%TXT%", "Komisja:"+kom);
+
+
+            string zkod;
+            if (litm.Length > 9)
+            {
+                zkod = "^CF0,100^FO20,40^FD%ITEMID%^FS";
+            }
+            else
+            {
+                zkod = "^CF0,170^FO20,40^FD%ITEMID%^FS";
+
+            }
+
+            string tekst = "^XA^LL1350^CI28" +
+                zkod +
+            "^FS^CF0,70" +
+            "^FO40,265" +
+            "^TBN,700,350" +
+            "^FD%TEXT%^FS" +
+            "^FO50,400^GB700,1,3^FS^FO30,410%GRAF%" +
+            "^BY3,1,50" +
+            "^FO50,175^BC^FD%ITEMID%^FS" +
+            "^CF0,40" +
+            "^FO550,480^FDILOSC:^FS" +
+            "^CF0,90" +
+            "^FO550,540^FD%SZTUKI%^FS" +
+            "^CF0,40" +
+            "^FO520,755^FD%DATE%^FS" +
+            "^CF0,40" +
+            "^FO520,695^FD%TXT%^FS" +
+            "^CF0,25" +
+            "^FO520,730^FD%TXT1%^FS" +
+            "^PQ%QTY%^XZ";
+            tekst = tekst.Replace("%TXT%", "Komisja:" + kom);
+            tekst = tekst.Replace("%TXT1%", osoby);
+            tekst = tekst.Replace("%QTY%", ilosc.ToString());
+            tekst = tekst.Replace("%TEXT%", nazwa);
+            tekst = tekst.Replace("%SZTUKI%", sztuki);
+            tekst = tekst.Replace("%ITEMID%", litm);
+            tekst = tekst.Replace("%DATE%", DateTime.Now.ToString());
+            if (typ_metki == "m")
+            { SendToZebra(ip_drukarki, port, tekstm); }
+            else
+            {
+                //duza metka - dodaj grafikę
+
+
+                tekst = tekst.Replace("%GRAF%", RETURN_GFA_ZPL(rys));
+
+                SendToZebra(ip_drukarki, port, tekst);
+
+
+            }
+
+            return 0;
+
+        }
+
+
+        [WebMethod]
+        public List<API_materialy_zlecenia> IPO_material_zlecenia(string litm)
+        {
+            List<API_materialy_zlecenia> tbmt = new List<API_materialy_zlecenia>();
+            DB2DataContext db = new DB2DataContext();
+            try
+            {
+                var mat = from c in db.API_materialy_zlecenias
+                          where c.Indeks_mat == litm
+                          select c;
+
+
+                tbmt = mat.ToList();
+
+
+
+            }
+            catch { }
+
+
+
+            return tbmt;
+        }
+
+
+
+        [WebMethod]
+        public int JDE_Drukuj_metkę_lokalizacja(string ip_drukarki, int port, string lokalizacja_bez_hash)
+        {
+            
+            DBDataContext db = new DBDataContext();
+             
+            //nazwa = nazwa.Replace("ż", "z").Replace("ó", "o").Replace("ł", "l").Replace("ć", "c").Replace("ś", "s").Replace("ą", "a").Replace("ź", "z").Replace("ń", "n").Replace("ę", "e");
+            //nazwa = nazwa.Replace("Ż", "Z").Replace("Ó", "O").Replace("Ł", "L").Replace("Ć", "C").Replace("Ś", "S").Replace("Ą", "A").Replace("Ź", "Z").Replace("Ń", "N").Replace("Ę", "E");
+
+            
+
+            string tekstm = "^XA^LL1350^CI28^FO50,550^GB700,1,3^FS^BY3,2,80 " +
+            "^FO50,570^BC^FD%#ITEMID%^FS^CF0,50" +
+           
+            "^CF0,70^FO50,740^FD%ITEMID%^FS" +
+            "^CF0,20^FO550,760^FD%DATE%^FS" +
+            "^FO50,290^GB700,1,3^FS^BY3,2,80^FO50,310^BC^FD%#ITEMID%^FS" +
+          
+            "^CF0,70^FO50,480^FD%ITEMID%^FS" +
+            "^CF0,20^FO550,500^FD%DATE%^FS" +
+            "^FO50,30^GB700,1,3^FS^BY3,2,80^FO50,50^BC^FD%#ITEMID%^FS" +
+            
+            "^CF0,70^FO50,220^FD%ITEMID%^FS" +
+            "^CF0,20^FO550,240^FD%DATE%^FS^PQ%QTY%^XZ";
+
+            tekstm = tekstm.Replace("%ITEMID%", lokalizacja_bez_hash);
+            tekstm = tekstm.Replace("%#ITEMID%", "#" + lokalizacja_bez_hash);
+            tekstm = tekstm.Replace("%DATE%", DateTime.Now.ToString());
+            
+ 
+
+
+            
+            
+            
+             SendToZebra(ip_drukarki, port, tekstm);  
+            
+
+            return 0;
+
+        }
+
+
         [WebMethod]
         
 

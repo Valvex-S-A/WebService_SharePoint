@@ -1,13 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="KARTY_PRODUKCJI" Class="szlif_operacjeDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=DATABASE2;Initial Catalog=KARTY_PRODUKCJI;User ID=valvex;Encrypt=False;TrustServerCertificate=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="KARTY_PRODUKCJIConnectionString1" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Marszruty_szlifiernia_" Member="Marszruty_szlifiernia_">
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Planowanie szlifiernia_wb" Class="szlif_operacjeDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=database2;Initial Catalog=&quot;Planowanie szlifiernia_wb&quot;;User ID=valvex;Encrypt=False;TrustServerCertificate=True" SettingsObjectName="WebService_SharePoint.Properties.Settings" SettingsPropertyName="Planowanie_szlifiernia_wbConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Marszruty_szlifiernia_" Member="Marszruty_szlifiernia_s">
     <Type Name="Marszruty_szlifiernia_">
       <Column Name="Id_wyrobu" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="Nazwa_wyrobu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Kolor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="[Nazwa operacji]" Member="Nazwa_operacji" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="KodOperacjiPS" Type="System.String" DbType="NChar(5)" CanBeNull="true" />
-      <Column Name="Id_operacji" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Id_operacji" Type="System.String" DbType="NVarChar(2) NOT NULL" CanBeNull="false" />
       <Column Name="IloscSztZm" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NormaZatwierdzona" Type="System.String" DbType="NChar(3) NOT NULL" CanBeNull="false" />
       <Column Name="[Nr kol operacji]" Member="Nr_kol_operacji" Type="System.Int32" DbType="Int" CanBeNull="true" />

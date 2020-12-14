@@ -23,6 +23,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,43 +47,41 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="IPO_API, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Visual Studio 2015\Projects\IPO_API\IPO_API\bin\Release\IPO_API.dll</HintPath>
+      <HintPath>..\..\IPO_API\IPO_API\bin\Debug\IPO_API.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp, Version=5.5.11.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.11\lib\itextsharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.SharePoint.Client">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Common Files\microsoft shared\Web Server Extensions\15\ISAPI\Microsoft.SharePoint.Client.dll</HintPath>
-      <Private>True</Private>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.SharePoint.Client, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePoint.Client.14.0.4762.1000\lib\Microsoft.SharePoint.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SharePoint.Client.Runtime">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Common Files\microsoft shared\Web Server Extensions\15\ISAPI\Microsoft.SharePoint.Client.Runtime.dll</HintPath>
-      <Private>True</Private>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+    <Reference Include="Microsoft.SharePoint.Client.Runtime, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SharePoint.Client.14.0.4762.1000\lib\Microsoft.SharePoint.Client.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Neodynamic.SDK.ThermalLabel, Version=6.0.3500.0, Culture=neutral, PublicKeyToken=0630b9b3415848af, processorArchitecture=MSIL">
       <HintPath>..\packages\Neodynamic.SDK.ThermalLabel.6.0.3516.1015\lib\Neodynamic.SDK.ThermalLabel.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.2.2\lib\net45\NLog.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\NLog.4.5.3\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="PdfSharp">
       <HintPath>..\..\szlif\szlif\bin\Release\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Select.HtmlToPdf, Version=20.1.0.0, Culture=neutral, PublicKeyToken=e0ae9f6e27a97018, processorArchitecture=MSIL">
+      <HintPath>..\packages\Select.HtmlToPdf.20.1.0\lib\net40\Select.HtmlToPdf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -101,39 +100,46 @@
       <HintPath>..\packages\System.Data.SQLite.Linq.1.0.106.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IPO_API\IPO_API\bin\Release\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http">
+      <HintPath>..\..\IPO_API\IPO_API\bin\Release\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\..\IPO_API\IPO_API\bin\Release\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="Zebra.Printing">
-      <HintPath>..\..\..\..\..\..\..\Users\USER\Downloads\zbar\zbar-cpcl-dotnet-vA0.07\Zebra.Printing\bin\Debug\Zebra.Printing.dll</HintPath>
-    </Reference>
-    <Reference Include="Zebra.Printing.CPCL">
-      <HintPath>..\..\..\..\..\..\..\Users\USER\Downloads\zbar\zbar-cpcl-dotnet-vA0.07\Zebra.Printing.CPCL\bin\Debug\Zebra.Printing.CPCL.dll</HintPath>
-    </Reference>
-    <Reference Include="Zen.Barcode.Core">
-      <HintPath>..\..\szlif\szlif\bin\Release\Zen.Barcode.Core.dll</HintPath>
+    <Reference Include="Zen.Barcode.Core, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b5ae55aa76d2d9de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zen.Barcode.Rendering.Framework.3.1.10729.1\lib\Zen.Barcode.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="db.sdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="IPO.asmx" />
     <Content Include="IPO_Online.aspx" />
     <Content Include="metki.aspx" />
+    <Content Include="OVS.asmx" />
+    <Content Include="potw.aspx" />
+    <Content Include="potwl.aspx" />
+    <Content Include="Prace_zewn_API.asmx" />
     <Content Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <Content Include="baza_metek.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
@@ -152,17 +158,83 @@
       <LastGenOutput>DBSZlif.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="trans.asmx" />
-    <Content Include="WebForm1.aspx" />
-    <Content Include="dbtrans.dbml">
+    <Content Include="qrcode.ashx" />
+    <Content Include="barcode128.ashx" />
+    <Content Include="dbtrans1.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>dbtrans.designer.cs</LastGenOutput>
+      <LastGenOutput>dbtrans1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="dbKartyProdukcji.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbKartyProdukcji.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="DBKarty.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DBKarty.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="barcode.ashx" />
+    <None Include="dbtrans1.dbml.layout">
+      <DependentUpon>dbtrans1.dbml</DependentUpon>
+    </None>
+    <Content Include="ESPEasy.ashx" />
+    <Content Include="inveo.ashx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\JDE_REF\configuration91.svcinfo" />
+    <None Include="Service References\JDE_REF\configuration.svcinfo" />
+    <None Include="Service References\JDE_REF\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service2.asmx" />
+    <Content Include="trans.asmx" />
+    <Content Include="WebForm1.aspx" />
     <None Include="Scripts\jquery-1.9.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <None Include="Service References\JDE_REF\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\JDE_REF\service.wsdl" />
+    <None Include="Service References\JDE_REF\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\JDE_REF\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\JDE_REF\WebService_SharePoint.JDE_REF.ROBarCodePrinter.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\JDE_REF\WebService_SharePoint.JDE_REF.ROConfig.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\JDE_REF\WebService_SharePoint.JDE_REF.RODomainDescriptor.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\JDE_REF\WebService_SharePoint.JDE_REF.ROItemDef.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\JDE_REF\WebService_SharePoint.JDE_REF.ROItemStruct.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\JDE_REF\WebService_SharePoint.JDE_REF.ROLoginResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\JDE_REF\WebService_SharePoint.JDE_REF.ROUdcCode.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\JDE_REF\XELCODE.Server.Common.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\JDE_REF\XELCODE.Valvex.RO.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\SP2013\Service1.disco" />
     <None Include="Service References\SP2013\configuration91.svcinfo" />
     <None Include="Service References\SP2013\configuration.svcinfo" />
@@ -177,6 +249,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="barcode.ashx.cs">
+      <DependentUpon>barcode.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="barcode128.ashx.cs">
+      <DependentUpon>barcode128.ashx</DependentUpon>
+    </Compile>
     <Compile Include="baza_metek.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -200,17 +278,39 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DB2.dbml</DependentUpon>
     </Compile>
+    <Compile Include="DBKarty.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBKarty.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="dbKartyProdukcji.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbKartyProdukcji.dbml</DependentUpon>
+    </Compile>
     <Compile Include="DBSZlif.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBSZlif.dbml</DependentUpon>
     </Compile>
-    <Compile Include="dbtrans.designer.cs">
+    <Compile Include="dbtrans1.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dbtrans.dbml</DependentUpon>
+      <DependentUpon>dbtrans1.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="ESPEasy.ashx.cs">
+      <DependentUpon>ESPEasy.ashx</DependentUpon>
     </Compile>
     <Compile Include="FloydSteinberg.cs" />
+    <Compile Include="GrandStream_AddressBook.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="inveo.ashx.cs">
+      <DependentUpon>inveo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="IPO.asmx.cs">
+      <DependentUpon>IPO.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="IPO_Online.aspx.cs">
       <DependentUpon>IPO_Online.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -229,7 +329,42 @@
       <DependentUpon>metki.aspx</DependentUpon>
     </Compile>
     <Compile Include="Metki.cs" />
+    <Compile Include="OVS.asmx.cs">
+      <DependentUpon>OVS.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PhoneBookGS.cs" />
+    <Compile Include="potw.aspx.cs">
+      <DependentUpon>potw.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="potw.aspx.designer.cs">
+      <DependentUpon>potw.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="potwl.aspx.cs">
+      <DependentUpon>potwl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="potwl.aspx.designer.cs">
+      <DependentUpon>potwl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Prace_zewn_API.asmx.cs">
+      <DependentUpon>Prace_zewn_API.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="qrcode.ashx.cs">
+      <DependentUpon>qrcode.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\JDE_REF\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\SP2013\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -238,6 +373,13 @@
     <Compile Include="Service1.asmx.cs">
       <DependentUpon>Service1.asmx</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Service2.asmx.cs">
+      <DependentUpon>Service2.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="shelly_1.ashx.cs">
+      <DependentUpon>shelly_1.ashx</DependentUpon>
     </Compile>
     <Compile Include="Szlif.asmx.cs">
       <DependentUpon>Szlif.asmx</DependentUpon>
@@ -289,6 +431,7 @@
       <LastGenOutput>szlif_operacje.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="shelly_1.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -313,6 +456,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\JDE_REF\" />
     <WCFMetadataStorage Include="Service References\SP2013\" />
   </ItemGroup>
   <ItemGroup>
@@ -336,8 +480,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="dbtrans.dbml.layout">
-      <DependentUpon>dbtrans.dbml</DependentUpon>
+    <None Include="dbKartyProdukcji.dbml.layout">
+      <DependentUpon>dbKartyProdukcji.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DBKarty.dbml.layout">
+      <DependentUpon>DBKarty.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <PropertyGroup>

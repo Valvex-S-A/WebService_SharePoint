@@ -25,7 +25,7 @@ namespace WebService_SharePoint
             int port_ = 9100;
             int.TryParse(port, out port_);
 
-            srv.JDE_Drukuj_metkę(IP, port_, kod, typ,1);
+            srv.JDE_Drukuj_metkę(IP, port_, kod, typ,1,"");
 
             context.Response.Write("OK");
         }

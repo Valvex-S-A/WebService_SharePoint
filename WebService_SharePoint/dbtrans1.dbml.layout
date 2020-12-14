@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.875, 13.5" name="dbtrans1">
+  <DataContextMoniker Name="/dbtrans1DataContext" />
+  <nestedChildShapes>
+    <classShape Id="83ed1e44-76ce-45a8-a859-03877001224f" isExpanded="false" absoluteBounds="5.375, 0.625, 2, 0.45">
+      <DataClassMoniker Name="/dbtrans1DataContext/Aktualne_grupy_view" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f1cd3a0c-ffc9-454e-ad49-32f9d45e253d" absoluteBounds="5.39, 1.085, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="df178843-41aa-411a-ab30-f630bb7d8354" isExpanded="false" absoluteBounds="7.5, 1.125, 2, 0.45">
+      <DataClassMoniker Name="/dbtrans1DataContext/Grupy" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4dcd29f4-0090-40f2-9373-144d4f5d0e99" absoluteBounds="7.515, 1.585, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="69d99a08-3dea-4d96-9d2b-99e5efeba57c" isExpanded="false" absoluteBounds="6.625, 4.75, 2, 0.45">
+      <DataClassMoniker Name="/dbtrans1DataContext/uzytkownicy" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dca464a5-3ced-4dda-b866-523c51ebd255" absoluteBounds="6.64, 5.21, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cbf156e6-2b30-4136-a418-9a31c6fa2bf2" isExpanded="false" absoluteBounds="7.375, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/dbtrans1DataContext/zlecenia_naglowki" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9293e176-e554-442a-ae36-523eb7ba1524" absoluteBounds="7.39, 0.96, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e7e91d6b-9921-4b2e-b2f3-4e70c2e71fe5" isExpanded="false" absoluteBounds="5.375, 1.25, 2, 0.45">
+      <DataClassMoniker Name="/dbtrans1DataContext/transfer_blokada_nagl" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0a3a3ce5-2026-48be-a274-25845a3ff120" absoluteBounds="5.3900000000000006, 1.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f2d7c470-697b-4a45-9c81-4eec3c2747fa" isExpanded="false" absoluteBounds="3.375, 0.875, 2, 0.45">
+      <DataClassMoniker Name="/dbtrans1DataContext/zlecenia_naglowek_view" />
+      <nestedChildShapes>
+        <elementListCompartment Id="50f79a71-a667-4f58-8c1e-1283f29281e3" absoluteBounds="3.39, 1.335, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3d3fce89-a50d-47d1-9709-51eb4e927523" absoluteBounds="3.375, 7.25, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/dbtrans1DataContext/Log_historia" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5fb8fd25-5a99-47a3-a83b-b8b7a816e01f" absoluteBounds="3.3899999999999997, 7.71, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d4f09d20-6a51-4263-a2b6-7af152a9bcb5" isExpanded="false" absoluteBounds="5.375, 2, 2, 0.45">
+      <DataClassMoniker Name="/dbtrans1DataContext/Wersja_aplikacji" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fc4dda4d-b449-4afd-ab8f-3ba3efae7964" absoluteBounds="5.3900000000000006, 2.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a3991b29-cd6e-4c35-92bf-426b5a14fac9" isExpanded="false" absoluteBounds="9.625, 0.625, 2, 0.45">
+      <DataClassMoniker Name="/dbtrans1DataContext/Komunikaty" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ed1fd1ca-a5cc-4ce4-9725-2e7e7ea48349" absoluteBounds="9.64, 1.085, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c9d5159d-2660-44d4-bba4-ebc568e23029" isExpanded="false" absoluteBounds="7.5, 1.75, 2, 0.45">
+      <DataClassMoniker Name="/dbtrans1DataContext/PALETY62" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8ca54f4e-5417-4895-94c5-efd86c8f1ef9" absoluteBounds="7.5150000000000006, 2.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1d4a51cc-8f17-4e7d-841e-6d508981a970" absoluteBounds="0.5, 7.5, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/dbtrans1DataContext/grupy_uzytkownicy" />
+      <nestedChildShapes>
+        <elementListCompartment Id="414acc77-aa13-407b-81e5-bf9c4b56d043" absoluteBounds="0.515, 7.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9b5e9d48-6f89-4218-a8cf-98fdc7dcdfc5" isExpanded="false" absoluteBounds="3.375, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/dbtrans1DataContext/Wersja_aplikacji1" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f9c00550-58d4-420b-b80d-0a1bd9c888cf" absoluteBounds="3.39, 0.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ceecd39d-0493-4ecf-bbfe-d458c02713d4" isExpanded="false" absoluteBounds="7.375, 3.625, 2, 0.45">
+      <DataClassMoniker Name="/dbtrans1DataContext/H7_REKLASYFIKACJA" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1407d49e-f9e9-47f4-9b00-7ca18fdde152" absoluteBounds="7.3900000000000006, 4.085, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d6ac39d5-5baa-41ab-8ffd-ab2b96173a47" isExpanded="false" absoluteBounds="6, 6.75, 2, 0.45">
+      <DataClassMoniker Name="/dbtrans1DataContext/zlecenia_szczegoly" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d1163218-deae-4d3a-ba73-baace979a35b" absoluteBounds="6.015, 7.2100000000000009, 1.9700000000000002, 4.8646240234375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6d2255ff-6bd4-4638-9891-5fdc6c5f0a71" absoluteBounds="8.5, 10, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/dbtrans1DataContext/Odciaganie_galwanizernia" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3d12beb9-8f6f-4ba0-84f3-e4b64b3b42dd" absoluteBounds="8.515, 10.46, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="eda34065-76de-4ca3-833c-12df622d4cf2" isExpanded="false" absoluteBounds="1, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/dbtrans1DataContext/Dziennik_operacji" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5c8fcbe2-e7d5-45a2-8947-c0c00b303b7a" absoluteBounds="1.0150000000000001, 0.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3eae4d7e-a70b-45fc-ab21-67155744ec50" isExpanded="false" absoluteBounds="1, 1.125, 2, 0.45">
+      <DataClassMoniker Name="/dbtrans1DataContext/Zlecenia_szczegoly_SL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="44260dad-2fa1-4dcb-b5a2-ff800a5e6cb8" absoluteBounds="1.0150000000000006, 1.585, 1.9700000000000002, 6.979939778645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

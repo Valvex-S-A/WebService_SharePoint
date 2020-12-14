@@ -28,6 +28,9 @@
                 <asp:RadioButton ID="RadioButton3" runat="server" Font-Size="X-Large" GroupName="druk" Text="Drukarka M.techn." />
                 <br />
                 <br />
+                <asp:RadioButton ID="RadioButton4" runat="server" Font-Size="X-Large" GroupName="druk" Text="Drukarka Koop Nowa" />
+                <br />
+                <br />
             </div>
 
 
@@ -47,6 +50,8 @@
        
             <label for="tbKod1">Indeks:</label>
             <input class="form-control input-sm" runat="server" id="tbKod1" type="text" />
+          <label for="tbKod1">Ilość:</label>
+          <input class="form-control input-sm" runat="server" id="tbSztuki" type="text" />
             <div class="form-group">
                 <label for="select" class="col-lg-2 control-label">Wybierz ilość etykiet</label>
                 <div class="col-lg-2">
@@ -142,6 +147,37 @@
                 </td>
                 <td>
                     <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="Drukuj tekst" Width="240px" />
+                </td>
+            </tr>
+      </div>
+    </div>
+  </div>
+
+
+                 <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+          WYDRUKUJ METKĘ Z LOKALIZACJĄ
+
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFour" class="panel-collapse collapse">
+      <div class="panel-body">
+       <tr>
+                <td class="auto-style24">&nbsp;</td>
+                <td class="auto-style25">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style24">Lokalizacja bez znaku #</td>
+                <td class="auto-style25">
+                     
+                    <asp:TextBox ID="TextBox_lok" runat="server" Width="185px"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:Button ID="Button_lok" runat="server" OnClick="Button_lok_Click" Text="Drukuj tekst" Width="240px" />
                 </td>
             </tr>
       </div>

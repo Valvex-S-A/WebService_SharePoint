@@ -2,10 +2,10 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="szlif_operacje">
   <DataContextMoniker Name="/szlif_operacjeDataContext" />
   <nestedChildShapes>
-    <classShape Id="91642c91-2422-4567-b13c-ffd55e44ff23" absoluteBounds="4.75, 4.75, 2, 2.5401025390625">
+    <classShape Id="5c6d1a36-8785-45d2-9be8-596bd14a33b8" absoluteBounds="7.125, 3.25, 2, 2.5401025390625">
       <DataClassMoniker Name="/szlif_operacjeDataContext/Marszruty_szlifiernia_" />
       <nestedChildShapes>
-        <elementListCompartment Id="fb9cdb09-6565-4fd9-b52d-18fc3beffbd8" absoluteBounds="4.765, 5.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="57f1a5f2-f98d-4242-9530-b46c5b60f2c3" absoluteBounds="7.14, 3.71, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

@@ -55,7 +55,7 @@ namespace WebService_SharePoint
             Zen.Barcode.Code128BarcodeDraw bc1 = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
             DB2DataContext db2 = new DB2DataContext();
 
-            bool tylko_poler_wyk = m_.komentarz.Contains("!!");
+            bool tylko_poler_wyk = false;// m_.komentarz.Contains("!!");
 
 
             int ilosc = 0;
@@ -128,15 +128,32 @@ namespace WebService_SharePoint
 
                     poz = poz + 10;
                 }
-
-
-
-                double st = 170;
                 szlif_operacjeDataContext db1 = new szlif_operacjeDataContext();
-                var oper  = from c in db1.Marszruty_szlifiernia_
-                           where c.Id_wyrobu == m_.kod_zlecenia
-                           orderby c.Nr_kol_operacji ascending
-                           select new { c.Id_operacji, OPERACJA = c.Id_operacji +" " + c.Nazwa_operacji, c.IloscSztZm, c.NormaZatwierdzona, c.Nazwa_operacji, c.Nr_kol_operacji };
+                DBDataContext db2008 = new DBDataContext();
+
+                string kod_szlif = m_.kod_zlecenia;
+
+                try
+                {
+                    var idx = (from c in db2008.SLOWNIK_1s where c.IMLITM.Trim() == kod_szlif select c).First();
+
+
+                    if (idx.KOD_PLAN == "GALWANIKA")
+                    {
+                        var rozpis_zlecenia = (from c in db2008.IPO_Rozpis_mats
+                                               where c.wyrob_l.Trim() == m_.kod_zlecenia.Trim()
+                                               select c).First();
+                        kod_szlif = rozpis_zlecenia.skladnik_l.Trim();
+                    }
+
+                }
+                catch { }
+                double st = 170;
+
+                var oper = (from c in db1.Marszruty_szlifiernia_s
+                            where c.Id_wyrobu == kod_szlif
+                            orderby c.Nr_kol_operacji ascending
+                            select new { c.Id_operacji, OPERACJA = c.Id_operacji + " " + c.Nazwa_operacji, c.IloscSztZm, c.NormaZatwierdzona, c.Nazwa_operacji, c.Nr_kol_operacji }); ;
 
                 if (tylko_poler_wyk)
                 {
@@ -147,7 +164,10 @@ namespace WebService_SharePoint
                     oper = oper.Where(x => x.Nazwa_operacji != "Polerowanie wykańczające");
                 }
 
-                foreach (var o in oper)
+                var noper = oper.ToList();
+
+
+                foreach (var o in noper)
                 {
                     string wst = "";
 
@@ -231,7 +251,7 @@ namespace WebService_SharePoint
             PdfDocument document = new PdfDocument();
             Zen.Barcode.Code128BarcodeDraw bc = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
             Zen.Barcode.Code128BarcodeDraw bc1 = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
-
+            Zen.Barcode.Code128BarcodeDraw bc2 = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
             double ilosc = 0;
             for (int i = 0; i < m_.il_stron; i++)
             {
@@ -245,19 +265,21 @@ namespace WebService_SharePoint
                 XFont font3 = new XFont("Verdana", 8, XFontStyle.Regular);
                 XFont font4 = new XFont("Verdana", 8, XFontStyle.Italic);
                 // kod kreskowy
-                Image im = bc.Draw(m_.nr_zlec_szlif.ToString(), 20, 2);
+                Image im = bc.Draw(m_.nr_zlec_galw.ToString(), 20, 2);
                 XImage xim = XImage.FromGdiPlusImage(im);
                 gfx.DrawImage(xim, new Point(20, 10));
-                im = bc.Draw(m_.nr_zlec_galw.ToString(), 20, 2);
+                im = bc.Draw(m_.kod_zlecenia, 20, 2);
 
 
 
-                // gfx.DrawString("Utw.: " + DateTime.Now.ToString(), font1, XBrushes.Black,
-                // new XRect(210, 10, 300, 22),
-                //XStringFormats.TopLeft);
-                // gfx.DrawString("Przez: " + m_.userid, font3, XBrushes.Black,
-                // new XRect(210, 22, 300, 22),
-                //XStringFormats.TopLeft);
+
+
+                 gfx.DrawString("Utw.: " + DateTime.Now.ToString(), font1, XBrushes.Black,
+                 new XRect(210, 10, 300, 22),
+                 XStringFormats.TopLeft);
+                 gfx.DrawString("Przez: " + m_.userid, font3, XBrushes.Black,
+                  new XRect(210, 22, 300, 22),
+                 XStringFormats.TopLeft);
 
 
 
@@ -335,9 +357,14 @@ namespace WebService_SharePoint
                 XImage rys = XImage.FromGdiPlusImage(n_rys);
 
                 gfx.DrawImage(rys, 15, 150, r_width, r_height);
-                Image im1 = bc.Draw("" + m_.nr_zlec_galw, 10, 2);
+                Image im1 = bc.Draw("" + m_.kod_zlecenia, 10, 2);
                 XImage xim1 = XImage.FromGdiPlusImage(im1);
                 gfx.DrawImage(xim1, new Point(15, 130));
+
+                Image im2 = bc.Draw("" + m_.kod_materialu_galw, 10, 2);
+                XImage xim2 = XImage.FromGdiPlusImage(im2);
+                gfx.DrawImage(xim2, new Point(215, 300));
+
 
                 gfx.DrawString("  Belka   ,  il.szt", font4, XBrushes.Black,
                  new XRect(255, 140, 300, 22),
@@ -545,7 +572,183 @@ namespace WebService_SharePoint
         }
 
 
-        
+
+        public static byte[] GenPDFFile_A4_new(metka m_)
+        {
+            PdfDocument document = new PdfDocument();
+            Zen.Barcode.Code128BarcodeDraw bc = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
+            Zen.Barcode.Code128BarcodeDraw bc1 = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
+            DB2DataContext db2 = new DB2DataContext();
+
+            bool tylko_poler_wyk = false;// m_.komentarz.Contains("!!");
+
+
+            int ilosc = 0;
+            for (int i = 0; i < m_.il_stron; i++)
+            {
+                PdfPage page = document.AddPage();
+                page.Size = PdfSharp.PageSize.A4;
+                // Get an XGraphics object for drawing
+                XGraphics gfx = XGraphics.FromPdfPage(page);
+                XFont font = new XFont("Verdana", 15, XFontStyle.Bold);
+                XFont font1 = new XFont("Verdana", 10, XFontStyle.Regular);
+                XFont font2 = new XFont("Verdana", 8, XFontStyle.Regular);
+                XFont font3 = new XFont("Verdana", 8, XFontStyle.Italic);
+
+                // kod kreskowy
+                Image im = bc.Draw(m_.nr_zlec_szlif + "_" + (i + 1).ToString(), 35, 2);
+                XImage xim = XImage.FromGdiPlusImage(im);
+                gfx.DrawImage(xim, new Point(10, 10));
+                gfx.DrawString("Utw.: " + DateTime.Now.ToString(), font1, XBrushes.Black,
+                new XRect(210, 10, 300, 22),
+               XStringFormats.TopLeft);
+
+
+
+                gfx.DrawString(m_.nazwa, font, XBrushes.Black,
+                   new XRect(5, 40, 400, 22),
+                  XStringFormats.Center);
+
+
+
+                gfx.DrawString("Kod części: " + m_.kod_zlecenia + " (partia nr " + (i + 1).ToString() + " z " + m_.il_stron.ToString() + ")", font1, XBrushes.Black,
+                   new XRect(5, 65, 300, 22),
+                  XStringFormats.TopLeft);
+                gfx.DrawString("Ilość szt: " + m_.ilosc_szt[i].ToString(), font1, XBrushes.Black,
+                new XRect(240, 65, 300, 22),
+               XStringFormats.TopLeft);
+                ilosc = (int)m_.ilosc_szt[0];
+                gfx.DrawString("Nr rysunku: " + m_.nr_rysunku, font1, XBrushes.Black,
+                  new XRect(5, 80, 300, 22),
+                 XStringFormats.TopLeft);
+
+
+
+
+
+                //gfx.DrawString("Kod po wykonczeniu: " + m_.kod_po_wykonczeniu, font1, XBrushes.Black,
+                //  new XRect(5, 95, 300, 22),
+                // XStringFormats.TopLeft);
+                gfx.DrawString("Kolor: " + m_.kolor, font1, XBrushes.Black,
+               new XRect(240, 75, 300, 22),
+              XStringFormats.TopLeft);
+                gfx.DrawString("Nr_zlec: " + m_.nr_zlec_szlif, font1, XBrushes.Black,
+               new XRect(240, 95, 300, 22),
+              XStringFormats.TopLeft);
+
+                var rw = from c in db2.IPO_ZDAWKA_PW
+                         where c.RW_PW == "RW" && c.Nr_zlecenia_IPO == m_.nr_zlec_szlif
+                         group c by new { c.Magazyn_IPO, c.Nr_indeksu } into fgr
+
+                         select new { Magazyn_IPO = fgr.Key.Magazyn_IPO, Nr_indeksu = fgr.Key.Nr_indeksu, Ilosc = fgr.Sum(g => g.Ilosc) };
+                int poz = 105;
+                foreach (var d in rw.Where(c => c.Ilosc != 0))
+                {
+
+                    gfx.DrawString(d.Magazyn_IPO + " " + d.Nr_indeksu + " :" + d.Ilosc.ToString(), font1, XBrushes.Black,
+              new XRect(240, poz, 300, 22),
+             XStringFormats.TopLeft);
+
+
+
+                    poz = poz + 10;
+                }
+
+
+
+                double st = 170;
+                szlif_operacjeDataContext db1 = new szlif_operacjeDataContext();
+                var oper = from c in db1.Marszruty_szlifiernia_s
+                           where c.Id_wyrobu == m_.kod_zlecenia
+                           orderby c.Nr_kol_operacji ascending
+                           select new { c.Id_operacji, OPERACJA = c.Id_operacji + " " + c.Nazwa_operacji, c.IloscSztZm, c.NormaZatwierdzona, c.Nazwa_operacji, c.Nr_kol_operacji };
+
+                if (tylko_poler_wyk)
+                {
+                    oper = oper.Where(x => x.Nazwa_operacji == "Polerowanie wykańczające");
+                }
+                else
+                {
+                    oper = oper.Where(x => x.Nazwa_operacji != "Polerowanie wykańczające");
+                }
+
+                foreach (var o in oper)
+                {
+                    string wst = "";
+
+                    if (o.NormaZatwierdzona.Contains("*")) wst = "*";
+                    if (!o.Nr_kol_operacji.Value.ToString().EndsWith("0")) wst = "A" + wst;  //operacja nie kończy się na zero - to alternatywa!!!
+
+                    //jeżeli wst zawiera A to drukuj pochyłą czcionką
+                    if (wst.Contains("A"))
+                    {
+                        gfx.DrawString(wst + o.OPERACJA, font3, XBrushes.Black,
+                   new XRect(240, st, 300, 22),
+                  XStringFormats.TopLeft);
+                    }
+                    //lub normalną jeżeli nie alternatywna
+                    else
+                    {
+
+                        gfx.DrawString(wst + o.OPERACJA, font2, XBrushes.Black,
+                   new XRect(240, st, 300, 22),
+                  XStringFormats.TopLeft);
+                    }
+
+
+                    im = bc1.Draw("OPER_" + o.Id_operacji.ToString(), 15, 2);
+                    xim = XImage.FromGdiPlusImage(im);
+                    gfx.DrawImage(xim, new Point(230, (int)(st + 15)));
+                    gfx.DrawString(((decimal)((decimal)m_.ilosc_szt[i] * 480m) / (decimal)o.IloscSztZm).ToString("####.#") + "/" + o.IloscSztZm.ToString(), font1, XBrushes.Black,
+               new XRect(240, st + 26, 300, 22),
+              XStringFormats.TopLeft);
+                    st = st + 55;
+                }
+
+
+                MemoryStream ms = new MemoryStream();
+                m_.rysunek.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+
+                Image n_rys = System.Drawing.Image.FromStream(ms);
+                double r_width = 150;
+                double ratio = r_width / n_rys.Width;
+                double r_height = (double)n_rys.Height * ratio;
+                XImage rys = XImage.FromGdiPlusImage(n_rys);
+
+                gfx.DrawImage(rys, 10, 130, r_width, r_height);
+                Image im1 = bc.Draw(m_.kod_zlecenia, 20, 3);
+                XImage xim1 = XImage.FromGdiPlusImage(im1);
+                gfx.DrawImage(xim1, new Point(15, 150 + (int)r_height));
+            }
+
+
+
+
+
+
+
+            // Save the document...
+            //string filename = "HelloWorld.pdf";
+            MemoryStream str = new MemoryStream();
+            document.Save(str, true);
+            Metki_PDF m_pdf = new Metki_PDF();
+            m_pdf.Nr_zlecenia = m_.nr_zlec_szlif.ToString();
+            m_pdf.Data_utw = DateTime.Now;
+            m_pdf.PDF = str.ToArray();
+            m_pdf.Ilosc = ilosc;
+            baza_metekDataContext db = new baza_metekDataContext();
+            db.Metki_PDFs.InsertOnSubmit(m_pdf);
+            db.SubmitChanges();
+
+
+            return str.ToArray();
+
+        }
+
+
+
+
+
 
         public static System.Drawing.Image GetImage(string nr_rys)
         {
@@ -564,27 +767,47 @@ namespace WebService_SharePoint
             if (nazwa_rys.Count() == 1)
             {
                 var n = nazwa_rys.Single(); nazwa_pliku = n;
+                if (string.IsNullOrEmpty(nazwa_pliku)) nazwa_pliku = "pusty";
             }
 
-
+            
             const int LOGON32_PROVIDER_DEFAULT = 0;
             //This parameter causes LogonUser to create a primary token.
             const int LOGON32_LOGON_INTERACTIVE = 2;
             SafeTokenHandle safeTokenHandle;
             //Call LogonUser to obtain a handle to an access token.
-            bool returnValue = LogonUser("tablet", "valvex.in", "tablet",
+            bool returnValue = LogonUser("metki", "valvex.in", "metki",
                LOGON32_LOGON_INTERACTIVE, LOGON32_PROVIDER_DEFAULT,
                 out safeTokenHandle);
+
             WindowsIdentity newId = new WindowsIdentity(safeTokenHandle.DangerousGetHandle());
             WindowsImpersonationContext impersonatedUser = newId.Impersonate();
 
 
+            string metki = @"\\192.168.1.110\bazy_access\Label View - katalogi\PCX\";
+            string plik = Path.Combine(metki, nazwa_pliku);
+            //string temp_file = Path.GetTempPath() + @"\" + Guid.NewGuid() + ".txt";
 
-            string metki = "\\\\192.168.1.110\\bazy_access\\Label View - katalogi\\PCX\\";
-            if (File.Exists(metki + nazwa_pliku))
+            if (File.Exists(plik))
             {
-                dd = System.Drawing.Image.FromFile(metki + nazwa_pliku);
+                //File.Copy(plik, temp_file);
+                    
+                Image imf = Image.FromFile(plik, false);         //     }
+
+
+               // File.Delete(temp_file);
+                return (Image)imf.Clone();
+                 
+
+                
             }
+             else
+            {
+
+                Service1 srv = new Service1();
+                //srv.SendAlert("krzysztof.misiewicz@valvex.com,dariusz.niemiec@valvex.com", "Błąd rysunku: " + nr_rys, "Nie znaleziono rysunku: " + plik   );
+            }
+             
             return dd;
         }
 

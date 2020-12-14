@@ -1,11 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 18.125" name="BAZA_RYS">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.25, 17.625" name="BAZA_RYS">
   <DataContextMoniker Name="/BAZA_RYSDataContext" />
   <nestedChildShapes>
-    <classShape Id="3e0ac68f-4669-4f18-9096-37f10281a7ec" absoluteBounds="7.5, 1.125, 2, 16.770408528645834">
+    <classShape Id="3e0ac68f-4669-4f18-9096-37f10281a7ec" absoluteBounds="9, 0.625, 2, 16.770408528645834">
       <DataClassMoniker Name="/BAZA_RYSDataContext/Kartoteka_rysunków_konstrukcyjnych" />
       <nestedChildShapes>
-        <elementListCompartment Id="f5938b5e-2afb-47c1-ac6c-161d9e8c7166" absoluteBounds="7.515, 1.585, 1.9700000000000002, 16.210408528645832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="f5938b5e-2afb-47c1-ac6c-161d9e8c7166" absoluteBounds="9.015, 1.085, 1.9700000000000002, 16.210408528645832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6959c776-fd27-4187-bfb6-184ad13acfab" absoluteBounds="6.75, 0.625, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/BAZA_RYSDataContext/Karta_zmian_norm_pracy_kopia_zła" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e0a250cc-32c2-434c-a7d6-b60ba5776ff2" absoluteBounds="6.765, 1.085, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

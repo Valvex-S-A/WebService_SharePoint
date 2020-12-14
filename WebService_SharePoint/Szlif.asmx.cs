@@ -118,7 +118,7 @@ namespace WebService_SharePoint
             if (zlec.Count() == 1)
             {
                 string kod = zlec.First().Nr_kodu.Trim();
-                string nzw = db1.SLOWNIK_1.Where(x => x.IMLITM.Trim() == zlec.First().Nr_kodu.Trim()).First().NAZWA;
+                string nzw = db1.SLOWNIK_1s.Where(x => x.IMLITM.Trim() == zlec.First().Nr_kodu.Trim()).First().NAZWA;
 
                 nazwa = kod + " - " + nzw;
             }

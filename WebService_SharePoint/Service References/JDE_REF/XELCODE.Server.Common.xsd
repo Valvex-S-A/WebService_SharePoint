@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/XELCODE.Server.Common" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/XELCODE.Server.Common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfRODomainDescriptor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RODomainDescriptor" nillable="true" type="tns:RODomainDescriptor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRODomainDescriptor" nillable="true" type="tns:ArrayOfRODomainDescriptor" />
+  <xs:complexType name="RODomainDescriptor">
+    <xs:sequence>
+      <xs:element name="Description" nillable="true" type="xs:string" />
+      <xs:element name="Id" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RODomainDescriptor" nillable="true" type="tns:RODomainDescriptor" />
+  <xs:complexType name="ROLoginDetails">
+    <xs:sequence>
+      <xs:element name="Branch" nillable="true" type="xs:string" />
+      <xs:element name="ForceLogOn" type="xs:boolean" />
+      <xs:element name="MobileApplicationName" nillable="true" type="xs:string" />
+      <xs:element name="MobileApplicationVersion" nillable="true" type="xs:string" />
+      <xs:element name="MobileDeviceId" nillable="true" type="xs:string" />
+      <xs:element name="MobileDeviceIp" nillable="true" type="xs:string" />
+      <xs:element name="MobileDeviceName" nillable="true" type="xs:string" />
+      <xs:element name="MobileDomain" nillable="true" type="xs:string" />
+      <xs:element name="MobileFrameworkVersion" nillable="true" type="xs:string" />
+      <xs:element name="MobilePassword" nillable="true" type="xs:string" />
+      <xs:element name="MobileTemplate" nillable="true" type="xs:string" />
+      <xs:element name="MobileUserCulture" nillable="true" type="xs:string" />
+      <xs:element name="MobileUserName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="ParameterKeys" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="ParameterValues" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element name="RecoverSession" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ROLoginDetails" nillable="true" type="tns:ROLoginDetails" />
+  <xs:simpleType name="ROAuthenticator">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Jde" />
+      <xs:enumeration value="Internal" />
+      <xs:enumeration value="None" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ROAuthenticator" nillable="true" type="tns:ROAuthenticator" />
+  <xs:complexType name="ROLoginResult">
+    <xs:sequence>
+      <xs:element name="Result" type="tns:ROLoginStatus" />
+      <xs:element name="SessionId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ROLoginResult" nillable="true" type="tns:ROLoginResult" />
+  <xs:simpleType name="ROLoginStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OK" />
+      <xs:enumeration value="CanRecoverSession" />
+      <xs:enumeration value="HaveToKillSession" />
+      <xs:enumeration value="Error" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ROLoginStatus" nillable="true" type="tns:ROLoginStatus" />
+  <xs:complexType name="RODummyClass">
+    <xs:sequence>
+      <xs:element name="SessionId" type="ser:guid" />
+      <xs:element name="roExceptionType" type="tns:ROExceptionType" />
+      <xs:element name="roLoginParam" type="tns:ROLoginParam" />
+      <xs:element name="roLoginPriviledge" type="tns:ROLoginPriviledge" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RODummyClass" nillable="true" type="tns:RODummyClass" />
+  <xs:simpleType name="ROExceptionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SESSION_ERROR" />
+      <xs:enumeration value="LOGIN_ERROR" />
+      <xs:enumeration value="BUSINESS_LOGIC_ERROR" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ROExceptionType" nillable="true" type="tns:ROExceptionType" />
+  <xs:simpleType name="ROLoginParam">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="WAREHOUSE" />
+      <xs:enumeration value="LANGUAGE" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ROLoginParam" nillable="true" type="tns:ROLoginParam" />
+  <xs:simpleType name="ROLoginPriviledge">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PRINTERS" />
+      <xs:enumeration value="LANGUAGE" />
+      <xs:enumeration value="LOCATION_MASK" />
+      <xs:enumeration value="LOCATION_SEPARATOR" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ROLoginPriviledge" nillable="true" type="tns:ROLoginPriviledge" />
+</xs:schema>
