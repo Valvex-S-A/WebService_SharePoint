@@ -51,22 +51,6 @@
       <Column Name="password" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.zlecenia_naglowki" Member="zlecenia_naglowkis">
-    <Type Name="zlecenia_naglowki">
-      <Column Name="Nr_zlecenia" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Opis" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Status" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="data_wymagana" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="BER" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Typ" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="LITM" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
-      <Column Name="Utworzony_przez" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Data_utworzenia" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
-      <Column Name="Autor_ost_mod" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Data_ost_mod" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
-      <Column Name="odpowiedzialny" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.transfer_blokada_nagl" Member="transfer_blokada_nagls">
     <Type Name="transfer_blokada_nagl">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -268,6 +252,25 @@
       <Column Name="il_zam_JMPROD" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="Weryfikacja" Type="System.String" DbType="NVarChar(9)" CanBeNull="true" />
       <Column Name="Status_ksiegowania" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.zlecenia_naglowki" Member="zlecenia_naglowkis">
+    <Type Name="zlecenia_naglowki">
+      <Column Name="Nr_zlecenia" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Opis" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="data_wymagana" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="BER" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Typ" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="LITM" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Utworzony_przez" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Data_utworzenia" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="Autor_ost_mod" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Data_ost_mod" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="odpowiedzialny" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IloscWyr" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Nr_zlec_prod" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="stanowisko_mont" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.Next_nr_doco" Method="Next_nr_doco">

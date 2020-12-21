@@ -246,22 +246,21 @@ namespace WebService_SharePoint
             dt = LINQToDataTable(zap);
             dt.TableName = "Spis";
 
-            if (zap.Count() == 1)
-            {
-                var kzap = (from c in db.INW_SPIs
-                            where c.ID_ZAPISU == zap.First().ID_ZAPISU
-                            select c).Take(1);
+
+            var kzap = (from c in db.INW_SPIs
+                        where c.ID_ZAPISU == zap.First().ID_ZAPISU
+                        select c);
 
 
                 foreach (var z in kzap)
                 {
                     z.KOMENTARZ
-                        = "DO spr. przez " + nr_komisji;
+                        = "spr. przez " + nr_komisji;
 
 
                 }
                 db.SubmitChanges();
-            }
+             
             return dt;
         }
 
@@ -431,11 +430,11 @@ namespace WebService_SharePoint
         public string[] INW_KOMUNIKATY(string nr_kom)
         {
             DB2DataContext db = new DB2DataContext();
-            var kom = from c in db.INW_KOMUNIKATies
+            var kom = (from c in db.INW_KOMUNIKATies
                       where c.PRZECZYTANY == false && c.NR_KOMISJI == nr_kom
-                      select c.TRESC;
+                      select c.TRESC).ToArray();
 
-            string[] kom_s = kom.ToArray();
+            
 
 
             var koms = from c in db.INW_KOMUNIKATies
@@ -451,7 +450,7 @@ namespace WebService_SharePoint
 
 
 
-            return kom_s;
+            return kom;
         }
 
 
@@ -4098,7 +4097,7 @@ namespace WebService_SharePoint
             //tekst = tekst.Replace("Ż", "Z").Replace("Ó", "O").Replace("Ł", "L").Replace("Ć", "C").Replace("Ś", "S").Replace("Ą", "A").Replace("Ź", "Z").Replace("Ń", "N").Replace("Ę", "E");
             if (tytul == "INW!!!")
             {
-                tekst = "^XA^LL1350^CI28^CF0,290^FS^FS^CF0,50^FO20,40^TBN,700,700^FD%text%^FS^FO50,30^GB700,1,3^FS^BY3,2,80^FS^XZ";
+                tekst = "^XA^LL1350^CI28^CF0,290^FS^FS^CF0,30^FO20,40^TBN,700,700^FD%text%^FS^FO50,30^GB700,1,3^FS^BY3,2,80^FS^XZ";
                 tekst = tekst.Replace("%text%", text);
             }
 

@@ -531,6 +531,196 @@
       <Column Name="LILOCN" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="PRODDTA.F4801" Member="F4801s">
+    <Type Name="F4801">
+      <Column Name="WADCTO" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="WADOCO" Type="System.Double" DbType="Float NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="WASFXO" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="WARCTO" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="WARORN" Type="System.String" DbType="NChar(8)" CanBeNull="true" />
+      <Column Name="WALNID" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAPTWO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAPARS" Type="System.String" DbType="NChar(8)" CanBeNull="true" />
+      <Column Name="WATYPS" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="WAPRTS" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="WADL01" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="WASTCM" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="WACO" Type="System.String" DbType="NChar(5)" CanBeNull="true" />
+      <Column Name="WAMCU" Type="System.String" DbType="NChar(12)" CanBeNull="true" />
+      <Column Name="WAMMCU" Type="System.String" DbType="NChar(12)" CanBeNull="true" />
+      <Column Name="WALOCN" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="WAAISL" Type="System.String" DbType="NChar(8)" CanBeNull="true" />
+      <Column Name="WABIN" Type="System.String" DbType="NChar(8)" CanBeNull="true" />
+      <Column Name="WASRST" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="WADCG" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="WASUB" Type="System.String" DbType="NChar(8)" CanBeNull="true" />
+      <Column Name="WAAN8" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAANO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAANSA" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAANPA" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAANP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WADPL" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="WAANT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WANAN8" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WATRDJ" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="WASTRT" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="WADRQJ" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="WASTRX" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="WADAP" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="WADAT" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="WAPPDT" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="WAWR01" Type="System.String" DbType="NChar(4)" CanBeNull="true" />
+      <Column Name="WAWR02" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="WAWR03" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="WAWR04" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="WAWR05" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="WAWR06" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="WAWR07" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="WAWR08" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="WAWR09" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="WAWR10" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="WAVR01" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="WAVR02" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="WAAMTO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WASETC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WABRT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAPAYT" Type="System.String" DbType="NChar(5)" CanBeNull="true" />
+      <Column Name="WAAMTC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAHRSO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAHRSC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAAMTA" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAHRSA" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAITM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAAITM" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="WALITM" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="WANUMB" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAAPID" Type="System.String" DbType="NChar(12)" CanBeNull="true" />
+      <Column Name="WAUORG" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WASOBK" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WASOCN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WASOQS" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAQTYT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAUOM" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="WASHNO" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="WAPBTM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WATBM" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="WATRT" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="WASHTY" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="WAPEC" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="WAPPFG" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="WABM" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="WARTG" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="WASPRT" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="WAUNCD" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="WAINDC" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="WARESC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAMOH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WATDT" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="WAPOU" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAPC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WALTLV" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WALTCM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WACTS1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WALOTN" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="WALOTP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WALOTG" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="WARAT1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WARAT2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WADCT" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="WASBLI" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="WARKCO" Type="System.String" DbType="NChar(5)" CanBeNull="true" />
+      <Column Name="WABREV" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="WARREV" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="WADRWC" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="WARTCH" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="WAPNRQ" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="WAREAS" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="WAPHSE" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="WAXDSP" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="WABOMC" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="WAURCD" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="WAURDT" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="WAURAT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAURAB" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAURRF" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="WAUSER" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="WAPID" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="WAJOBN" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="WAUPMJ" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="WATDAY" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAAAID" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WANTST" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="WAXRTO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAESDN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAACDN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WASAID" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAMPOS" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAAPRT" Type="System.String" DbType="NChar(3)" CanBeNull="true" />
+      <Column Name="WAAMLC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAAMMC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAAMOT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WALBAM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WAMTAM" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="PRODDTA.F41021" Member="F41021s">
+    <Type Name="F41021">
+      <Column Name="LIITM" Type="System.Double" DbType="Float NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LIMCU" Type="System.String" DbType="NChar(12) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LILOCN" Type="System.String" DbType="NChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LILOTN" Type="System.String" DbType="NChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LIPBIN" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="LIGLPT" Type="System.String" DbType="NChar(4)" CanBeNull="true" />
+      <Column Name="LILOTS" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="LILRCJ" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="LIPQOH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIPBCK" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIPREQ" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIQWBO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIOT1P" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIOT2P" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIOT1A" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIHCOM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIPCOM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIFCOM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIFUN1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIQOWO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIQTTR" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIQTIN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIQONL" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIQTRI" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIQTRO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LINCDJ" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="LIQTY1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIQTY2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIURAB" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIURRF" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="LIURAT" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIURCD" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="LIJOBN" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="LIPID" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="LIUPMJ" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="LIUSER" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="LITDAY" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIURDT" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="LIQTO1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIQTO2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIHCMS" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIPJCM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LIPJDM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LISCMS" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LISIBW" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LISOBW" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LISQOH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LISQWO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LISREQ" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LISWHC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LISWSC" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="LICHDF" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="LIWPDF" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="LICFGSID" Type="System.String" DbType="NChar(32)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.Koszt_Indeksu" Method="Koszt_Indeksu">
     <Parameter Name="IMITM" Parameter="iMITM" Type="System.Int32" DbType="Int" />
     <ElementType Name="Koszt_IndeksuResult">

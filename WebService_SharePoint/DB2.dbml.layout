@@ -14,7 +14,7 @@
         <elementListCompartment Id="90e60020-8743-40e1-ab49-0a20bfb91a77" absoluteBounds="0.76500000000000012, 5.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="7d4bb233-0b53-4e0f-9b22-43bd1275870d" isExpanded="false" absoluteBounds="0.5, 1.75, 2, 0.45">
+    <classShape Id="7d4bb233-0b53-4e0f-9b22-43bd1275870d" absoluteBounds="0.5, 1.75, 2, 3.3093082682291666">
       <DataClassMoniker Name="/DB2DataContext/INW_SPI" />
       <nestedChildShapes>
         <elementListCompartment Id="57418d43-abdb-4903-abef-16eb196256c4" absoluteBounds="0.51499999999999968, 2.21, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
@@ -80,10 +80,10 @@
         <elementListCompartment Id="8e0e0f45-c2e6-4036-b0e4-4aa18375f6a8" absoluteBounds="5.0150000000000006, 1.46, 1.9700000000000002, 4.672322591145833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="cecf05d8-2696-45ac-af28-ceb043dc08f1" isExpanded="false" absoluteBounds="0.5, 3.375, 2, 0.45">
+    <classShape Id="cecf05d8-2696-45ac-af28-ceb043dc08f1" isExpanded="false" absoluteBounds="5.5, 2.25, 2, 0.45">
       <DataClassMoniker Name="/DB2DataContext/IPO_INDEKSY_DO_WYPROSTOWANIA" />
       <nestedChildShapes>
-        <elementListCompartment Id="ab4c9f9d-fe07-4936-9c3b-5455ed6ea2cc" absoluteBounds="0.515, 3.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="ab4c9f9d-fe07-4936-9c3b-5455ed6ea2cc" absoluteBounds="5.515, 2.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="c7cc0979-c40e-4035-a391-ac799a0d756e" isExpanded="false" absoluteBounds="2.75, 5.5, 2, 0.45">
@@ -110,10 +110,10 @@
         <elementListCompartment Id="7841b048-e0ef-4e27-8f8b-48ea381e0282" absoluteBounds="0.51500000000000012, 6.46, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="e9aac151-73c2-4ec0-a70b-277e21424bd7" isExpanded="false" absoluteBounds="0.625, 2.625, 2, 0.45">
+    <classShape Id="e9aac151-73c2-4ec0-a70b-277e21424bd7" isExpanded="false" absoluteBounds="2.75, 2.375, 2, 0.45">
       <DataClassMoniker Name="/DB2DataContext/IPO_autoprodukcja" />
       <nestedChildShapes>
-        <elementListCompartment Id="91040b8c-f648-4aac-8d3c-97b9d502c6fc" absoluteBounds="0.64000000000000012, 3.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="91040b8c-f648-4aac-8d3c-97b9d502c6fc" absoluteBounds="2.765, 2.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="1480ae6e-fdf8-4d75-a36f-9c4116da43e5" isExpanded="false" absoluteBounds="4.75, 0.5, 2, 0.45">
@@ -188,10 +188,10 @@
         <elementListCompartment Id="604a3540-a28a-45ef-b212-d641e1c84b63" absoluteBounds="5.765, 5.335, 1.9700000000000002, 5.4415283203125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="64c6673e-a8a5-4d7f-b755-346f9004bbec" isExpanded="false" absoluteBounds="1, 4.375, 2, 0.45">
+    <classShape Id="64c6673e-a8a5-4d7f-b755-346f9004bbec" isExpanded="false" absoluteBounds="3.5, 3.875, 2, 0.45">
       <DataClassMoniker Name="/DB2DataContext/IPO_LOG_OPERACJI_ZEWN" />
       <nestedChildShapes>
-        <elementListCompartment Id="1537e45c-dfee-4898-8441-360c7639a29a" absoluteBounds="1.0150000000000001, 4.835, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="1537e45c-dfee-4898-8441-360c7639a29a" absoluteBounds="3.515, 4.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="ac9c9a96-6b63-427f-b6b3-f9f80a83f58f" isExpanded="false" absoluteBounds="5.625, 6.75, 2, 0.45">

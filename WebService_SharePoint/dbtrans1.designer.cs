@@ -36,9 +36,6 @@ namespace WebService_SharePoint
     partial void Insertuzytkownicy(uzytkownicy instance);
     partial void Updateuzytkownicy(uzytkownicy instance);
     partial void Deleteuzytkownicy(uzytkownicy instance);
-    partial void Insertzlecenia_naglowki(zlecenia_naglowki instance);
-    partial void Updatezlecenia_naglowki(zlecenia_naglowki instance);
-    partial void Deletezlecenia_naglowki(zlecenia_naglowki instance);
     partial void Inserttransfer_blokada_nagl(transfer_blokada_nagl instance);
     partial void Updatetransfer_blokada_nagl(transfer_blokada_nagl instance);
     partial void Deletetransfer_blokada_nagl(transfer_blokada_nagl instance);
@@ -72,6 +69,9 @@ namespace WebService_SharePoint
     partial void InsertDziennik_operacji(Dziennik_operacji instance);
     partial void UpdateDziennik_operacji(Dziennik_operacji instance);
     partial void DeleteDziennik_operacji(Dziennik_operacji instance);
+    partial void Insertzlecenia_naglowki(zlecenia_naglowki instance);
+    partial void Updatezlecenia_naglowki(zlecenia_naglowki instance);
+    partial void Deletezlecenia_naglowki(zlecenia_naglowki instance);
     #endregion
 		
 		public dbtrans1DataContext() : 
@@ -125,14 +125,6 @@ namespace WebService_SharePoint
 			get
 			{
 				return this.GetTable<uzytkownicy>();
-			}
-		}
-		
-		public System.Data.Linq.Table<zlecenia_naglowki> zlecenia_naglowkis
-		{
-			get
-			{
-				return this.GetTable<zlecenia_naglowki>();
 			}
 		}
 		
@@ -237,6 +229,14 @@ namespace WebService_SharePoint
 			get
 			{
 				return this.GetTable<Zlecenia_szczegoly_SL>();
+			}
+		}
+		
+		public System.Data.Linq.Table<zlecenia_naglowki> zlecenia_naglowkis
+		{
+			get
+			{
+				return this.GetTable<zlecenia_naglowki>();
 			}
 		}
 		
@@ -1154,332 +1154,6 @@ namespace WebService_SharePoint
 					this._password = value;
 					this.SendPropertyChanged("password");
 					this.OnpasswordChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.zlecenia_naglowki")]
-	public partial class zlecenia_naglowki : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Nr_zlecenia;
-		
-		private string _Opis;
-		
-		private string _Status;
-		
-		private System.DateTime _data_wymagana;
-		
-		private System.Nullable<bool> _BER;
-		
-		private string _Typ;
-		
-		private string _LITM;
-		
-		private int _Utworzony_przez;
-		
-		private System.DateTime _Data_utworzenia;
-		
-		private int _Autor_ost_mod;
-		
-		private System.DateTime _Data_ost_mod;
-		
-		private System.Nullable<int> _odpowiedzialny;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnNr_zleceniaChanging(int value);
-    partial void OnNr_zleceniaChanged();
-    partial void OnOpisChanging(string value);
-    partial void OnOpisChanged();
-    partial void OnStatusChanging(string value);
-    partial void OnStatusChanged();
-    partial void Ondata_wymaganaChanging(System.DateTime value);
-    partial void Ondata_wymaganaChanged();
-    partial void OnBERChanging(System.Nullable<bool> value);
-    partial void OnBERChanged();
-    partial void OnTypChanging(string value);
-    partial void OnTypChanged();
-    partial void OnLITMChanging(string value);
-    partial void OnLITMChanged();
-    partial void OnUtworzony_przezChanging(int value);
-    partial void OnUtworzony_przezChanged();
-    partial void OnData_utworzeniaChanging(System.DateTime value);
-    partial void OnData_utworzeniaChanged();
-    partial void OnAutor_ost_modChanging(int value);
-    partial void OnAutor_ost_modChanged();
-    partial void OnData_ost_modChanging(System.DateTime value);
-    partial void OnData_ost_modChanged();
-    partial void OnodpowiedzialnyChanging(System.Nullable<int> value);
-    partial void OnodpowiedzialnyChanged();
-    #endregion
-		
-		public zlecenia_naglowki()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nr_zlecenia", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Nr_zlecenia
-		{
-			get
-			{
-				return this._Nr_zlecenia;
-			}
-			set
-			{
-				if ((this._Nr_zlecenia != value))
-				{
-					this.OnNr_zleceniaChanging(value);
-					this.SendPropertyChanging();
-					this._Nr_zlecenia = value;
-					this.SendPropertyChanged("Nr_zlecenia");
-					this.OnNr_zleceniaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Opis", DbType="VarChar(MAX)")]
-		public string Opis
-		{
-			get
-			{
-				return this._Opis;
-			}
-			set
-			{
-				if ((this._Opis != value))
-				{
-					this.OnOpisChanging(value);
-					this.SendPropertyChanging();
-					this._Opis = value;
-					this.SendPropertyChanged("Opis");
-					this.OnOpisChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NChar(30) NOT NULL", CanBeNull=false)]
-		public string Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this.OnStatusChanging(value);
-					this.SendPropertyChanging();
-					this._Status = value;
-					this.SendPropertyChanged("Status");
-					this.OnStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data_wymagana", DbType="Date NOT NULL")]
-		public System.DateTime data_wymagana
-		{
-			get
-			{
-				return this._data_wymagana;
-			}
-			set
-			{
-				if ((this._data_wymagana != value))
-				{
-					this.Ondata_wymaganaChanging(value);
-					this.SendPropertyChanging();
-					this._data_wymagana = value;
-					this.SendPropertyChanged("data_wymagana");
-					this.Ondata_wymaganaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BER", DbType="Bit")]
-		public System.Nullable<bool> BER
-		{
-			get
-			{
-				return this._BER;
-			}
-			set
-			{
-				if ((this._BER != value))
-				{
-					this.OnBERChanging(value);
-					this.SendPropertyChanging();
-					this._BER = value;
-					this.SendPropertyChanged("BER");
-					this.OnBERChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Typ", DbType="NChar(30) NOT NULL", CanBeNull=false)]
-		public string Typ
-		{
-			get
-			{
-				return this._Typ;
-			}
-			set
-			{
-				if ((this._Typ != value))
-				{
-					this.OnTypChanging(value);
-					this.SendPropertyChanging();
-					this._Typ = value;
-					this.SendPropertyChanged("Typ");
-					this.OnTypChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LITM", DbType="NChar(30)")]
-		public string LITM
-		{
-			get
-			{
-				return this._LITM;
-			}
-			set
-			{
-				if ((this._LITM != value))
-				{
-					this.OnLITMChanging(value);
-					this.SendPropertyChanging();
-					this._LITM = value;
-					this.SendPropertyChanged("LITM");
-					this.OnLITMChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Utworzony_przez", DbType="Int NOT NULL")]
-		public int Utworzony_przez
-		{
-			get
-			{
-				return this._Utworzony_przez;
-			}
-			set
-			{
-				if ((this._Utworzony_przez != value))
-				{
-					this.OnUtworzony_przezChanging(value);
-					this.SendPropertyChanging();
-					this._Utworzony_przez = value;
-					this.SendPropertyChanged("Utworzony_przez");
-					this.OnUtworzony_przezChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data_utworzenia", DbType="DateTime2 NOT NULL")]
-		public System.DateTime Data_utworzenia
-		{
-			get
-			{
-				return this._Data_utworzenia;
-			}
-			set
-			{
-				if ((this._Data_utworzenia != value))
-				{
-					this.OnData_utworzeniaChanging(value);
-					this.SendPropertyChanging();
-					this._Data_utworzenia = value;
-					this.SendPropertyChanged("Data_utworzenia");
-					this.OnData_utworzeniaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Autor_ost_mod", DbType="Int NOT NULL")]
-		public int Autor_ost_mod
-		{
-			get
-			{
-				return this._Autor_ost_mod;
-			}
-			set
-			{
-				if ((this._Autor_ost_mod != value))
-				{
-					this.OnAutor_ost_modChanging(value);
-					this.SendPropertyChanging();
-					this._Autor_ost_mod = value;
-					this.SendPropertyChanged("Autor_ost_mod");
-					this.OnAutor_ost_modChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data_ost_mod", DbType="DateTime2 NOT NULL")]
-		public System.DateTime Data_ost_mod
-		{
-			get
-			{
-				return this._Data_ost_mod;
-			}
-			set
-			{
-				if ((this._Data_ost_mod != value))
-				{
-					this.OnData_ost_modChanging(value);
-					this.SendPropertyChanging();
-					this._Data_ost_mod = value;
-					this.SendPropertyChanged("Data_ost_mod");
-					this.OnData_ost_modChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_odpowiedzialny", DbType="Int")]
-		public System.Nullable<int> odpowiedzialny
-		{
-			get
-			{
-				return this._odpowiedzialny;
-			}
-			set
-			{
-				if ((this._odpowiedzialny != value))
-				{
-					this.OnodpowiedzialnyChanging(value);
-					this.SendPropertyChanging();
-					this._odpowiedzialny = value;
-					this.SendPropertyChanged("odpowiedzialny");
-					this.OnodpowiedzialnyChanged();
 				}
 			}
 		}
@@ -5243,6 +4917,404 @@ namespace WebService_SharePoint
 				{
 					this._Status_ksiegowania = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.zlecenia_naglowki")]
+	public partial class zlecenia_naglowki : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Nr_zlecenia;
+		
+		private string _Opis;
+		
+		private string _Status;
+		
+		private System.DateTime _data_wymagana;
+		
+		private System.Nullable<bool> _BER;
+		
+		private string _Typ;
+		
+		private string _LITM;
+		
+		private int _Utworzony_przez;
+		
+		private System.DateTime _Data_utworzenia;
+		
+		private int _Autor_ost_mod;
+		
+		private System.DateTime _Data_ost_mod;
+		
+		private System.Nullable<int> _odpowiedzialny;
+		
+		private System.Nullable<double> _IloscWyr;
+		
+		private System.Nullable<int> _Nr_zlec_prod;
+		
+		private string _stanowisko_mont;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnNr_zleceniaChanging(int value);
+    partial void OnNr_zleceniaChanged();
+    partial void OnOpisChanging(string value);
+    partial void OnOpisChanged();
+    partial void OnStatusChanging(string value);
+    partial void OnStatusChanged();
+    partial void Ondata_wymaganaChanging(System.DateTime value);
+    partial void Ondata_wymaganaChanged();
+    partial void OnBERChanging(System.Nullable<bool> value);
+    partial void OnBERChanged();
+    partial void OnTypChanging(string value);
+    partial void OnTypChanged();
+    partial void OnLITMChanging(string value);
+    partial void OnLITMChanged();
+    partial void OnUtworzony_przezChanging(int value);
+    partial void OnUtworzony_przezChanged();
+    partial void OnData_utworzeniaChanging(System.DateTime value);
+    partial void OnData_utworzeniaChanged();
+    partial void OnAutor_ost_modChanging(int value);
+    partial void OnAutor_ost_modChanged();
+    partial void OnData_ost_modChanging(System.DateTime value);
+    partial void OnData_ost_modChanged();
+    partial void OnodpowiedzialnyChanging(System.Nullable<int> value);
+    partial void OnodpowiedzialnyChanged();
+    partial void OnIloscWyrChanging(System.Nullable<double> value);
+    partial void OnIloscWyrChanged();
+    partial void OnNr_zlec_prodChanging(System.Nullable<int> value);
+    partial void OnNr_zlec_prodChanged();
+    partial void Onstanowisko_montChanging(string value);
+    partial void Onstanowisko_montChanged();
+    #endregion
+		
+		public zlecenia_naglowki()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nr_zlecenia", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Nr_zlecenia
+		{
+			get
+			{
+				return this._Nr_zlecenia;
+			}
+			set
+			{
+				if ((this._Nr_zlecenia != value))
+				{
+					this.OnNr_zleceniaChanging(value);
+					this.SendPropertyChanging();
+					this._Nr_zlecenia = value;
+					this.SendPropertyChanged("Nr_zlecenia");
+					this.OnNr_zleceniaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Opis", DbType="VarChar(MAX)")]
+		public string Opis
+		{
+			get
+			{
+				return this._Opis;
+			}
+			set
+			{
+				if ((this._Opis != value))
+				{
+					this.OnOpisChanging(value);
+					this.SendPropertyChanging();
+					this._Opis = value;
+					this.SendPropertyChanged("Opis");
+					this.OnOpisChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NChar(30) NOT NULL", CanBeNull=false)]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data_wymagana", DbType="Date NOT NULL")]
+		public System.DateTime data_wymagana
+		{
+			get
+			{
+				return this._data_wymagana;
+			}
+			set
+			{
+				if ((this._data_wymagana != value))
+				{
+					this.Ondata_wymaganaChanging(value);
+					this.SendPropertyChanging();
+					this._data_wymagana = value;
+					this.SendPropertyChanged("data_wymagana");
+					this.Ondata_wymaganaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BER", DbType="Bit")]
+		public System.Nullable<bool> BER
+		{
+			get
+			{
+				return this._BER;
+			}
+			set
+			{
+				if ((this._BER != value))
+				{
+					this.OnBERChanging(value);
+					this.SendPropertyChanging();
+					this._BER = value;
+					this.SendPropertyChanged("BER");
+					this.OnBERChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Typ", DbType="NChar(30) NOT NULL", CanBeNull=false)]
+		public string Typ
+		{
+			get
+			{
+				return this._Typ;
+			}
+			set
+			{
+				if ((this._Typ != value))
+				{
+					this.OnTypChanging(value);
+					this.SendPropertyChanging();
+					this._Typ = value;
+					this.SendPropertyChanged("Typ");
+					this.OnTypChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LITM", DbType="NChar(30)")]
+		public string LITM
+		{
+			get
+			{
+				return this._LITM;
+			}
+			set
+			{
+				if ((this._LITM != value))
+				{
+					this.OnLITMChanging(value);
+					this.SendPropertyChanging();
+					this._LITM = value;
+					this.SendPropertyChanged("LITM");
+					this.OnLITMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Utworzony_przez", DbType="Int NOT NULL")]
+		public int Utworzony_przez
+		{
+			get
+			{
+				return this._Utworzony_przez;
+			}
+			set
+			{
+				if ((this._Utworzony_przez != value))
+				{
+					this.OnUtworzony_przezChanging(value);
+					this.SendPropertyChanging();
+					this._Utworzony_przez = value;
+					this.SendPropertyChanged("Utworzony_przez");
+					this.OnUtworzony_przezChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data_utworzenia", DbType="DateTime2 NOT NULL")]
+		public System.DateTime Data_utworzenia
+		{
+			get
+			{
+				return this._Data_utworzenia;
+			}
+			set
+			{
+				if ((this._Data_utworzenia != value))
+				{
+					this.OnData_utworzeniaChanging(value);
+					this.SendPropertyChanging();
+					this._Data_utworzenia = value;
+					this.SendPropertyChanged("Data_utworzenia");
+					this.OnData_utworzeniaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Autor_ost_mod", DbType="Int NOT NULL")]
+		public int Autor_ost_mod
+		{
+			get
+			{
+				return this._Autor_ost_mod;
+			}
+			set
+			{
+				if ((this._Autor_ost_mod != value))
+				{
+					this.OnAutor_ost_modChanging(value);
+					this.SendPropertyChanging();
+					this._Autor_ost_mod = value;
+					this.SendPropertyChanged("Autor_ost_mod");
+					this.OnAutor_ost_modChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data_ost_mod", DbType="DateTime2 NOT NULL")]
+		public System.DateTime Data_ost_mod
+		{
+			get
+			{
+				return this._Data_ost_mod;
+			}
+			set
+			{
+				if ((this._Data_ost_mod != value))
+				{
+					this.OnData_ost_modChanging(value);
+					this.SendPropertyChanging();
+					this._Data_ost_mod = value;
+					this.SendPropertyChanged("Data_ost_mod");
+					this.OnData_ost_modChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_odpowiedzialny", DbType="Int")]
+		public System.Nullable<int> odpowiedzialny
+		{
+			get
+			{
+				return this._odpowiedzialny;
+			}
+			set
+			{
+				if ((this._odpowiedzialny != value))
+				{
+					this.OnodpowiedzialnyChanging(value);
+					this.SendPropertyChanging();
+					this._odpowiedzialny = value;
+					this.SendPropertyChanged("odpowiedzialny");
+					this.OnodpowiedzialnyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IloscWyr", DbType="Float")]
+		public System.Nullable<double> IloscWyr
+		{
+			get
+			{
+				return this._IloscWyr;
+			}
+			set
+			{
+				if ((this._IloscWyr != value))
+				{
+					this.OnIloscWyrChanging(value);
+					this.SendPropertyChanging();
+					this._IloscWyr = value;
+					this.SendPropertyChanged("IloscWyr");
+					this.OnIloscWyrChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nr_zlec_prod", DbType="Int")]
+		public System.Nullable<int> Nr_zlec_prod
+		{
+			get
+			{
+				return this._Nr_zlec_prod;
+			}
+			set
+			{
+				if ((this._Nr_zlec_prod != value))
+				{
+					this.OnNr_zlec_prodChanging(value);
+					this.SendPropertyChanging();
+					this._Nr_zlec_prod = value;
+					this.SendPropertyChanged("Nr_zlec_prod");
+					this.OnNr_zlec_prodChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_stanowisko_mont", DbType="NVarChar(5)")]
+		public string stanowisko_mont
+		{
+			get
+			{
+				return this._stanowisko_mont;
+			}
+			set
+			{
+				if ((this._stanowisko_mont != value))
+				{
+					this.Onstanowisko_montChanging(value);
+					this.SendPropertyChanging();
+					this._stanowisko_mont = value;
+					this.SendPropertyChanged("stanowisko_mont");
+					this.Onstanowisko_montChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

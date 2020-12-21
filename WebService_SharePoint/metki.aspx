@@ -19,16 +19,16 @@
             <div class="jumbotron">
 
 
-                <asp:RadioButton ID="RadioButton1" runat="server" Font-Size="X-Large" GroupName="druk" Text="Drukarka kooperacja" />
+                <asp:RadioButton ID="RadioButton1" runat="server" Font-Size="X-Large" GroupName="druk" Text="DRUKARKA KOLORY" />
                 <br />
                 <br />
-                <asp:RadioButton ID="RadioButton2" runat="server" Font-Size="X-Large" GroupName="druk" Text="Drukarka H7" />
+                <asp:RadioButton ID="RadioButton2" runat="server" Font-Size="X-Large" GroupName="druk" Text="DRUKARKA KJ" />
                 <br />
                 <br />
-                <asp:RadioButton ID="RadioButton3" runat="server" Font-Size="X-Large" GroupName="druk" Text="Drukarka M.techn." />
+                <asp:RadioButton ID="RadioButton3" runat="server" Font-Size="X-Large" GroupName="druk" Text="DRUKARKA MAG.TECHNICZNY" />
                 <br />
                 <br />
-                <asp:RadioButton ID="RadioButton4" runat="server" Font-Size="X-Large" GroupName="druk" Text="Drukarka Koop Nowa" />
+                <asp:RadioButton ID="RadioButton4" runat="server" Font-Size="X-Large" GroupName="druk" Text="DRUKARKA KOOPERACJA" />
                 <br />
                 <br />
             </div>

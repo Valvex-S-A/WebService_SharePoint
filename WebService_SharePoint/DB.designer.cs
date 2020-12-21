@@ -48,6 +48,12 @@ namespace WebService_SharePoint
     partial void InsertF00022(F00022 instance);
     partial void UpdateF00022(F00022 instance);
     partial void DeleteF00022(F00022 instance);
+    partial void InsertF4801(F4801 instance);
+    partial void UpdateF4801(F4801 instance);
+    partial void DeleteF4801(F4801 instance);
+    partial void InsertF41021(F41021 instance);
+    partial void UpdateF41021(F41021 instance);
+    partial void DeleteF41021(F41021 instance);
     #endregion
 		
 		public DBDataContext() : 
@@ -253,6 +259,22 @@ namespace WebService_SharePoint
 			get
 			{
 				return this.GetTable<IPO_MAGAZYN_PODSTAWOWY_PW1>();
+			}
+		}
+		
+		public System.Data.Linq.Table<F4801> F4801s
+		{
+			get
+			{
+				return this.GetTable<F4801>();
+			}
+		}
+		
+		public System.Data.Linq.Table<F41021> F41021s
+		{
+			get
+			{
+				return this.GetTable<F41021>();
 			}
 		}
 		
@@ -10562,6 +10584,4450 @@ namespace WebService_SharePoint
 				{
 					this._LILOCN = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="PRODDTA.F4801")]
+	public partial class F4801 : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _WADCTO;
+		
+		private double _WADOCO;
+		
+		private string _WASFXO;
+		
+		private string _WARCTO;
+		
+		private string _WARORN;
+		
+		private System.Nullable<double> _WALNID;
+		
+		private System.Nullable<double> _WAPTWO;
+		
+		private string _WAPARS;
+		
+		private System.Nullable<char> _WATYPS;
+		
+		private System.Nullable<char> _WAPRTS;
+		
+		private string _WADL01;
+		
+		private string _WASTCM;
+		
+		private string _WACO;
+		
+		private string _WAMCU;
+		
+		private string _WAMMCU;
+		
+		private string _WALOCN;
+		
+		private string _WAAISL;
+		
+		private string _WABIN;
+		
+		private string _WASRST;
+		
+		private System.Nullable<decimal> _WADCG;
+		
+		private string _WASUB;
+		
+		private System.Nullable<double> _WAAN8;
+		
+		private System.Nullable<double> _WAANO;
+		
+		private System.Nullable<double> _WAANSA;
+		
+		private System.Nullable<double> _WAANPA;
+		
+		private System.Nullable<double> _WAANP;
+		
+		private System.Nullable<decimal> _WADPL;
+		
+		private System.Nullable<double> _WAANT;
+		
+		private System.Nullable<double> _WANAN8;
+		
+		private System.Nullable<decimal> _WATRDJ;
+		
+		private System.Nullable<decimal> _WASTRT;
+		
+		private System.Nullable<decimal> _WADRQJ;
+		
+		private System.Nullable<decimal> _WASTRX;
+		
+		private System.Nullable<decimal> _WADAP;
+		
+		private System.Nullable<decimal> _WADAT;
+		
+		private System.Nullable<decimal> _WAPPDT;
+		
+		private string _WAWR01;
+		
+		private string _WAWR02;
+		
+		private string _WAWR03;
+		
+		private string _WAWR04;
+		
+		private string _WAWR05;
+		
+		private string _WAWR06;
+		
+		private string _WAWR07;
+		
+		private string _WAWR08;
+		
+		private string _WAWR09;
+		
+		private string _WAWR10;
+		
+		private string _WAVR01;
+		
+		private string _WAVR02;
+		
+		private System.Nullable<double> _WAAMTO;
+		
+		private System.Nullable<double> _WASETC;
+		
+		private System.Nullable<double> _WABRT;
+		
+		private string _WAPAYT;
+		
+		private System.Nullable<double> _WAAMTC;
+		
+		private System.Nullable<double> _WAHRSO;
+		
+		private System.Nullable<double> _WAHRSC;
+		
+		private System.Nullable<double> _WAAMTA;
+		
+		private System.Nullable<double> _WAHRSA;
+		
+		private System.Nullable<double> _WAITM;
+		
+		private string _WAAITM;
+		
+		private string _WALITM;
+		
+		private System.Nullable<double> _WANUMB;
+		
+		private string _WAAPID;
+		
+		private System.Nullable<double> _WAUORG;
+		
+		private System.Nullable<double> _WASOBK;
+		
+		private System.Nullable<double> _WASOCN;
+		
+		private System.Nullable<double> _WASOQS;
+		
+		private System.Nullable<double> _WAQTYT;
+		
+		private string _WAUOM;
+		
+		private string _WASHNO;
+		
+		private System.Nullable<double> _WAPBTM;
+		
+		private string _WATBM;
+		
+		private string _WATRT;
+		
+		private System.Nullable<char> _WASHTY;
+		
+		private System.Nullable<char> _WAPEC;
+		
+		private System.Nullable<char> _WAPPFG;
+		
+		private System.Nullable<char> _WABM;
+		
+		private System.Nullable<char> _WARTG;
+		
+		private System.Nullable<char> _WASPRT;
+		
+		private System.Nullable<char> _WAUNCD;
+		
+		private System.Nullable<char> _WAINDC;
+		
+		private System.Nullable<double> _WARESC;
+		
+		private System.Nullable<double> _WAMOH;
+		
+		private System.Nullable<decimal> _WATDT;
+		
+		private System.Nullable<double> _WAPOU;
+		
+		private System.Nullable<double> _WAPC;
+		
+		private System.Nullable<double> _WALTLV;
+		
+		private System.Nullable<double> _WALTCM;
+		
+		private System.Nullable<double> _WACTS1;
+		
+		private string _WALOTN;
+		
+		private System.Nullable<double> _WALOTP;
+		
+		private string _WALOTG;
+		
+		private System.Nullable<double> _WARAT1;
+		
+		private System.Nullable<double> _WARAT2;
+		
+		private string _WADCT;
+		
+		private System.Nullable<char> _WASBLI;
+		
+		private string _WARKCO;
+		
+		private string _WABREV;
+		
+		private string _WARREV;
+		
+		private System.Nullable<char> _WADRWC;
+		
+		private System.Nullable<char> _WARTCH;
+		
+		private System.Nullable<char> _WAPNRQ;
+		
+		private string _WAREAS;
+		
+		private string _WAPHSE;
+		
+		private string _WAXDSP;
+		
+		private System.Nullable<char> _WABOMC;
+		
+		private string _WAURCD;
+		
+		private System.Nullable<decimal> _WAURDT;
+		
+		private System.Nullable<double> _WAURAT;
+		
+		private System.Nullable<double> _WAURAB;
+		
+		private string _WAURRF;
+		
+		private string _WAUSER;
+		
+		private string _WAPID;
+		
+		private string _WAJOBN;
+		
+		private System.Nullable<decimal> _WAUPMJ;
+		
+		private System.Nullable<double> _WATDAY;
+		
+		private System.Nullable<double> _WAAAID;
+		
+		private string _WANTST;
+		
+		private System.Nullable<double> _WAXRTO;
+		
+		private System.Nullable<double> _WAESDN;
+		
+		private System.Nullable<double> _WAACDN;
+		
+		private System.Nullable<double> _WASAID;
+		
+		private System.Nullable<double> _WAMPOS;
+		
+		private string _WAAPRT;
+		
+		private System.Nullable<double> _WAAMLC;
+		
+		private System.Nullable<double> _WAAMMC;
+		
+		private System.Nullable<double> _WAAMOT;
+		
+		private System.Nullable<double> _WALBAM;
+		
+		private System.Nullable<double> _WAMTAM;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnWADCTOChanging(string value);
+    partial void OnWADCTOChanged();
+    partial void OnWADOCOChanging(double value);
+    partial void OnWADOCOChanged();
+    partial void OnWASFXOChanging(string value);
+    partial void OnWASFXOChanged();
+    partial void OnWARCTOChanging(string value);
+    partial void OnWARCTOChanged();
+    partial void OnWARORNChanging(string value);
+    partial void OnWARORNChanged();
+    partial void OnWALNIDChanging(System.Nullable<double> value);
+    partial void OnWALNIDChanged();
+    partial void OnWAPTWOChanging(System.Nullable<double> value);
+    partial void OnWAPTWOChanged();
+    partial void OnWAPARSChanging(string value);
+    partial void OnWAPARSChanged();
+    partial void OnWATYPSChanging(System.Nullable<char> value);
+    partial void OnWATYPSChanged();
+    partial void OnWAPRTSChanging(System.Nullable<char> value);
+    partial void OnWAPRTSChanged();
+    partial void OnWADL01Changing(string value);
+    partial void OnWADL01Changed();
+    partial void OnWASTCMChanging(string value);
+    partial void OnWASTCMChanged();
+    partial void OnWACOChanging(string value);
+    partial void OnWACOChanged();
+    partial void OnWAMCUChanging(string value);
+    partial void OnWAMCUChanged();
+    partial void OnWAMMCUChanging(string value);
+    partial void OnWAMMCUChanged();
+    partial void OnWALOCNChanging(string value);
+    partial void OnWALOCNChanged();
+    partial void OnWAAISLChanging(string value);
+    partial void OnWAAISLChanged();
+    partial void OnWABINChanging(string value);
+    partial void OnWABINChanged();
+    partial void OnWASRSTChanging(string value);
+    partial void OnWASRSTChanged();
+    partial void OnWADCGChanging(System.Nullable<decimal> value);
+    partial void OnWADCGChanged();
+    partial void OnWASUBChanging(string value);
+    partial void OnWASUBChanged();
+    partial void OnWAAN8Changing(System.Nullable<double> value);
+    partial void OnWAAN8Changed();
+    partial void OnWAANOChanging(System.Nullable<double> value);
+    partial void OnWAANOChanged();
+    partial void OnWAANSAChanging(System.Nullable<double> value);
+    partial void OnWAANSAChanged();
+    partial void OnWAANPAChanging(System.Nullable<double> value);
+    partial void OnWAANPAChanged();
+    partial void OnWAANPChanging(System.Nullable<double> value);
+    partial void OnWAANPChanged();
+    partial void OnWADPLChanging(System.Nullable<decimal> value);
+    partial void OnWADPLChanged();
+    partial void OnWAANTChanging(System.Nullable<double> value);
+    partial void OnWAANTChanged();
+    partial void OnWANAN8Changing(System.Nullable<double> value);
+    partial void OnWANAN8Changed();
+    partial void OnWATRDJChanging(System.Nullable<decimal> value);
+    partial void OnWATRDJChanged();
+    partial void OnWASTRTChanging(System.Nullable<decimal> value);
+    partial void OnWASTRTChanged();
+    partial void OnWADRQJChanging(System.Nullable<decimal> value);
+    partial void OnWADRQJChanged();
+    partial void OnWASTRXChanging(System.Nullable<decimal> value);
+    partial void OnWASTRXChanged();
+    partial void OnWADAPChanging(System.Nullable<decimal> value);
+    partial void OnWADAPChanged();
+    partial void OnWADATChanging(System.Nullable<decimal> value);
+    partial void OnWADATChanged();
+    partial void OnWAPPDTChanging(System.Nullable<decimal> value);
+    partial void OnWAPPDTChanged();
+    partial void OnWAWR01Changing(string value);
+    partial void OnWAWR01Changed();
+    partial void OnWAWR02Changing(string value);
+    partial void OnWAWR02Changed();
+    partial void OnWAWR03Changing(string value);
+    partial void OnWAWR03Changed();
+    partial void OnWAWR04Changing(string value);
+    partial void OnWAWR04Changed();
+    partial void OnWAWR05Changing(string value);
+    partial void OnWAWR05Changed();
+    partial void OnWAWR06Changing(string value);
+    partial void OnWAWR06Changed();
+    partial void OnWAWR07Changing(string value);
+    partial void OnWAWR07Changed();
+    partial void OnWAWR08Changing(string value);
+    partial void OnWAWR08Changed();
+    partial void OnWAWR09Changing(string value);
+    partial void OnWAWR09Changed();
+    partial void OnWAWR10Changing(string value);
+    partial void OnWAWR10Changed();
+    partial void OnWAVR01Changing(string value);
+    partial void OnWAVR01Changed();
+    partial void OnWAVR02Changing(string value);
+    partial void OnWAVR02Changed();
+    partial void OnWAAMTOChanging(System.Nullable<double> value);
+    partial void OnWAAMTOChanged();
+    partial void OnWASETCChanging(System.Nullable<double> value);
+    partial void OnWASETCChanged();
+    partial void OnWABRTChanging(System.Nullable<double> value);
+    partial void OnWABRTChanged();
+    partial void OnWAPAYTChanging(string value);
+    partial void OnWAPAYTChanged();
+    partial void OnWAAMTCChanging(System.Nullable<double> value);
+    partial void OnWAAMTCChanged();
+    partial void OnWAHRSOChanging(System.Nullable<double> value);
+    partial void OnWAHRSOChanged();
+    partial void OnWAHRSCChanging(System.Nullable<double> value);
+    partial void OnWAHRSCChanged();
+    partial void OnWAAMTAChanging(System.Nullable<double> value);
+    partial void OnWAAMTAChanged();
+    partial void OnWAHRSAChanging(System.Nullable<double> value);
+    partial void OnWAHRSAChanged();
+    partial void OnWAITMChanging(System.Nullable<double> value);
+    partial void OnWAITMChanged();
+    partial void OnWAAITMChanging(string value);
+    partial void OnWAAITMChanged();
+    partial void OnWALITMChanging(string value);
+    partial void OnWALITMChanged();
+    partial void OnWANUMBChanging(System.Nullable<double> value);
+    partial void OnWANUMBChanged();
+    partial void OnWAAPIDChanging(string value);
+    partial void OnWAAPIDChanged();
+    partial void OnWAUORGChanging(System.Nullable<double> value);
+    partial void OnWAUORGChanged();
+    partial void OnWASOBKChanging(System.Nullable<double> value);
+    partial void OnWASOBKChanged();
+    partial void OnWASOCNChanging(System.Nullable<double> value);
+    partial void OnWASOCNChanged();
+    partial void OnWASOQSChanging(System.Nullable<double> value);
+    partial void OnWASOQSChanged();
+    partial void OnWAQTYTChanging(System.Nullable<double> value);
+    partial void OnWAQTYTChanged();
+    partial void OnWAUOMChanging(string value);
+    partial void OnWAUOMChanged();
+    partial void OnWASHNOChanging(string value);
+    partial void OnWASHNOChanged();
+    partial void OnWAPBTMChanging(System.Nullable<double> value);
+    partial void OnWAPBTMChanged();
+    partial void OnWATBMChanging(string value);
+    partial void OnWATBMChanged();
+    partial void OnWATRTChanging(string value);
+    partial void OnWATRTChanged();
+    partial void OnWASHTYChanging(System.Nullable<char> value);
+    partial void OnWASHTYChanged();
+    partial void OnWAPECChanging(System.Nullable<char> value);
+    partial void OnWAPECChanged();
+    partial void OnWAPPFGChanging(System.Nullable<char> value);
+    partial void OnWAPPFGChanged();
+    partial void OnWABMChanging(System.Nullable<char> value);
+    partial void OnWABMChanged();
+    partial void OnWARTGChanging(System.Nullable<char> value);
+    partial void OnWARTGChanged();
+    partial void OnWASPRTChanging(System.Nullable<char> value);
+    partial void OnWASPRTChanged();
+    partial void OnWAUNCDChanging(System.Nullable<char> value);
+    partial void OnWAUNCDChanged();
+    partial void OnWAINDCChanging(System.Nullable<char> value);
+    partial void OnWAINDCChanged();
+    partial void OnWARESCChanging(System.Nullable<double> value);
+    partial void OnWARESCChanged();
+    partial void OnWAMOHChanging(System.Nullable<double> value);
+    partial void OnWAMOHChanged();
+    partial void OnWATDTChanging(System.Nullable<decimal> value);
+    partial void OnWATDTChanged();
+    partial void OnWAPOUChanging(System.Nullable<double> value);
+    partial void OnWAPOUChanged();
+    partial void OnWAPCChanging(System.Nullable<double> value);
+    partial void OnWAPCChanged();
+    partial void OnWALTLVChanging(System.Nullable<double> value);
+    partial void OnWALTLVChanged();
+    partial void OnWALTCMChanging(System.Nullable<double> value);
+    partial void OnWALTCMChanged();
+    partial void OnWACTS1Changing(System.Nullable<double> value);
+    partial void OnWACTS1Changed();
+    partial void OnWALOTNChanging(string value);
+    partial void OnWALOTNChanged();
+    partial void OnWALOTPChanging(System.Nullable<double> value);
+    partial void OnWALOTPChanged();
+    partial void OnWALOTGChanging(string value);
+    partial void OnWALOTGChanged();
+    partial void OnWARAT1Changing(System.Nullable<double> value);
+    partial void OnWARAT1Changed();
+    partial void OnWARAT2Changing(System.Nullable<double> value);
+    partial void OnWARAT2Changed();
+    partial void OnWADCTChanging(string value);
+    partial void OnWADCTChanged();
+    partial void OnWASBLIChanging(System.Nullable<char> value);
+    partial void OnWASBLIChanged();
+    partial void OnWARKCOChanging(string value);
+    partial void OnWARKCOChanged();
+    partial void OnWABREVChanging(string value);
+    partial void OnWABREVChanged();
+    partial void OnWARREVChanging(string value);
+    partial void OnWARREVChanged();
+    partial void OnWADRWCChanging(System.Nullable<char> value);
+    partial void OnWADRWCChanged();
+    partial void OnWARTCHChanging(System.Nullable<char> value);
+    partial void OnWARTCHChanged();
+    partial void OnWAPNRQChanging(System.Nullable<char> value);
+    partial void OnWAPNRQChanged();
+    partial void OnWAREASChanging(string value);
+    partial void OnWAREASChanged();
+    partial void OnWAPHSEChanging(string value);
+    partial void OnWAPHSEChanged();
+    partial void OnWAXDSPChanging(string value);
+    partial void OnWAXDSPChanged();
+    partial void OnWABOMCChanging(System.Nullable<char> value);
+    partial void OnWABOMCChanged();
+    partial void OnWAURCDChanging(string value);
+    partial void OnWAURCDChanged();
+    partial void OnWAURDTChanging(System.Nullable<decimal> value);
+    partial void OnWAURDTChanged();
+    partial void OnWAURATChanging(System.Nullable<double> value);
+    partial void OnWAURATChanged();
+    partial void OnWAURABChanging(System.Nullable<double> value);
+    partial void OnWAURABChanged();
+    partial void OnWAURRFChanging(string value);
+    partial void OnWAURRFChanged();
+    partial void OnWAUSERChanging(string value);
+    partial void OnWAUSERChanged();
+    partial void OnWAPIDChanging(string value);
+    partial void OnWAPIDChanged();
+    partial void OnWAJOBNChanging(string value);
+    partial void OnWAJOBNChanged();
+    partial void OnWAUPMJChanging(System.Nullable<decimal> value);
+    partial void OnWAUPMJChanged();
+    partial void OnWATDAYChanging(System.Nullable<double> value);
+    partial void OnWATDAYChanged();
+    partial void OnWAAAIDChanging(System.Nullable<double> value);
+    partial void OnWAAAIDChanged();
+    partial void OnWANTSTChanging(string value);
+    partial void OnWANTSTChanged();
+    partial void OnWAXRTOChanging(System.Nullable<double> value);
+    partial void OnWAXRTOChanged();
+    partial void OnWAESDNChanging(System.Nullable<double> value);
+    partial void OnWAESDNChanged();
+    partial void OnWAACDNChanging(System.Nullable<double> value);
+    partial void OnWAACDNChanged();
+    partial void OnWASAIDChanging(System.Nullable<double> value);
+    partial void OnWASAIDChanged();
+    partial void OnWAMPOSChanging(System.Nullable<double> value);
+    partial void OnWAMPOSChanged();
+    partial void OnWAAPRTChanging(string value);
+    partial void OnWAAPRTChanged();
+    partial void OnWAAMLCChanging(System.Nullable<double> value);
+    partial void OnWAAMLCChanged();
+    partial void OnWAAMMCChanging(System.Nullable<double> value);
+    partial void OnWAAMMCChanged();
+    partial void OnWAAMOTChanging(System.Nullable<double> value);
+    partial void OnWAAMOTChanged();
+    partial void OnWALBAMChanging(System.Nullable<double> value);
+    partial void OnWALBAMChanged();
+    partial void OnWAMTAMChanging(System.Nullable<double> value);
+    partial void OnWAMTAMChanged();
+    #endregion
+		
+		public F4801()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WADCTO", DbType="NChar(2)")]
+		public string WADCTO
+		{
+			get
+			{
+				return this._WADCTO;
+			}
+			set
+			{
+				if ((this._WADCTO != value))
+				{
+					this.OnWADCTOChanging(value);
+					this.SendPropertyChanging();
+					this._WADCTO = value;
+					this.SendPropertyChanged("WADCTO");
+					this.OnWADCTOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WADOCO", DbType="Float NOT NULL", IsPrimaryKey=true)]
+		public double WADOCO
+		{
+			get
+			{
+				return this._WADOCO;
+			}
+			set
+			{
+				if ((this._WADOCO != value))
+				{
+					this.OnWADOCOChanging(value);
+					this.SendPropertyChanging();
+					this._WADOCO = value;
+					this.SendPropertyChanged("WADOCO");
+					this.OnWADOCOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WASFXO", DbType="NChar(3)")]
+		public string WASFXO
+		{
+			get
+			{
+				return this._WASFXO;
+			}
+			set
+			{
+				if ((this._WASFXO != value))
+				{
+					this.OnWASFXOChanging(value);
+					this.SendPropertyChanging();
+					this._WASFXO = value;
+					this.SendPropertyChanged("WASFXO");
+					this.OnWASFXOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WARCTO", DbType="NChar(2)")]
+		public string WARCTO
+		{
+			get
+			{
+				return this._WARCTO;
+			}
+			set
+			{
+				if ((this._WARCTO != value))
+				{
+					this.OnWARCTOChanging(value);
+					this.SendPropertyChanging();
+					this._WARCTO = value;
+					this.SendPropertyChanged("WARCTO");
+					this.OnWARCTOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WARORN", DbType="NChar(8)")]
+		public string WARORN
+		{
+			get
+			{
+				return this._WARORN;
+			}
+			set
+			{
+				if ((this._WARORN != value))
+				{
+					this.OnWARORNChanging(value);
+					this.SendPropertyChanging();
+					this._WARORN = value;
+					this.SendPropertyChanged("WARORN");
+					this.OnWARORNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WALNID", DbType="Float")]
+		public System.Nullable<double> WALNID
+		{
+			get
+			{
+				return this._WALNID;
+			}
+			set
+			{
+				if ((this._WALNID != value))
+				{
+					this.OnWALNIDChanging(value);
+					this.SendPropertyChanging();
+					this._WALNID = value;
+					this.SendPropertyChanged("WALNID");
+					this.OnWALNIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAPTWO", DbType="Float")]
+		public System.Nullable<double> WAPTWO
+		{
+			get
+			{
+				return this._WAPTWO;
+			}
+			set
+			{
+				if ((this._WAPTWO != value))
+				{
+					this.OnWAPTWOChanging(value);
+					this.SendPropertyChanging();
+					this._WAPTWO = value;
+					this.SendPropertyChanged("WAPTWO");
+					this.OnWAPTWOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAPARS", DbType="NChar(8)")]
+		public string WAPARS
+		{
+			get
+			{
+				return this._WAPARS;
+			}
+			set
+			{
+				if ((this._WAPARS != value))
+				{
+					this.OnWAPARSChanging(value);
+					this.SendPropertyChanging();
+					this._WAPARS = value;
+					this.SendPropertyChanged("WAPARS");
+					this.OnWAPARSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WATYPS", DbType="NChar(1)")]
+		public System.Nullable<char> WATYPS
+		{
+			get
+			{
+				return this._WATYPS;
+			}
+			set
+			{
+				if ((this._WATYPS != value))
+				{
+					this.OnWATYPSChanging(value);
+					this.SendPropertyChanging();
+					this._WATYPS = value;
+					this.SendPropertyChanged("WATYPS");
+					this.OnWATYPSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAPRTS", DbType="NChar(1)")]
+		public System.Nullable<char> WAPRTS
+		{
+			get
+			{
+				return this._WAPRTS;
+			}
+			set
+			{
+				if ((this._WAPRTS != value))
+				{
+					this.OnWAPRTSChanging(value);
+					this.SendPropertyChanging();
+					this._WAPRTS = value;
+					this.SendPropertyChanged("WAPRTS");
+					this.OnWAPRTSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WADL01", DbType="NChar(30)")]
+		public string WADL01
+		{
+			get
+			{
+				return this._WADL01;
+			}
+			set
+			{
+				if ((this._WADL01 != value))
+				{
+					this.OnWADL01Changing(value);
+					this.SendPropertyChanging();
+					this._WADL01 = value;
+					this.SendPropertyChanged("WADL01");
+					this.OnWADL01Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WASTCM", DbType="NChar(30)")]
+		public string WASTCM
+		{
+			get
+			{
+				return this._WASTCM;
+			}
+			set
+			{
+				if ((this._WASTCM != value))
+				{
+					this.OnWASTCMChanging(value);
+					this.SendPropertyChanging();
+					this._WASTCM = value;
+					this.SendPropertyChanged("WASTCM");
+					this.OnWASTCMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WACO", DbType="NChar(5)")]
+		public string WACO
+		{
+			get
+			{
+				return this._WACO;
+			}
+			set
+			{
+				if ((this._WACO != value))
+				{
+					this.OnWACOChanging(value);
+					this.SendPropertyChanging();
+					this._WACO = value;
+					this.SendPropertyChanged("WACO");
+					this.OnWACOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAMCU", DbType="NChar(12)")]
+		public string WAMCU
+		{
+			get
+			{
+				return this._WAMCU;
+			}
+			set
+			{
+				if ((this._WAMCU != value))
+				{
+					this.OnWAMCUChanging(value);
+					this.SendPropertyChanging();
+					this._WAMCU = value;
+					this.SendPropertyChanged("WAMCU");
+					this.OnWAMCUChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAMMCU", DbType="NChar(12)")]
+		public string WAMMCU
+		{
+			get
+			{
+				return this._WAMMCU;
+			}
+			set
+			{
+				if ((this._WAMMCU != value))
+				{
+					this.OnWAMMCUChanging(value);
+					this.SendPropertyChanging();
+					this._WAMMCU = value;
+					this.SendPropertyChanged("WAMMCU");
+					this.OnWAMMCUChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WALOCN", DbType="NChar(20)")]
+		public string WALOCN
+		{
+			get
+			{
+				return this._WALOCN;
+			}
+			set
+			{
+				if ((this._WALOCN != value))
+				{
+					this.OnWALOCNChanging(value);
+					this.SendPropertyChanging();
+					this._WALOCN = value;
+					this.SendPropertyChanged("WALOCN");
+					this.OnWALOCNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAAISL", DbType="NChar(8)")]
+		public string WAAISL
+		{
+			get
+			{
+				return this._WAAISL;
+			}
+			set
+			{
+				if ((this._WAAISL != value))
+				{
+					this.OnWAAISLChanging(value);
+					this.SendPropertyChanging();
+					this._WAAISL = value;
+					this.SendPropertyChanged("WAAISL");
+					this.OnWAAISLChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WABIN", DbType="NChar(8)")]
+		public string WABIN
+		{
+			get
+			{
+				return this._WABIN;
+			}
+			set
+			{
+				if ((this._WABIN != value))
+				{
+					this.OnWABINChanging(value);
+					this.SendPropertyChanging();
+					this._WABIN = value;
+					this.SendPropertyChanged("WABIN");
+					this.OnWABINChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WASRST", DbType="NChar(2)")]
+		public string WASRST
+		{
+			get
+			{
+				return this._WASRST;
+			}
+			set
+			{
+				if ((this._WASRST != value))
+				{
+					this.OnWASRSTChanging(value);
+					this.SendPropertyChanging();
+					this._WASRST = value;
+					this.SendPropertyChanged("WASRST");
+					this.OnWASRSTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WADCG", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> WADCG
+		{
+			get
+			{
+				return this._WADCG;
+			}
+			set
+			{
+				if ((this._WADCG != value))
+				{
+					this.OnWADCGChanging(value);
+					this.SendPropertyChanging();
+					this._WADCG = value;
+					this.SendPropertyChanged("WADCG");
+					this.OnWADCGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WASUB", DbType="NChar(8)")]
+		public string WASUB
+		{
+			get
+			{
+				return this._WASUB;
+			}
+			set
+			{
+				if ((this._WASUB != value))
+				{
+					this.OnWASUBChanging(value);
+					this.SendPropertyChanging();
+					this._WASUB = value;
+					this.SendPropertyChanged("WASUB");
+					this.OnWASUBChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAAN8", DbType="Float")]
+		public System.Nullable<double> WAAN8
+		{
+			get
+			{
+				return this._WAAN8;
+			}
+			set
+			{
+				if ((this._WAAN8 != value))
+				{
+					this.OnWAAN8Changing(value);
+					this.SendPropertyChanging();
+					this._WAAN8 = value;
+					this.SendPropertyChanged("WAAN8");
+					this.OnWAAN8Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAANO", DbType="Float")]
+		public System.Nullable<double> WAANO
+		{
+			get
+			{
+				return this._WAANO;
+			}
+			set
+			{
+				if ((this._WAANO != value))
+				{
+					this.OnWAANOChanging(value);
+					this.SendPropertyChanging();
+					this._WAANO = value;
+					this.SendPropertyChanged("WAANO");
+					this.OnWAANOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAANSA", DbType="Float")]
+		public System.Nullable<double> WAANSA
+		{
+			get
+			{
+				return this._WAANSA;
+			}
+			set
+			{
+				if ((this._WAANSA != value))
+				{
+					this.OnWAANSAChanging(value);
+					this.SendPropertyChanging();
+					this._WAANSA = value;
+					this.SendPropertyChanged("WAANSA");
+					this.OnWAANSAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAANPA", DbType="Float")]
+		public System.Nullable<double> WAANPA
+		{
+			get
+			{
+				return this._WAANPA;
+			}
+			set
+			{
+				if ((this._WAANPA != value))
+				{
+					this.OnWAANPAChanging(value);
+					this.SendPropertyChanging();
+					this._WAANPA = value;
+					this.SendPropertyChanged("WAANPA");
+					this.OnWAANPAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAANP", DbType="Float")]
+		public System.Nullable<double> WAANP
+		{
+			get
+			{
+				return this._WAANP;
+			}
+			set
+			{
+				if ((this._WAANP != value))
+				{
+					this.OnWAANPChanging(value);
+					this.SendPropertyChanging();
+					this._WAANP = value;
+					this.SendPropertyChanged("WAANP");
+					this.OnWAANPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WADPL", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> WADPL
+		{
+			get
+			{
+				return this._WADPL;
+			}
+			set
+			{
+				if ((this._WADPL != value))
+				{
+					this.OnWADPLChanging(value);
+					this.SendPropertyChanging();
+					this._WADPL = value;
+					this.SendPropertyChanged("WADPL");
+					this.OnWADPLChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAANT", DbType="Float")]
+		public System.Nullable<double> WAANT
+		{
+			get
+			{
+				return this._WAANT;
+			}
+			set
+			{
+				if ((this._WAANT != value))
+				{
+					this.OnWAANTChanging(value);
+					this.SendPropertyChanging();
+					this._WAANT = value;
+					this.SendPropertyChanged("WAANT");
+					this.OnWAANTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WANAN8", DbType="Float")]
+		public System.Nullable<double> WANAN8
+		{
+			get
+			{
+				return this._WANAN8;
+			}
+			set
+			{
+				if ((this._WANAN8 != value))
+				{
+					this.OnWANAN8Changing(value);
+					this.SendPropertyChanging();
+					this._WANAN8 = value;
+					this.SendPropertyChanged("WANAN8");
+					this.OnWANAN8Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WATRDJ", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> WATRDJ
+		{
+			get
+			{
+				return this._WATRDJ;
+			}
+			set
+			{
+				if ((this._WATRDJ != value))
+				{
+					this.OnWATRDJChanging(value);
+					this.SendPropertyChanging();
+					this._WATRDJ = value;
+					this.SendPropertyChanged("WATRDJ");
+					this.OnWATRDJChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WASTRT", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> WASTRT
+		{
+			get
+			{
+				return this._WASTRT;
+			}
+			set
+			{
+				if ((this._WASTRT != value))
+				{
+					this.OnWASTRTChanging(value);
+					this.SendPropertyChanging();
+					this._WASTRT = value;
+					this.SendPropertyChanged("WASTRT");
+					this.OnWASTRTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WADRQJ", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> WADRQJ
+		{
+			get
+			{
+				return this._WADRQJ;
+			}
+			set
+			{
+				if ((this._WADRQJ != value))
+				{
+					this.OnWADRQJChanging(value);
+					this.SendPropertyChanging();
+					this._WADRQJ = value;
+					this.SendPropertyChanged("WADRQJ");
+					this.OnWADRQJChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WASTRX", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> WASTRX
+		{
+			get
+			{
+				return this._WASTRX;
+			}
+			set
+			{
+				if ((this._WASTRX != value))
+				{
+					this.OnWASTRXChanging(value);
+					this.SendPropertyChanging();
+					this._WASTRX = value;
+					this.SendPropertyChanged("WASTRX");
+					this.OnWASTRXChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WADAP", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> WADAP
+		{
+			get
+			{
+				return this._WADAP;
+			}
+			set
+			{
+				if ((this._WADAP != value))
+				{
+					this.OnWADAPChanging(value);
+					this.SendPropertyChanging();
+					this._WADAP = value;
+					this.SendPropertyChanged("WADAP");
+					this.OnWADAPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WADAT", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> WADAT
+		{
+			get
+			{
+				return this._WADAT;
+			}
+			set
+			{
+				if ((this._WADAT != value))
+				{
+					this.OnWADATChanging(value);
+					this.SendPropertyChanging();
+					this._WADAT = value;
+					this.SendPropertyChanged("WADAT");
+					this.OnWADATChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAPPDT", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> WAPPDT
+		{
+			get
+			{
+				return this._WAPPDT;
+			}
+			set
+			{
+				if ((this._WAPPDT != value))
+				{
+					this.OnWAPPDTChanging(value);
+					this.SendPropertyChanging();
+					this._WAPPDT = value;
+					this.SendPropertyChanged("WAPPDT");
+					this.OnWAPPDTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAWR01", DbType="NChar(4)")]
+		public string WAWR01
+		{
+			get
+			{
+				return this._WAWR01;
+			}
+			set
+			{
+				if ((this._WAWR01 != value))
+				{
+					this.OnWAWR01Changing(value);
+					this.SendPropertyChanging();
+					this._WAWR01 = value;
+					this.SendPropertyChanged("WAWR01");
+					this.OnWAWR01Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAWR02", DbType="NChar(3)")]
+		public string WAWR02
+		{
+			get
+			{
+				return this._WAWR02;
+			}
+			set
+			{
+				if ((this._WAWR02 != value))
+				{
+					this.OnWAWR02Changing(value);
+					this.SendPropertyChanging();
+					this._WAWR02 = value;
+					this.SendPropertyChanged("WAWR02");
+					this.OnWAWR02Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAWR03", DbType="NChar(3)")]
+		public string WAWR03
+		{
+			get
+			{
+				return this._WAWR03;
+			}
+			set
+			{
+				if ((this._WAWR03 != value))
+				{
+					this.OnWAWR03Changing(value);
+					this.SendPropertyChanging();
+					this._WAWR03 = value;
+					this.SendPropertyChanged("WAWR03");
+					this.OnWAWR03Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAWR04", DbType="NChar(3)")]
+		public string WAWR04
+		{
+			get
+			{
+				return this._WAWR04;
+			}
+			set
+			{
+				if ((this._WAWR04 != value))
+				{
+					this.OnWAWR04Changing(value);
+					this.SendPropertyChanging();
+					this._WAWR04 = value;
+					this.SendPropertyChanged("WAWR04");
+					this.OnWAWR04Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAWR05", DbType="NChar(3)")]
+		public string WAWR05
+		{
+			get
+			{
+				return this._WAWR05;
+			}
+			set
+			{
+				if ((this._WAWR05 != value))
+				{
+					this.OnWAWR05Changing(value);
+					this.SendPropertyChanging();
+					this._WAWR05 = value;
+					this.SendPropertyChanged("WAWR05");
+					this.OnWAWR05Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAWR06", DbType="NChar(3)")]
+		public string WAWR06
+		{
+			get
+			{
+				return this._WAWR06;
+			}
+			set
+			{
+				if ((this._WAWR06 != value))
+				{
+					this.OnWAWR06Changing(value);
+					this.SendPropertyChanging();
+					this._WAWR06 = value;
+					this.SendPropertyChanged("WAWR06");
+					this.OnWAWR06Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAWR07", DbType="NChar(3)")]
+		public string WAWR07
+		{
+			get
+			{
+				return this._WAWR07;
+			}
+			set
+			{
+				if ((this._WAWR07 != value))
+				{
+					this.OnWAWR07Changing(value);
+					this.SendPropertyChanging();
+					this._WAWR07 = value;
+					this.SendPropertyChanged("WAWR07");
+					this.OnWAWR07Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAWR08", DbType="NChar(3)")]
+		public string WAWR08
+		{
+			get
+			{
+				return this._WAWR08;
+			}
+			set
+			{
+				if ((this._WAWR08 != value))
+				{
+					this.OnWAWR08Changing(value);
+					this.SendPropertyChanging();
+					this._WAWR08 = value;
+					this.SendPropertyChanged("WAWR08");
+					this.OnWAWR08Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAWR09", DbType="NChar(3)")]
+		public string WAWR09
+		{
+			get
+			{
+				return this._WAWR09;
+			}
+			set
+			{
+				if ((this._WAWR09 != value))
+				{
+					this.OnWAWR09Changing(value);
+					this.SendPropertyChanging();
+					this._WAWR09 = value;
+					this.SendPropertyChanged("WAWR09");
+					this.OnWAWR09Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAWR10", DbType="NChar(3)")]
+		public string WAWR10
+		{
+			get
+			{
+				return this._WAWR10;
+			}
+			set
+			{
+				if ((this._WAWR10 != value))
+				{
+					this.OnWAWR10Changing(value);
+					this.SendPropertyChanging();
+					this._WAWR10 = value;
+					this.SendPropertyChanged("WAWR10");
+					this.OnWAWR10Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAVR01", DbType="NChar(25)")]
+		public string WAVR01
+		{
+			get
+			{
+				return this._WAVR01;
+			}
+			set
+			{
+				if ((this._WAVR01 != value))
+				{
+					this.OnWAVR01Changing(value);
+					this.SendPropertyChanging();
+					this._WAVR01 = value;
+					this.SendPropertyChanged("WAVR01");
+					this.OnWAVR01Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAVR02", DbType="NChar(25)")]
+		public string WAVR02
+		{
+			get
+			{
+				return this._WAVR02;
+			}
+			set
+			{
+				if ((this._WAVR02 != value))
+				{
+					this.OnWAVR02Changing(value);
+					this.SendPropertyChanging();
+					this._WAVR02 = value;
+					this.SendPropertyChanged("WAVR02");
+					this.OnWAVR02Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAAMTO", DbType="Float")]
+		public System.Nullable<double> WAAMTO
+		{
+			get
+			{
+				return this._WAAMTO;
+			}
+			set
+			{
+				if ((this._WAAMTO != value))
+				{
+					this.OnWAAMTOChanging(value);
+					this.SendPropertyChanging();
+					this._WAAMTO = value;
+					this.SendPropertyChanged("WAAMTO");
+					this.OnWAAMTOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WASETC", DbType="Float")]
+		public System.Nullable<double> WASETC
+		{
+			get
+			{
+				return this._WASETC;
+			}
+			set
+			{
+				if ((this._WASETC != value))
+				{
+					this.OnWASETCChanging(value);
+					this.SendPropertyChanging();
+					this._WASETC = value;
+					this.SendPropertyChanged("WASETC");
+					this.OnWASETCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WABRT", DbType="Float")]
+		public System.Nullable<double> WABRT
+		{
+			get
+			{
+				return this._WABRT;
+			}
+			set
+			{
+				if ((this._WABRT != value))
+				{
+					this.OnWABRTChanging(value);
+					this.SendPropertyChanging();
+					this._WABRT = value;
+					this.SendPropertyChanged("WABRT");
+					this.OnWABRTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAPAYT", DbType="NChar(5)")]
+		public string WAPAYT
+		{
+			get
+			{
+				return this._WAPAYT;
+			}
+			set
+			{
+				if ((this._WAPAYT != value))
+				{
+					this.OnWAPAYTChanging(value);
+					this.SendPropertyChanging();
+					this._WAPAYT = value;
+					this.SendPropertyChanged("WAPAYT");
+					this.OnWAPAYTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAAMTC", DbType="Float")]
+		public System.Nullable<double> WAAMTC
+		{
+			get
+			{
+				return this._WAAMTC;
+			}
+			set
+			{
+				if ((this._WAAMTC != value))
+				{
+					this.OnWAAMTCChanging(value);
+					this.SendPropertyChanging();
+					this._WAAMTC = value;
+					this.SendPropertyChanged("WAAMTC");
+					this.OnWAAMTCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAHRSO", DbType="Float")]
+		public System.Nullable<double> WAHRSO
+		{
+			get
+			{
+				return this._WAHRSO;
+			}
+			set
+			{
+				if ((this._WAHRSO != value))
+				{
+					this.OnWAHRSOChanging(value);
+					this.SendPropertyChanging();
+					this._WAHRSO = value;
+					this.SendPropertyChanged("WAHRSO");
+					this.OnWAHRSOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAHRSC", DbType="Float")]
+		public System.Nullable<double> WAHRSC
+		{
+			get
+			{
+				return this._WAHRSC;
+			}
+			set
+			{
+				if ((this._WAHRSC != value))
+				{
+					this.OnWAHRSCChanging(value);
+					this.SendPropertyChanging();
+					this._WAHRSC = value;
+					this.SendPropertyChanged("WAHRSC");
+					this.OnWAHRSCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAAMTA", DbType="Float")]
+		public System.Nullable<double> WAAMTA
+		{
+			get
+			{
+				return this._WAAMTA;
+			}
+			set
+			{
+				if ((this._WAAMTA != value))
+				{
+					this.OnWAAMTAChanging(value);
+					this.SendPropertyChanging();
+					this._WAAMTA = value;
+					this.SendPropertyChanged("WAAMTA");
+					this.OnWAAMTAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAHRSA", DbType="Float")]
+		public System.Nullable<double> WAHRSA
+		{
+			get
+			{
+				return this._WAHRSA;
+			}
+			set
+			{
+				if ((this._WAHRSA != value))
+				{
+					this.OnWAHRSAChanging(value);
+					this.SendPropertyChanging();
+					this._WAHRSA = value;
+					this.SendPropertyChanged("WAHRSA");
+					this.OnWAHRSAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAITM", DbType="Float")]
+		public System.Nullable<double> WAITM
+		{
+			get
+			{
+				return this._WAITM;
+			}
+			set
+			{
+				if ((this._WAITM != value))
+				{
+					this.OnWAITMChanging(value);
+					this.SendPropertyChanging();
+					this._WAITM = value;
+					this.SendPropertyChanged("WAITM");
+					this.OnWAITMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAAITM", DbType="NChar(25)")]
+		public string WAAITM
+		{
+			get
+			{
+				return this._WAAITM;
+			}
+			set
+			{
+				if ((this._WAAITM != value))
+				{
+					this.OnWAAITMChanging(value);
+					this.SendPropertyChanging();
+					this._WAAITM = value;
+					this.SendPropertyChanged("WAAITM");
+					this.OnWAAITMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WALITM", DbType="NChar(25)")]
+		public string WALITM
+		{
+			get
+			{
+				return this._WALITM;
+			}
+			set
+			{
+				if ((this._WALITM != value))
+				{
+					this.OnWALITMChanging(value);
+					this.SendPropertyChanging();
+					this._WALITM = value;
+					this.SendPropertyChanged("WALITM");
+					this.OnWALITMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WANUMB", DbType="Float")]
+		public System.Nullable<double> WANUMB
+		{
+			get
+			{
+				return this._WANUMB;
+			}
+			set
+			{
+				if ((this._WANUMB != value))
+				{
+					this.OnWANUMBChanging(value);
+					this.SendPropertyChanging();
+					this._WANUMB = value;
+					this.SendPropertyChanged("WANUMB");
+					this.OnWANUMBChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAAPID", DbType="NChar(12)")]
+		public string WAAPID
+		{
+			get
+			{
+				return this._WAAPID;
+			}
+			set
+			{
+				if ((this._WAAPID != value))
+				{
+					this.OnWAAPIDChanging(value);
+					this.SendPropertyChanging();
+					this._WAAPID = value;
+					this.SendPropertyChanged("WAAPID");
+					this.OnWAAPIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAUORG", DbType="Float")]
+		public System.Nullable<double> WAUORG
+		{
+			get
+			{
+				return this._WAUORG;
+			}
+			set
+			{
+				if ((this._WAUORG != value))
+				{
+					this.OnWAUORGChanging(value);
+					this.SendPropertyChanging();
+					this._WAUORG = value;
+					this.SendPropertyChanged("WAUORG");
+					this.OnWAUORGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WASOBK", DbType="Float")]
+		public System.Nullable<double> WASOBK
+		{
+			get
+			{
+				return this._WASOBK;
+			}
+			set
+			{
+				if ((this._WASOBK != value))
+				{
+					this.OnWASOBKChanging(value);
+					this.SendPropertyChanging();
+					this._WASOBK = value;
+					this.SendPropertyChanged("WASOBK");
+					this.OnWASOBKChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WASOCN", DbType="Float")]
+		public System.Nullable<double> WASOCN
+		{
+			get
+			{
+				return this._WASOCN;
+			}
+			set
+			{
+				if ((this._WASOCN != value))
+				{
+					this.OnWASOCNChanging(value);
+					this.SendPropertyChanging();
+					this._WASOCN = value;
+					this.SendPropertyChanged("WASOCN");
+					this.OnWASOCNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WASOQS", DbType="Float")]
+		public System.Nullable<double> WASOQS
+		{
+			get
+			{
+				return this._WASOQS;
+			}
+			set
+			{
+				if ((this._WASOQS != value))
+				{
+					this.OnWASOQSChanging(value);
+					this.SendPropertyChanging();
+					this._WASOQS = value;
+					this.SendPropertyChanged("WASOQS");
+					this.OnWASOQSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAQTYT", DbType="Float")]
+		public System.Nullable<double> WAQTYT
+		{
+			get
+			{
+				return this._WAQTYT;
+			}
+			set
+			{
+				if ((this._WAQTYT != value))
+				{
+					this.OnWAQTYTChanging(value);
+					this.SendPropertyChanging();
+					this._WAQTYT = value;
+					this.SendPropertyChanged("WAQTYT");
+					this.OnWAQTYTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAUOM", DbType="NChar(2)")]
+		public string WAUOM
+		{
+			get
+			{
+				return this._WAUOM;
+			}
+			set
+			{
+				if ((this._WAUOM != value))
+				{
+					this.OnWAUOMChanging(value);
+					this.SendPropertyChanging();
+					this._WAUOM = value;
+					this.SendPropertyChanged("WAUOM");
+					this.OnWAUOMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WASHNO", DbType="NChar(10)")]
+		public string WASHNO
+		{
+			get
+			{
+				return this._WASHNO;
+			}
+			set
+			{
+				if ((this._WASHNO != value))
+				{
+					this.OnWASHNOChanging(value);
+					this.SendPropertyChanging();
+					this._WASHNO = value;
+					this.SendPropertyChanged("WASHNO");
+					this.OnWASHNOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAPBTM", DbType="Float")]
+		public System.Nullable<double> WAPBTM
+		{
+			get
+			{
+				return this._WAPBTM;
+			}
+			set
+			{
+				if ((this._WAPBTM != value))
+				{
+					this.OnWAPBTMChanging(value);
+					this.SendPropertyChanging();
+					this._WAPBTM = value;
+					this.SendPropertyChanged("WAPBTM");
+					this.OnWAPBTMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WATBM", DbType="NChar(3)")]
+		public string WATBM
+		{
+			get
+			{
+				return this._WATBM;
+			}
+			set
+			{
+				if ((this._WATBM != value))
+				{
+					this.OnWATBMChanging(value);
+					this.SendPropertyChanging();
+					this._WATBM = value;
+					this.SendPropertyChanged("WATBM");
+					this.OnWATBMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WATRT", DbType="NChar(3)")]
+		public string WATRT
+		{
+			get
+			{
+				return this._WATRT;
+			}
+			set
+			{
+				if ((this._WATRT != value))
+				{
+					this.OnWATRTChanging(value);
+					this.SendPropertyChanging();
+					this._WATRT = value;
+					this.SendPropertyChanged("WATRT");
+					this.OnWATRTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WASHTY", DbType="NChar(1)")]
+		public System.Nullable<char> WASHTY
+		{
+			get
+			{
+				return this._WASHTY;
+			}
+			set
+			{
+				if ((this._WASHTY != value))
+				{
+					this.OnWASHTYChanging(value);
+					this.SendPropertyChanging();
+					this._WASHTY = value;
+					this.SendPropertyChanged("WASHTY");
+					this.OnWASHTYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAPEC", DbType="NChar(1)")]
+		public System.Nullable<char> WAPEC
+		{
+			get
+			{
+				return this._WAPEC;
+			}
+			set
+			{
+				if ((this._WAPEC != value))
+				{
+					this.OnWAPECChanging(value);
+					this.SendPropertyChanging();
+					this._WAPEC = value;
+					this.SendPropertyChanged("WAPEC");
+					this.OnWAPECChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAPPFG", DbType="NChar(1)")]
+		public System.Nullable<char> WAPPFG
+		{
+			get
+			{
+				return this._WAPPFG;
+			}
+			set
+			{
+				if ((this._WAPPFG != value))
+				{
+					this.OnWAPPFGChanging(value);
+					this.SendPropertyChanging();
+					this._WAPPFG = value;
+					this.SendPropertyChanged("WAPPFG");
+					this.OnWAPPFGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WABM", DbType="NChar(1)")]
+		public System.Nullable<char> WABM
+		{
+			get
+			{
+				return this._WABM;
+			}
+			set
+			{
+				if ((this._WABM != value))
+				{
+					this.OnWABMChanging(value);
+					this.SendPropertyChanging();
+					this._WABM = value;
+					this.SendPropertyChanged("WABM");
+					this.OnWABMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WARTG", DbType="NChar(1)")]
+		public System.Nullable<char> WARTG
+		{
+			get
+			{
+				return this._WARTG;
+			}
+			set
+			{
+				if ((this._WARTG != value))
+				{
+					this.OnWARTGChanging(value);
+					this.SendPropertyChanging();
+					this._WARTG = value;
+					this.SendPropertyChanged("WARTG");
+					this.OnWARTGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WASPRT", DbType="NChar(1)")]
+		public System.Nullable<char> WASPRT
+		{
+			get
+			{
+				return this._WASPRT;
+			}
+			set
+			{
+				if ((this._WASPRT != value))
+				{
+					this.OnWASPRTChanging(value);
+					this.SendPropertyChanging();
+					this._WASPRT = value;
+					this.SendPropertyChanged("WASPRT");
+					this.OnWASPRTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAUNCD", DbType="NChar(1)")]
+		public System.Nullable<char> WAUNCD
+		{
+			get
+			{
+				return this._WAUNCD;
+			}
+			set
+			{
+				if ((this._WAUNCD != value))
+				{
+					this.OnWAUNCDChanging(value);
+					this.SendPropertyChanging();
+					this._WAUNCD = value;
+					this.SendPropertyChanged("WAUNCD");
+					this.OnWAUNCDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAINDC", DbType="NChar(1)")]
+		public System.Nullable<char> WAINDC
+		{
+			get
+			{
+				return this._WAINDC;
+			}
+			set
+			{
+				if ((this._WAINDC != value))
+				{
+					this.OnWAINDCChanging(value);
+					this.SendPropertyChanging();
+					this._WAINDC = value;
+					this.SendPropertyChanged("WAINDC");
+					this.OnWAINDCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WARESC", DbType="Float")]
+		public System.Nullable<double> WARESC
+		{
+			get
+			{
+				return this._WARESC;
+			}
+			set
+			{
+				if ((this._WARESC != value))
+				{
+					this.OnWARESCChanging(value);
+					this.SendPropertyChanging();
+					this._WARESC = value;
+					this.SendPropertyChanged("WARESC");
+					this.OnWARESCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAMOH", DbType="Float")]
+		public System.Nullable<double> WAMOH
+		{
+			get
+			{
+				return this._WAMOH;
+			}
+			set
+			{
+				if ((this._WAMOH != value))
+				{
+					this.OnWAMOHChanging(value);
+					this.SendPropertyChanging();
+					this._WAMOH = value;
+					this.SendPropertyChanged("WAMOH");
+					this.OnWAMOHChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WATDT", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> WATDT
+		{
+			get
+			{
+				return this._WATDT;
+			}
+			set
+			{
+				if ((this._WATDT != value))
+				{
+					this.OnWATDTChanging(value);
+					this.SendPropertyChanging();
+					this._WATDT = value;
+					this.SendPropertyChanged("WATDT");
+					this.OnWATDTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAPOU", DbType="Float")]
+		public System.Nullable<double> WAPOU
+		{
+			get
+			{
+				return this._WAPOU;
+			}
+			set
+			{
+				if ((this._WAPOU != value))
+				{
+					this.OnWAPOUChanging(value);
+					this.SendPropertyChanging();
+					this._WAPOU = value;
+					this.SendPropertyChanged("WAPOU");
+					this.OnWAPOUChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAPC", DbType="Float")]
+		public System.Nullable<double> WAPC
+		{
+			get
+			{
+				return this._WAPC;
+			}
+			set
+			{
+				if ((this._WAPC != value))
+				{
+					this.OnWAPCChanging(value);
+					this.SendPropertyChanging();
+					this._WAPC = value;
+					this.SendPropertyChanged("WAPC");
+					this.OnWAPCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WALTLV", DbType="Float")]
+		public System.Nullable<double> WALTLV
+		{
+			get
+			{
+				return this._WALTLV;
+			}
+			set
+			{
+				if ((this._WALTLV != value))
+				{
+					this.OnWALTLVChanging(value);
+					this.SendPropertyChanging();
+					this._WALTLV = value;
+					this.SendPropertyChanged("WALTLV");
+					this.OnWALTLVChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WALTCM", DbType="Float")]
+		public System.Nullable<double> WALTCM
+		{
+			get
+			{
+				return this._WALTCM;
+			}
+			set
+			{
+				if ((this._WALTCM != value))
+				{
+					this.OnWALTCMChanging(value);
+					this.SendPropertyChanging();
+					this._WALTCM = value;
+					this.SendPropertyChanged("WALTCM");
+					this.OnWALTCMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WACTS1", DbType="Float")]
+		public System.Nullable<double> WACTS1
+		{
+			get
+			{
+				return this._WACTS1;
+			}
+			set
+			{
+				if ((this._WACTS1 != value))
+				{
+					this.OnWACTS1Changing(value);
+					this.SendPropertyChanging();
+					this._WACTS1 = value;
+					this.SendPropertyChanged("WACTS1");
+					this.OnWACTS1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WALOTN", DbType="NChar(30)")]
+		public string WALOTN
+		{
+			get
+			{
+				return this._WALOTN;
+			}
+			set
+			{
+				if ((this._WALOTN != value))
+				{
+					this.OnWALOTNChanging(value);
+					this.SendPropertyChanging();
+					this._WALOTN = value;
+					this.SendPropertyChanged("WALOTN");
+					this.OnWALOTNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WALOTP", DbType="Float")]
+		public System.Nullable<double> WALOTP
+		{
+			get
+			{
+				return this._WALOTP;
+			}
+			set
+			{
+				if ((this._WALOTP != value))
+				{
+					this.OnWALOTPChanging(value);
+					this.SendPropertyChanging();
+					this._WALOTP = value;
+					this.SendPropertyChanged("WALOTP");
+					this.OnWALOTPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WALOTG", DbType="NChar(3)")]
+		public string WALOTG
+		{
+			get
+			{
+				return this._WALOTG;
+			}
+			set
+			{
+				if ((this._WALOTG != value))
+				{
+					this.OnWALOTGChanging(value);
+					this.SendPropertyChanging();
+					this._WALOTG = value;
+					this.SendPropertyChanged("WALOTG");
+					this.OnWALOTGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WARAT1", DbType="Float")]
+		public System.Nullable<double> WARAT1
+		{
+			get
+			{
+				return this._WARAT1;
+			}
+			set
+			{
+				if ((this._WARAT1 != value))
+				{
+					this.OnWARAT1Changing(value);
+					this.SendPropertyChanging();
+					this._WARAT1 = value;
+					this.SendPropertyChanged("WARAT1");
+					this.OnWARAT1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WARAT2", DbType="Float")]
+		public System.Nullable<double> WARAT2
+		{
+			get
+			{
+				return this._WARAT2;
+			}
+			set
+			{
+				if ((this._WARAT2 != value))
+				{
+					this.OnWARAT2Changing(value);
+					this.SendPropertyChanging();
+					this._WARAT2 = value;
+					this.SendPropertyChanged("WARAT2");
+					this.OnWARAT2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WADCT", DbType="NChar(2)")]
+		public string WADCT
+		{
+			get
+			{
+				return this._WADCT;
+			}
+			set
+			{
+				if ((this._WADCT != value))
+				{
+					this.OnWADCTChanging(value);
+					this.SendPropertyChanging();
+					this._WADCT = value;
+					this.SendPropertyChanged("WADCT");
+					this.OnWADCTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WASBLI", DbType="NChar(1)")]
+		public System.Nullable<char> WASBLI
+		{
+			get
+			{
+				return this._WASBLI;
+			}
+			set
+			{
+				if ((this._WASBLI != value))
+				{
+					this.OnWASBLIChanging(value);
+					this.SendPropertyChanging();
+					this._WASBLI = value;
+					this.SendPropertyChanged("WASBLI");
+					this.OnWASBLIChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WARKCO", DbType="NChar(5)")]
+		public string WARKCO
+		{
+			get
+			{
+				return this._WARKCO;
+			}
+			set
+			{
+				if ((this._WARKCO != value))
+				{
+					this.OnWARKCOChanging(value);
+					this.SendPropertyChanging();
+					this._WARKCO = value;
+					this.SendPropertyChanged("WARKCO");
+					this.OnWARKCOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WABREV", DbType="NChar(3)")]
+		public string WABREV
+		{
+			get
+			{
+				return this._WABREV;
+			}
+			set
+			{
+				if ((this._WABREV != value))
+				{
+					this.OnWABREVChanging(value);
+					this.SendPropertyChanging();
+					this._WABREV = value;
+					this.SendPropertyChanged("WABREV");
+					this.OnWABREVChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WARREV", DbType="NChar(3)")]
+		public string WARREV
+		{
+			get
+			{
+				return this._WARREV;
+			}
+			set
+			{
+				if ((this._WARREV != value))
+				{
+					this.OnWARREVChanging(value);
+					this.SendPropertyChanging();
+					this._WARREV = value;
+					this.SendPropertyChanged("WARREV");
+					this.OnWARREVChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WADRWC", DbType="NChar(1)")]
+		public System.Nullable<char> WADRWC
+		{
+			get
+			{
+				return this._WADRWC;
+			}
+			set
+			{
+				if ((this._WADRWC != value))
+				{
+					this.OnWADRWCChanging(value);
+					this.SendPropertyChanging();
+					this._WADRWC = value;
+					this.SendPropertyChanged("WADRWC");
+					this.OnWADRWCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WARTCH", DbType="NChar(1)")]
+		public System.Nullable<char> WARTCH
+		{
+			get
+			{
+				return this._WARTCH;
+			}
+			set
+			{
+				if ((this._WARTCH != value))
+				{
+					this.OnWARTCHChanging(value);
+					this.SendPropertyChanging();
+					this._WARTCH = value;
+					this.SendPropertyChanged("WARTCH");
+					this.OnWARTCHChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAPNRQ", DbType="NChar(1)")]
+		public System.Nullable<char> WAPNRQ
+		{
+			get
+			{
+				return this._WAPNRQ;
+			}
+			set
+			{
+				if ((this._WAPNRQ != value))
+				{
+					this.OnWAPNRQChanging(value);
+					this.SendPropertyChanging();
+					this._WAPNRQ = value;
+					this.SendPropertyChanged("WAPNRQ");
+					this.OnWAPNRQChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAREAS", DbType="NChar(2)")]
+		public string WAREAS
+		{
+			get
+			{
+				return this._WAREAS;
+			}
+			set
+			{
+				if ((this._WAREAS != value))
+				{
+					this.OnWAREASChanging(value);
+					this.SendPropertyChanging();
+					this._WAREAS = value;
+					this.SendPropertyChanged("WAREAS");
+					this.OnWAREASChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAPHSE", DbType="NChar(3)")]
+		public string WAPHSE
+		{
+			get
+			{
+				return this._WAPHSE;
+			}
+			set
+			{
+				if ((this._WAPHSE != value))
+				{
+					this.OnWAPHSEChanging(value);
+					this.SendPropertyChanging();
+					this._WAPHSE = value;
+					this.SendPropertyChanged("WAPHSE");
+					this.OnWAPHSEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAXDSP", DbType="NChar(3)")]
+		public string WAXDSP
+		{
+			get
+			{
+				return this._WAXDSP;
+			}
+			set
+			{
+				if ((this._WAXDSP != value))
+				{
+					this.OnWAXDSPChanging(value);
+					this.SendPropertyChanging();
+					this._WAXDSP = value;
+					this.SendPropertyChanged("WAXDSP");
+					this.OnWAXDSPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WABOMC", DbType="NChar(1)")]
+		public System.Nullable<char> WABOMC
+		{
+			get
+			{
+				return this._WABOMC;
+			}
+			set
+			{
+				if ((this._WABOMC != value))
+				{
+					this.OnWABOMCChanging(value);
+					this.SendPropertyChanging();
+					this._WABOMC = value;
+					this.SendPropertyChanged("WABOMC");
+					this.OnWABOMCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAURCD", DbType="NChar(2)")]
+		public string WAURCD
+		{
+			get
+			{
+				return this._WAURCD;
+			}
+			set
+			{
+				if ((this._WAURCD != value))
+				{
+					this.OnWAURCDChanging(value);
+					this.SendPropertyChanging();
+					this._WAURCD = value;
+					this.SendPropertyChanged("WAURCD");
+					this.OnWAURCDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAURDT", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> WAURDT
+		{
+			get
+			{
+				return this._WAURDT;
+			}
+			set
+			{
+				if ((this._WAURDT != value))
+				{
+					this.OnWAURDTChanging(value);
+					this.SendPropertyChanging();
+					this._WAURDT = value;
+					this.SendPropertyChanged("WAURDT");
+					this.OnWAURDTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAURAT", DbType="Float")]
+		public System.Nullable<double> WAURAT
+		{
+			get
+			{
+				return this._WAURAT;
+			}
+			set
+			{
+				if ((this._WAURAT != value))
+				{
+					this.OnWAURATChanging(value);
+					this.SendPropertyChanging();
+					this._WAURAT = value;
+					this.SendPropertyChanged("WAURAT");
+					this.OnWAURATChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAURAB", DbType="Float")]
+		public System.Nullable<double> WAURAB
+		{
+			get
+			{
+				return this._WAURAB;
+			}
+			set
+			{
+				if ((this._WAURAB != value))
+				{
+					this.OnWAURABChanging(value);
+					this.SendPropertyChanging();
+					this._WAURAB = value;
+					this.SendPropertyChanged("WAURAB");
+					this.OnWAURABChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAURRF", DbType="NChar(15)")]
+		public string WAURRF
+		{
+			get
+			{
+				return this._WAURRF;
+			}
+			set
+			{
+				if ((this._WAURRF != value))
+				{
+					this.OnWAURRFChanging(value);
+					this.SendPropertyChanging();
+					this._WAURRF = value;
+					this.SendPropertyChanged("WAURRF");
+					this.OnWAURRFChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAUSER", DbType="NChar(10)")]
+		public string WAUSER
+		{
+			get
+			{
+				return this._WAUSER;
+			}
+			set
+			{
+				if ((this._WAUSER != value))
+				{
+					this.OnWAUSERChanging(value);
+					this.SendPropertyChanging();
+					this._WAUSER = value;
+					this.SendPropertyChanged("WAUSER");
+					this.OnWAUSERChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAPID", DbType="NChar(10)")]
+		public string WAPID
+		{
+			get
+			{
+				return this._WAPID;
+			}
+			set
+			{
+				if ((this._WAPID != value))
+				{
+					this.OnWAPIDChanging(value);
+					this.SendPropertyChanging();
+					this._WAPID = value;
+					this.SendPropertyChanged("WAPID");
+					this.OnWAPIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAJOBN", DbType="NChar(10)")]
+		public string WAJOBN
+		{
+			get
+			{
+				return this._WAJOBN;
+			}
+			set
+			{
+				if ((this._WAJOBN != value))
+				{
+					this.OnWAJOBNChanging(value);
+					this.SendPropertyChanging();
+					this._WAJOBN = value;
+					this.SendPropertyChanged("WAJOBN");
+					this.OnWAJOBNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAUPMJ", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> WAUPMJ
+		{
+			get
+			{
+				return this._WAUPMJ;
+			}
+			set
+			{
+				if ((this._WAUPMJ != value))
+				{
+					this.OnWAUPMJChanging(value);
+					this.SendPropertyChanging();
+					this._WAUPMJ = value;
+					this.SendPropertyChanged("WAUPMJ");
+					this.OnWAUPMJChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WATDAY", DbType="Float")]
+		public System.Nullable<double> WATDAY
+		{
+			get
+			{
+				return this._WATDAY;
+			}
+			set
+			{
+				if ((this._WATDAY != value))
+				{
+					this.OnWATDAYChanging(value);
+					this.SendPropertyChanging();
+					this._WATDAY = value;
+					this.SendPropertyChanged("WATDAY");
+					this.OnWATDAYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAAAID", DbType="Float")]
+		public System.Nullable<double> WAAAID
+		{
+			get
+			{
+				return this._WAAAID;
+			}
+			set
+			{
+				if ((this._WAAAID != value))
+				{
+					this.OnWAAAIDChanging(value);
+					this.SendPropertyChanging();
+					this._WAAAID = value;
+					this.SendPropertyChanged("WAAAID");
+					this.OnWAAAIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WANTST", DbType="NChar(2)")]
+		public string WANTST
+		{
+			get
+			{
+				return this._WANTST;
+			}
+			set
+			{
+				if ((this._WANTST != value))
+				{
+					this.OnWANTSTChanging(value);
+					this.SendPropertyChanging();
+					this._WANTST = value;
+					this.SendPropertyChanged("WANTST");
+					this.OnWANTSTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAXRTO", DbType="Float")]
+		public System.Nullable<double> WAXRTO
+		{
+			get
+			{
+				return this._WAXRTO;
+			}
+			set
+			{
+				if ((this._WAXRTO != value))
+				{
+					this.OnWAXRTOChanging(value);
+					this.SendPropertyChanging();
+					this._WAXRTO = value;
+					this.SendPropertyChanged("WAXRTO");
+					this.OnWAXRTOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAESDN", DbType="Float")]
+		public System.Nullable<double> WAESDN
+		{
+			get
+			{
+				return this._WAESDN;
+			}
+			set
+			{
+				if ((this._WAESDN != value))
+				{
+					this.OnWAESDNChanging(value);
+					this.SendPropertyChanging();
+					this._WAESDN = value;
+					this.SendPropertyChanged("WAESDN");
+					this.OnWAESDNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAACDN", DbType="Float")]
+		public System.Nullable<double> WAACDN
+		{
+			get
+			{
+				return this._WAACDN;
+			}
+			set
+			{
+				if ((this._WAACDN != value))
+				{
+					this.OnWAACDNChanging(value);
+					this.SendPropertyChanging();
+					this._WAACDN = value;
+					this.SendPropertyChanged("WAACDN");
+					this.OnWAACDNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WASAID", DbType="Float")]
+		public System.Nullable<double> WASAID
+		{
+			get
+			{
+				return this._WASAID;
+			}
+			set
+			{
+				if ((this._WASAID != value))
+				{
+					this.OnWASAIDChanging(value);
+					this.SendPropertyChanging();
+					this._WASAID = value;
+					this.SendPropertyChanged("WASAID");
+					this.OnWASAIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAMPOS", DbType="Float")]
+		public System.Nullable<double> WAMPOS
+		{
+			get
+			{
+				return this._WAMPOS;
+			}
+			set
+			{
+				if ((this._WAMPOS != value))
+				{
+					this.OnWAMPOSChanging(value);
+					this.SendPropertyChanging();
+					this._WAMPOS = value;
+					this.SendPropertyChanged("WAMPOS");
+					this.OnWAMPOSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAAPRT", DbType="NChar(3)")]
+		public string WAAPRT
+		{
+			get
+			{
+				return this._WAAPRT;
+			}
+			set
+			{
+				if ((this._WAAPRT != value))
+				{
+					this.OnWAAPRTChanging(value);
+					this.SendPropertyChanging();
+					this._WAAPRT = value;
+					this.SendPropertyChanged("WAAPRT");
+					this.OnWAAPRTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAAMLC", DbType="Float")]
+		public System.Nullable<double> WAAMLC
+		{
+			get
+			{
+				return this._WAAMLC;
+			}
+			set
+			{
+				if ((this._WAAMLC != value))
+				{
+					this.OnWAAMLCChanging(value);
+					this.SendPropertyChanging();
+					this._WAAMLC = value;
+					this.SendPropertyChanged("WAAMLC");
+					this.OnWAAMLCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAAMMC", DbType="Float")]
+		public System.Nullable<double> WAAMMC
+		{
+			get
+			{
+				return this._WAAMMC;
+			}
+			set
+			{
+				if ((this._WAAMMC != value))
+				{
+					this.OnWAAMMCChanging(value);
+					this.SendPropertyChanging();
+					this._WAAMMC = value;
+					this.SendPropertyChanged("WAAMMC");
+					this.OnWAAMMCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAAMOT", DbType="Float")]
+		public System.Nullable<double> WAAMOT
+		{
+			get
+			{
+				return this._WAAMOT;
+			}
+			set
+			{
+				if ((this._WAAMOT != value))
+				{
+					this.OnWAAMOTChanging(value);
+					this.SendPropertyChanging();
+					this._WAAMOT = value;
+					this.SendPropertyChanged("WAAMOT");
+					this.OnWAAMOTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WALBAM", DbType="Float")]
+		public System.Nullable<double> WALBAM
+		{
+			get
+			{
+				return this._WALBAM;
+			}
+			set
+			{
+				if ((this._WALBAM != value))
+				{
+					this.OnWALBAMChanging(value);
+					this.SendPropertyChanging();
+					this._WALBAM = value;
+					this.SendPropertyChanged("WALBAM");
+					this.OnWALBAMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WAMTAM", DbType="Float")]
+		public System.Nullable<double> WAMTAM
+		{
+			get
+			{
+				return this._WAMTAM;
+			}
+			set
+			{
+				if ((this._WAMTAM != value))
+				{
+					this.OnWAMTAMChanging(value);
+					this.SendPropertyChanging();
+					this._WAMTAM = value;
+					this.SendPropertyChanged("WAMTAM");
+					this.OnWAMTAMChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="PRODDTA.F41021")]
+	public partial class F41021 : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private double _LIITM;
+		
+		private string _LIMCU;
+		
+		private string _LILOCN;
+		
+		private string _LILOTN;
+		
+		private System.Nullable<char> _LIPBIN;
+		
+		private string _LIGLPT;
+		
+		private System.Nullable<char> _LILOTS;
+		
+		private System.Nullable<decimal> _LILRCJ;
+		
+		private System.Nullable<double> _LIPQOH;
+		
+		private System.Nullable<double> _LIPBCK;
+		
+		private System.Nullable<double> _LIPREQ;
+		
+		private System.Nullable<double> _LIQWBO;
+		
+		private System.Nullable<double> _LIOT1P;
+		
+		private System.Nullable<double> _LIOT2P;
+		
+		private System.Nullable<double> _LIOT1A;
+		
+		private System.Nullable<double> _LIHCOM;
+		
+		private System.Nullable<double> _LIPCOM;
+		
+		private System.Nullable<double> _LIFCOM;
+		
+		private System.Nullable<double> _LIFUN1;
+		
+		private System.Nullable<double> _LIQOWO;
+		
+		private System.Nullable<double> _LIQTTR;
+		
+		private System.Nullable<double> _LIQTIN;
+		
+		private System.Nullable<double> _LIQONL;
+		
+		private System.Nullable<double> _LIQTRI;
+		
+		private System.Nullable<double> _LIQTRO;
+		
+		private System.Nullable<decimal> _LINCDJ;
+		
+		private System.Nullable<double> _LIQTY1;
+		
+		private System.Nullable<double> _LIQTY2;
+		
+		private System.Nullable<double> _LIURAB;
+		
+		private string _LIURRF;
+		
+		private System.Nullable<double> _LIURAT;
+		
+		private string _LIURCD;
+		
+		private string _LIJOBN;
+		
+		private string _LIPID;
+		
+		private System.Nullable<decimal> _LIUPMJ;
+		
+		private string _LIUSER;
+		
+		private System.Nullable<double> _LITDAY;
+		
+		private System.Nullable<decimal> _LIURDT;
+		
+		private System.Nullable<double> _LIQTO1;
+		
+		private System.Nullable<double> _LIQTO2;
+		
+		private System.Nullable<double> _LIHCMS;
+		
+		private System.Nullable<double> _LIPJCM;
+		
+		private System.Nullable<double> _LIPJDM;
+		
+		private System.Nullable<double> _LISCMS;
+		
+		private System.Nullable<double> _LISIBW;
+		
+		private System.Nullable<double> _LISOBW;
+		
+		private System.Nullable<double> _LISQOH;
+		
+		private System.Nullable<double> _LISQWO;
+		
+		private System.Nullable<double> _LISREQ;
+		
+		private System.Nullable<double> _LISWHC;
+		
+		private System.Nullable<double> _LISWSC;
+		
+		private System.Nullable<char> _LICHDF;
+		
+		private System.Nullable<char> _LIWPDF;
+		
+		private string _LICFGSID;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnLIITMChanging(double value);
+    partial void OnLIITMChanged();
+    partial void OnLIMCUChanging(string value);
+    partial void OnLIMCUChanged();
+    partial void OnLILOCNChanging(string value);
+    partial void OnLILOCNChanged();
+    partial void OnLILOTNChanging(string value);
+    partial void OnLILOTNChanged();
+    partial void OnLIPBINChanging(System.Nullable<char> value);
+    partial void OnLIPBINChanged();
+    partial void OnLIGLPTChanging(string value);
+    partial void OnLIGLPTChanged();
+    partial void OnLILOTSChanging(System.Nullable<char> value);
+    partial void OnLILOTSChanged();
+    partial void OnLILRCJChanging(System.Nullable<decimal> value);
+    partial void OnLILRCJChanged();
+    partial void OnLIPQOHChanging(System.Nullable<double> value);
+    partial void OnLIPQOHChanged();
+    partial void OnLIPBCKChanging(System.Nullable<double> value);
+    partial void OnLIPBCKChanged();
+    partial void OnLIPREQChanging(System.Nullable<double> value);
+    partial void OnLIPREQChanged();
+    partial void OnLIQWBOChanging(System.Nullable<double> value);
+    partial void OnLIQWBOChanged();
+    partial void OnLIOT1PChanging(System.Nullable<double> value);
+    partial void OnLIOT1PChanged();
+    partial void OnLIOT2PChanging(System.Nullable<double> value);
+    partial void OnLIOT2PChanged();
+    partial void OnLIOT1AChanging(System.Nullable<double> value);
+    partial void OnLIOT1AChanged();
+    partial void OnLIHCOMChanging(System.Nullable<double> value);
+    partial void OnLIHCOMChanged();
+    partial void OnLIPCOMChanging(System.Nullable<double> value);
+    partial void OnLIPCOMChanged();
+    partial void OnLIFCOMChanging(System.Nullable<double> value);
+    partial void OnLIFCOMChanged();
+    partial void OnLIFUN1Changing(System.Nullable<double> value);
+    partial void OnLIFUN1Changed();
+    partial void OnLIQOWOChanging(System.Nullable<double> value);
+    partial void OnLIQOWOChanged();
+    partial void OnLIQTTRChanging(System.Nullable<double> value);
+    partial void OnLIQTTRChanged();
+    partial void OnLIQTINChanging(System.Nullable<double> value);
+    partial void OnLIQTINChanged();
+    partial void OnLIQONLChanging(System.Nullable<double> value);
+    partial void OnLIQONLChanged();
+    partial void OnLIQTRIChanging(System.Nullable<double> value);
+    partial void OnLIQTRIChanged();
+    partial void OnLIQTROChanging(System.Nullable<double> value);
+    partial void OnLIQTROChanged();
+    partial void OnLINCDJChanging(System.Nullable<decimal> value);
+    partial void OnLINCDJChanged();
+    partial void OnLIQTY1Changing(System.Nullable<double> value);
+    partial void OnLIQTY1Changed();
+    partial void OnLIQTY2Changing(System.Nullable<double> value);
+    partial void OnLIQTY2Changed();
+    partial void OnLIURABChanging(System.Nullable<double> value);
+    partial void OnLIURABChanged();
+    partial void OnLIURRFChanging(string value);
+    partial void OnLIURRFChanged();
+    partial void OnLIURATChanging(System.Nullable<double> value);
+    partial void OnLIURATChanged();
+    partial void OnLIURCDChanging(string value);
+    partial void OnLIURCDChanged();
+    partial void OnLIJOBNChanging(string value);
+    partial void OnLIJOBNChanged();
+    partial void OnLIPIDChanging(string value);
+    partial void OnLIPIDChanged();
+    partial void OnLIUPMJChanging(System.Nullable<decimal> value);
+    partial void OnLIUPMJChanged();
+    partial void OnLIUSERChanging(string value);
+    partial void OnLIUSERChanged();
+    partial void OnLITDAYChanging(System.Nullable<double> value);
+    partial void OnLITDAYChanged();
+    partial void OnLIURDTChanging(System.Nullable<decimal> value);
+    partial void OnLIURDTChanged();
+    partial void OnLIQTO1Changing(System.Nullable<double> value);
+    partial void OnLIQTO1Changed();
+    partial void OnLIQTO2Changing(System.Nullable<double> value);
+    partial void OnLIQTO2Changed();
+    partial void OnLIHCMSChanging(System.Nullable<double> value);
+    partial void OnLIHCMSChanged();
+    partial void OnLIPJCMChanging(System.Nullable<double> value);
+    partial void OnLIPJCMChanged();
+    partial void OnLIPJDMChanging(System.Nullable<double> value);
+    partial void OnLIPJDMChanged();
+    partial void OnLISCMSChanging(System.Nullable<double> value);
+    partial void OnLISCMSChanged();
+    partial void OnLISIBWChanging(System.Nullable<double> value);
+    partial void OnLISIBWChanged();
+    partial void OnLISOBWChanging(System.Nullable<double> value);
+    partial void OnLISOBWChanged();
+    partial void OnLISQOHChanging(System.Nullable<double> value);
+    partial void OnLISQOHChanged();
+    partial void OnLISQWOChanging(System.Nullable<double> value);
+    partial void OnLISQWOChanged();
+    partial void OnLISREQChanging(System.Nullable<double> value);
+    partial void OnLISREQChanged();
+    partial void OnLISWHCChanging(System.Nullable<double> value);
+    partial void OnLISWHCChanged();
+    partial void OnLISWSCChanging(System.Nullable<double> value);
+    partial void OnLISWSCChanged();
+    partial void OnLICHDFChanging(System.Nullable<char> value);
+    partial void OnLICHDFChanged();
+    partial void OnLIWPDFChanging(System.Nullable<char> value);
+    partial void OnLIWPDFChanged();
+    partial void OnLICFGSIDChanging(string value);
+    partial void OnLICFGSIDChanged();
+    #endregion
+		
+		public F41021()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIITM", DbType="Float NOT NULL", IsPrimaryKey=true)]
+		public double LIITM
+		{
+			get
+			{
+				return this._LIITM;
+			}
+			set
+			{
+				if ((this._LIITM != value))
+				{
+					this.OnLIITMChanging(value);
+					this.SendPropertyChanging();
+					this._LIITM = value;
+					this.SendPropertyChanged("LIITM");
+					this.OnLIITMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIMCU", DbType="NChar(12) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string LIMCU
+		{
+			get
+			{
+				return this._LIMCU;
+			}
+			set
+			{
+				if ((this._LIMCU != value))
+				{
+					this.OnLIMCUChanging(value);
+					this.SendPropertyChanging();
+					this._LIMCU = value;
+					this.SendPropertyChanged("LIMCU");
+					this.OnLIMCUChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LILOCN", DbType="NChar(20) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string LILOCN
+		{
+			get
+			{
+				return this._LILOCN;
+			}
+			set
+			{
+				if ((this._LILOCN != value))
+				{
+					this.OnLILOCNChanging(value);
+					this.SendPropertyChanging();
+					this._LILOCN = value;
+					this.SendPropertyChanged("LILOCN");
+					this.OnLILOCNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LILOTN", DbType="NChar(30) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string LILOTN
+		{
+			get
+			{
+				return this._LILOTN;
+			}
+			set
+			{
+				if ((this._LILOTN != value))
+				{
+					this.OnLILOTNChanging(value);
+					this.SendPropertyChanging();
+					this._LILOTN = value;
+					this.SendPropertyChanged("LILOTN");
+					this.OnLILOTNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIPBIN", DbType="NChar(1)")]
+		public System.Nullable<char> LIPBIN
+		{
+			get
+			{
+				return this._LIPBIN;
+			}
+			set
+			{
+				if ((this._LIPBIN != value))
+				{
+					this.OnLIPBINChanging(value);
+					this.SendPropertyChanging();
+					this._LIPBIN = value;
+					this.SendPropertyChanged("LIPBIN");
+					this.OnLIPBINChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIGLPT", DbType="NChar(4)")]
+		public string LIGLPT
+		{
+			get
+			{
+				return this._LIGLPT;
+			}
+			set
+			{
+				if ((this._LIGLPT != value))
+				{
+					this.OnLIGLPTChanging(value);
+					this.SendPropertyChanging();
+					this._LIGLPT = value;
+					this.SendPropertyChanged("LIGLPT");
+					this.OnLIGLPTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LILOTS", DbType="NChar(1)")]
+		public System.Nullable<char> LILOTS
+		{
+			get
+			{
+				return this._LILOTS;
+			}
+			set
+			{
+				if ((this._LILOTS != value))
+				{
+					this.OnLILOTSChanging(value);
+					this.SendPropertyChanging();
+					this._LILOTS = value;
+					this.SendPropertyChanged("LILOTS");
+					this.OnLILOTSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LILRCJ", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> LILRCJ
+		{
+			get
+			{
+				return this._LILRCJ;
+			}
+			set
+			{
+				if ((this._LILRCJ != value))
+				{
+					this.OnLILRCJChanging(value);
+					this.SendPropertyChanging();
+					this._LILRCJ = value;
+					this.SendPropertyChanged("LILRCJ");
+					this.OnLILRCJChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIPQOH", DbType="Float")]
+		public System.Nullable<double> LIPQOH
+		{
+			get
+			{
+				return this._LIPQOH;
+			}
+			set
+			{
+				if ((this._LIPQOH != value))
+				{
+					this.OnLIPQOHChanging(value);
+					this.SendPropertyChanging();
+					this._LIPQOH = value;
+					this.SendPropertyChanged("LIPQOH");
+					this.OnLIPQOHChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIPBCK", DbType="Float")]
+		public System.Nullable<double> LIPBCK
+		{
+			get
+			{
+				return this._LIPBCK;
+			}
+			set
+			{
+				if ((this._LIPBCK != value))
+				{
+					this.OnLIPBCKChanging(value);
+					this.SendPropertyChanging();
+					this._LIPBCK = value;
+					this.SendPropertyChanged("LIPBCK");
+					this.OnLIPBCKChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIPREQ", DbType="Float")]
+		public System.Nullable<double> LIPREQ
+		{
+			get
+			{
+				return this._LIPREQ;
+			}
+			set
+			{
+				if ((this._LIPREQ != value))
+				{
+					this.OnLIPREQChanging(value);
+					this.SendPropertyChanging();
+					this._LIPREQ = value;
+					this.SendPropertyChanged("LIPREQ");
+					this.OnLIPREQChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIQWBO", DbType="Float")]
+		public System.Nullable<double> LIQWBO
+		{
+			get
+			{
+				return this._LIQWBO;
+			}
+			set
+			{
+				if ((this._LIQWBO != value))
+				{
+					this.OnLIQWBOChanging(value);
+					this.SendPropertyChanging();
+					this._LIQWBO = value;
+					this.SendPropertyChanged("LIQWBO");
+					this.OnLIQWBOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIOT1P", DbType="Float")]
+		public System.Nullable<double> LIOT1P
+		{
+			get
+			{
+				return this._LIOT1P;
+			}
+			set
+			{
+				if ((this._LIOT1P != value))
+				{
+					this.OnLIOT1PChanging(value);
+					this.SendPropertyChanging();
+					this._LIOT1P = value;
+					this.SendPropertyChanged("LIOT1P");
+					this.OnLIOT1PChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIOT2P", DbType="Float")]
+		public System.Nullable<double> LIOT2P
+		{
+			get
+			{
+				return this._LIOT2P;
+			}
+			set
+			{
+				if ((this._LIOT2P != value))
+				{
+					this.OnLIOT2PChanging(value);
+					this.SendPropertyChanging();
+					this._LIOT2P = value;
+					this.SendPropertyChanged("LIOT2P");
+					this.OnLIOT2PChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIOT1A", DbType="Float")]
+		public System.Nullable<double> LIOT1A
+		{
+			get
+			{
+				return this._LIOT1A;
+			}
+			set
+			{
+				if ((this._LIOT1A != value))
+				{
+					this.OnLIOT1AChanging(value);
+					this.SendPropertyChanging();
+					this._LIOT1A = value;
+					this.SendPropertyChanged("LIOT1A");
+					this.OnLIOT1AChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIHCOM", DbType="Float")]
+		public System.Nullable<double> LIHCOM
+		{
+			get
+			{
+				return this._LIHCOM;
+			}
+			set
+			{
+				if ((this._LIHCOM != value))
+				{
+					this.OnLIHCOMChanging(value);
+					this.SendPropertyChanging();
+					this._LIHCOM = value;
+					this.SendPropertyChanged("LIHCOM");
+					this.OnLIHCOMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIPCOM", DbType="Float")]
+		public System.Nullable<double> LIPCOM
+		{
+			get
+			{
+				return this._LIPCOM;
+			}
+			set
+			{
+				if ((this._LIPCOM != value))
+				{
+					this.OnLIPCOMChanging(value);
+					this.SendPropertyChanging();
+					this._LIPCOM = value;
+					this.SendPropertyChanged("LIPCOM");
+					this.OnLIPCOMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIFCOM", DbType="Float")]
+		public System.Nullable<double> LIFCOM
+		{
+			get
+			{
+				return this._LIFCOM;
+			}
+			set
+			{
+				if ((this._LIFCOM != value))
+				{
+					this.OnLIFCOMChanging(value);
+					this.SendPropertyChanging();
+					this._LIFCOM = value;
+					this.SendPropertyChanged("LIFCOM");
+					this.OnLIFCOMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIFUN1", DbType="Float")]
+		public System.Nullable<double> LIFUN1
+		{
+			get
+			{
+				return this._LIFUN1;
+			}
+			set
+			{
+				if ((this._LIFUN1 != value))
+				{
+					this.OnLIFUN1Changing(value);
+					this.SendPropertyChanging();
+					this._LIFUN1 = value;
+					this.SendPropertyChanged("LIFUN1");
+					this.OnLIFUN1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIQOWO", DbType="Float")]
+		public System.Nullable<double> LIQOWO
+		{
+			get
+			{
+				return this._LIQOWO;
+			}
+			set
+			{
+				if ((this._LIQOWO != value))
+				{
+					this.OnLIQOWOChanging(value);
+					this.SendPropertyChanging();
+					this._LIQOWO = value;
+					this.SendPropertyChanged("LIQOWO");
+					this.OnLIQOWOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIQTTR", DbType="Float")]
+		public System.Nullable<double> LIQTTR
+		{
+			get
+			{
+				return this._LIQTTR;
+			}
+			set
+			{
+				if ((this._LIQTTR != value))
+				{
+					this.OnLIQTTRChanging(value);
+					this.SendPropertyChanging();
+					this._LIQTTR = value;
+					this.SendPropertyChanged("LIQTTR");
+					this.OnLIQTTRChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIQTIN", DbType="Float")]
+		public System.Nullable<double> LIQTIN
+		{
+			get
+			{
+				return this._LIQTIN;
+			}
+			set
+			{
+				if ((this._LIQTIN != value))
+				{
+					this.OnLIQTINChanging(value);
+					this.SendPropertyChanging();
+					this._LIQTIN = value;
+					this.SendPropertyChanged("LIQTIN");
+					this.OnLIQTINChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIQONL", DbType="Float")]
+		public System.Nullable<double> LIQONL
+		{
+			get
+			{
+				return this._LIQONL;
+			}
+			set
+			{
+				if ((this._LIQONL != value))
+				{
+					this.OnLIQONLChanging(value);
+					this.SendPropertyChanging();
+					this._LIQONL = value;
+					this.SendPropertyChanged("LIQONL");
+					this.OnLIQONLChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIQTRI", DbType="Float")]
+		public System.Nullable<double> LIQTRI
+		{
+			get
+			{
+				return this._LIQTRI;
+			}
+			set
+			{
+				if ((this._LIQTRI != value))
+				{
+					this.OnLIQTRIChanging(value);
+					this.SendPropertyChanging();
+					this._LIQTRI = value;
+					this.SendPropertyChanged("LIQTRI");
+					this.OnLIQTRIChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIQTRO", DbType="Float")]
+		public System.Nullable<double> LIQTRO
+		{
+			get
+			{
+				return this._LIQTRO;
+			}
+			set
+			{
+				if ((this._LIQTRO != value))
+				{
+					this.OnLIQTROChanging(value);
+					this.SendPropertyChanging();
+					this._LIQTRO = value;
+					this.SendPropertyChanged("LIQTRO");
+					this.OnLIQTROChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LINCDJ", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> LINCDJ
+		{
+			get
+			{
+				return this._LINCDJ;
+			}
+			set
+			{
+				if ((this._LINCDJ != value))
+				{
+					this.OnLINCDJChanging(value);
+					this.SendPropertyChanging();
+					this._LINCDJ = value;
+					this.SendPropertyChanged("LINCDJ");
+					this.OnLINCDJChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIQTY1", DbType="Float")]
+		public System.Nullable<double> LIQTY1
+		{
+			get
+			{
+				return this._LIQTY1;
+			}
+			set
+			{
+				if ((this._LIQTY1 != value))
+				{
+					this.OnLIQTY1Changing(value);
+					this.SendPropertyChanging();
+					this._LIQTY1 = value;
+					this.SendPropertyChanged("LIQTY1");
+					this.OnLIQTY1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIQTY2", DbType="Float")]
+		public System.Nullable<double> LIQTY2
+		{
+			get
+			{
+				return this._LIQTY2;
+			}
+			set
+			{
+				if ((this._LIQTY2 != value))
+				{
+					this.OnLIQTY2Changing(value);
+					this.SendPropertyChanging();
+					this._LIQTY2 = value;
+					this.SendPropertyChanged("LIQTY2");
+					this.OnLIQTY2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIURAB", DbType="Float")]
+		public System.Nullable<double> LIURAB
+		{
+			get
+			{
+				return this._LIURAB;
+			}
+			set
+			{
+				if ((this._LIURAB != value))
+				{
+					this.OnLIURABChanging(value);
+					this.SendPropertyChanging();
+					this._LIURAB = value;
+					this.SendPropertyChanged("LIURAB");
+					this.OnLIURABChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIURRF", DbType="NChar(15)")]
+		public string LIURRF
+		{
+			get
+			{
+				return this._LIURRF;
+			}
+			set
+			{
+				if ((this._LIURRF != value))
+				{
+					this.OnLIURRFChanging(value);
+					this.SendPropertyChanging();
+					this._LIURRF = value;
+					this.SendPropertyChanged("LIURRF");
+					this.OnLIURRFChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIURAT", DbType="Float")]
+		public System.Nullable<double> LIURAT
+		{
+			get
+			{
+				return this._LIURAT;
+			}
+			set
+			{
+				if ((this._LIURAT != value))
+				{
+					this.OnLIURATChanging(value);
+					this.SendPropertyChanging();
+					this._LIURAT = value;
+					this.SendPropertyChanged("LIURAT");
+					this.OnLIURATChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIURCD", DbType="NChar(2)")]
+		public string LIURCD
+		{
+			get
+			{
+				return this._LIURCD;
+			}
+			set
+			{
+				if ((this._LIURCD != value))
+				{
+					this.OnLIURCDChanging(value);
+					this.SendPropertyChanging();
+					this._LIURCD = value;
+					this.SendPropertyChanged("LIURCD");
+					this.OnLIURCDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIJOBN", DbType="NChar(10)")]
+		public string LIJOBN
+		{
+			get
+			{
+				return this._LIJOBN;
+			}
+			set
+			{
+				if ((this._LIJOBN != value))
+				{
+					this.OnLIJOBNChanging(value);
+					this.SendPropertyChanging();
+					this._LIJOBN = value;
+					this.SendPropertyChanged("LIJOBN");
+					this.OnLIJOBNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIPID", DbType="NChar(10)")]
+		public string LIPID
+		{
+			get
+			{
+				return this._LIPID;
+			}
+			set
+			{
+				if ((this._LIPID != value))
+				{
+					this.OnLIPIDChanging(value);
+					this.SendPropertyChanging();
+					this._LIPID = value;
+					this.SendPropertyChanged("LIPID");
+					this.OnLIPIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIUPMJ", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> LIUPMJ
+		{
+			get
+			{
+				return this._LIUPMJ;
+			}
+			set
+			{
+				if ((this._LIUPMJ != value))
+				{
+					this.OnLIUPMJChanging(value);
+					this.SendPropertyChanging();
+					this._LIUPMJ = value;
+					this.SendPropertyChanged("LIUPMJ");
+					this.OnLIUPMJChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIUSER", DbType="NChar(10)")]
+		public string LIUSER
+		{
+			get
+			{
+				return this._LIUSER;
+			}
+			set
+			{
+				if ((this._LIUSER != value))
+				{
+					this.OnLIUSERChanging(value);
+					this.SendPropertyChanging();
+					this._LIUSER = value;
+					this.SendPropertyChanged("LIUSER");
+					this.OnLIUSERChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LITDAY", DbType="Float")]
+		public System.Nullable<double> LITDAY
+		{
+			get
+			{
+				return this._LITDAY;
+			}
+			set
+			{
+				if ((this._LITDAY != value))
+				{
+					this.OnLITDAYChanging(value);
+					this.SendPropertyChanging();
+					this._LITDAY = value;
+					this.SendPropertyChanged("LITDAY");
+					this.OnLITDAYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIURDT", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> LIURDT
+		{
+			get
+			{
+				return this._LIURDT;
+			}
+			set
+			{
+				if ((this._LIURDT != value))
+				{
+					this.OnLIURDTChanging(value);
+					this.SendPropertyChanging();
+					this._LIURDT = value;
+					this.SendPropertyChanged("LIURDT");
+					this.OnLIURDTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIQTO1", DbType="Float")]
+		public System.Nullable<double> LIQTO1
+		{
+			get
+			{
+				return this._LIQTO1;
+			}
+			set
+			{
+				if ((this._LIQTO1 != value))
+				{
+					this.OnLIQTO1Changing(value);
+					this.SendPropertyChanging();
+					this._LIQTO1 = value;
+					this.SendPropertyChanged("LIQTO1");
+					this.OnLIQTO1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIQTO2", DbType="Float")]
+		public System.Nullable<double> LIQTO2
+		{
+			get
+			{
+				return this._LIQTO2;
+			}
+			set
+			{
+				if ((this._LIQTO2 != value))
+				{
+					this.OnLIQTO2Changing(value);
+					this.SendPropertyChanging();
+					this._LIQTO2 = value;
+					this.SendPropertyChanged("LIQTO2");
+					this.OnLIQTO2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIHCMS", DbType="Float")]
+		public System.Nullable<double> LIHCMS
+		{
+			get
+			{
+				return this._LIHCMS;
+			}
+			set
+			{
+				if ((this._LIHCMS != value))
+				{
+					this.OnLIHCMSChanging(value);
+					this.SendPropertyChanging();
+					this._LIHCMS = value;
+					this.SendPropertyChanged("LIHCMS");
+					this.OnLIHCMSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIPJCM", DbType="Float")]
+		public System.Nullable<double> LIPJCM
+		{
+			get
+			{
+				return this._LIPJCM;
+			}
+			set
+			{
+				if ((this._LIPJCM != value))
+				{
+					this.OnLIPJCMChanging(value);
+					this.SendPropertyChanging();
+					this._LIPJCM = value;
+					this.SendPropertyChanged("LIPJCM");
+					this.OnLIPJCMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIPJDM", DbType="Float")]
+		public System.Nullable<double> LIPJDM
+		{
+			get
+			{
+				return this._LIPJDM;
+			}
+			set
+			{
+				if ((this._LIPJDM != value))
+				{
+					this.OnLIPJDMChanging(value);
+					this.SendPropertyChanging();
+					this._LIPJDM = value;
+					this.SendPropertyChanged("LIPJDM");
+					this.OnLIPJDMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LISCMS", DbType="Float")]
+		public System.Nullable<double> LISCMS
+		{
+			get
+			{
+				return this._LISCMS;
+			}
+			set
+			{
+				if ((this._LISCMS != value))
+				{
+					this.OnLISCMSChanging(value);
+					this.SendPropertyChanging();
+					this._LISCMS = value;
+					this.SendPropertyChanged("LISCMS");
+					this.OnLISCMSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LISIBW", DbType="Float")]
+		public System.Nullable<double> LISIBW
+		{
+			get
+			{
+				return this._LISIBW;
+			}
+			set
+			{
+				if ((this._LISIBW != value))
+				{
+					this.OnLISIBWChanging(value);
+					this.SendPropertyChanging();
+					this._LISIBW = value;
+					this.SendPropertyChanged("LISIBW");
+					this.OnLISIBWChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LISOBW", DbType="Float")]
+		public System.Nullable<double> LISOBW
+		{
+			get
+			{
+				return this._LISOBW;
+			}
+			set
+			{
+				if ((this._LISOBW != value))
+				{
+					this.OnLISOBWChanging(value);
+					this.SendPropertyChanging();
+					this._LISOBW = value;
+					this.SendPropertyChanged("LISOBW");
+					this.OnLISOBWChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LISQOH", DbType="Float")]
+		public System.Nullable<double> LISQOH
+		{
+			get
+			{
+				return this._LISQOH;
+			}
+			set
+			{
+				if ((this._LISQOH != value))
+				{
+					this.OnLISQOHChanging(value);
+					this.SendPropertyChanging();
+					this._LISQOH = value;
+					this.SendPropertyChanged("LISQOH");
+					this.OnLISQOHChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LISQWO", DbType="Float")]
+		public System.Nullable<double> LISQWO
+		{
+			get
+			{
+				return this._LISQWO;
+			}
+			set
+			{
+				if ((this._LISQWO != value))
+				{
+					this.OnLISQWOChanging(value);
+					this.SendPropertyChanging();
+					this._LISQWO = value;
+					this.SendPropertyChanged("LISQWO");
+					this.OnLISQWOChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LISREQ", DbType="Float")]
+		public System.Nullable<double> LISREQ
+		{
+			get
+			{
+				return this._LISREQ;
+			}
+			set
+			{
+				if ((this._LISREQ != value))
+				{
+					this.OnLISREQChanging(value);
+					this.SendPropertyChanging();
+					this._LISREQ = value;
+					this.SendPropertyChanged("LISREQ");
+					this.OnLISREQChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LISWHC", DbType="Float")]
+		public System.Nullable<double> LISWHC
+		{
+			get
+			{
+				return this._LISWHC;
+			}
+			set
+			{
+				if ((this._LISWHC != value))
+				{
+					this.OnLISWHCChanging(value);
+					this.SendPropertyChanging();
+					this._LISWHC = value;
+					this.SendPropertyChanged("LISWHC");
+					this.OnLISWHCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LISWSC", DbType="Float")]
+		public System.Nullable<double> LISWSC
+		{
+			get
+			{
+				return this._LISWSC;
+			}
+			set
+			{
+				if ((this._LISWSC != value))
+				{
+					this.OnLISWSCChanging(value);
+					this.SendPropertyChanging();
+					this._LISWSC = value;
+					this.SendPropertyChanged("LISWSC");
+					this.OnLISWSCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LICHDF", DbType="NChar(1)")]
+		public System.Nullable<char> LICHDF
+		{
+			get
+			{
+				return this._LICHDF;
+			}
+			set
+			{
+				if ((this._LICHDF != value))
+				{
+					this.OnLICHDFChanging(value);
+					this.SendPropertyChanging();
+					this._LICHDF = value;
+					this.SendPropertyChanged("LICHDF");
+					this.OnLICHDFChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LIWPDF", DbType="NChar(1)")]
+		public System.Nullable<char> LIWPDF
+		{
+			get
+			{
+				return this._LIWPDF;
+			}
+			set
+			{
+				if ((this._LIWPDF != value))
+				{
+					this.OnLIWPDFChanging(value);
+					this.SendPropertyChanging();
+					this._LIWPDF = value;
+					this.SendPropertyChanged("LIWPDF");
+					this.OnLIWPDFChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LICFGSID", DbType="NChar(32)")]
+		public string LICFGSID
+		{
+			get
+			{
+				return this._LICFGSID;
+			}
+			set
+			{
+				if ((this._LICFGSID != value))
+				{
+					this.OnLICFGSIDChanging(value);
+					this.SendPropertyChanging();
+					this._LICFGSID = value;
+					this.SendPropertyChanged("LICFGSID");
+					this.OnLICFGSIDChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
